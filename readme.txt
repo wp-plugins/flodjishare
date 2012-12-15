@@ -12,14 +12,14 @@ Mit flodjiShare wird Webseitenbetreibern eine einfache Lösung angeboten die Soci
 
 == Description ==
 
-Mit flodjiShare für WordPress wird Betreibern einer WordPress-Seite eine einfache Lösung angeboten die Social Sharing und Bookmark Buttons der großen Netzwerke in die eigene Seite einzubinden.
-Zudem werden zusätzliche Metadaten (opengraph Tags, Rich Snippets Tags, Twitter Card Tags, Schema.org/Artikel) in den Quellcode der WordPress-Seite und der Artikel eingebunden um diese Daten für die Anzeige in sozialen Netzwerken wie z.B. Facebook, Google Plus und Twitter zu optimieren. Durch Einbindung der Rich Snippets Tags werden ausserdem auch die Daten für die Anzeige in den großen Suchmaschinen wie z.B. Google, Bing und Yahoo aufbereitet.
+Mit flodjiShare f&uuml;r WordPress wird Betreibern einer WordPress-Seite eine einfache L&ouml;sung angeboten die Social Sharing und Bookmark Buttons der gro&szlig;en Netzwerke in die eigene Seite einzubinden.
+Zudem werden zus&auml;tzliche Metadaten (Opengraph Tags, Rich Snippets Tags, Twitter Card Tags, Schema.org/Artikel) in den Quellcode der WordPress-Seite und der Artikel eingebunden um diese Daten f&uuml;r die Anzeige in sozialen Netzwerken wie z.B. Facebook, Google Plus und Twitter zu optimieren. Durch Einbindung der Rich Snippets Tags werden ausserdem auch die Daten f&uuml;r die Anzeige in den gro&szlig;en Suchmaschinen wie z.B. Google, Bing und Yahoo aufbereitet.
 
-Die folgenden Buttons können nach belieben aktiviert bzw. deaktiviert werden:
+Die folgenden Buttons k&ouml;nnen nach belieben aktiviert bzw. deaktiviert werden:
 
 * Facebook
 * Twitter
-* VZ-Netzwerke (StudiVZ, MeinVZ, SchülerVZ)
+* VZ-Netzwerke (StudiVZ, MeinVZ, Sch&uuml;lerVZ)
 * Digg
 * Delicious
 * Google Plus
@@ -50,11 +50,4 @@ Coming soon
 
 == Changelog ==
 
-
-
 == Upgrade notice ==
-
-
-
-== Arbitrary section 1 ==
-
