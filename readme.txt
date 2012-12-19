@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: Share,Social,Facebook,Twitter,Xing,Delicious,VZ,Digg,Google,Rich Snippets,Opengraph,Twitter Cards
 Requires at least: 3.3
 Tested up to: 3.5
-Stable tag: 1.3
+Stable tag: 1.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -24,6 +24,10 @@ Die folgenden Buttons k&ouml;nnen nach belieben aktiviert bzw. deaktiviert werde
 * Delicious
 * Google Plus
 * Xing
+* LinkedIn
+* Pinterest
+* Stumbleupon
+* Tumblr
 
 Features:
 
@@ -46,8 +50,18 @@ Features:
 
 == Screenshots ==
 
-Coming soon
+1. screenshot-1.png
+2. screenshot-2.png
 
 == Changelog ==
 
+Version 1.4:
+
+* Neue Share Buttons: LinkedIn, Pinterest, Stumbleupon, Tumblr
+* Neues Buttonset
+
 == Upgrade notice ==
+
+Version 1.4:
+* Neue Share Buttons: LinkedIn, Pinterest, Stumbleupon, Tumblr
+* Neues Buttonset
