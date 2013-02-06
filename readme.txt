@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: Share,Social,Facebook,Twitter,Xing,Delicious,VZ,Digg,Google,Rich Snippets,Opengraph,Twitter Cards
 Requires at least: 3.3
 Tested up to: 3.5
-Stable tag: 1.4
+Stable tag: 1.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -37,6 +37,8 @@ Features:
 * Position: Unten, Oben
 * Anzeige auf: Artikel, Blog-Ansicht, Seiten
 
+Weitere Informationen gibt es auf <a target="_blank" href="http://flodji.de/flodjishare-fuer-wordpress/" rel="nofollow">flodji.de</a>. Bei Fragen und Problemen helfe ich gerne in meinem <a target="_blank" href="http://flodji.de/forum" rel="nofollow">Support Forum</a> weiter.
+
 == Installation ==
 
 1. Upload the flodjishare Folder to the /wp-content/plugins/ directory
@@ -50,10 +52,16 @@ Features:
 
 == Screenshots ==
 
-1. screenshot-1.png
-2. screenshot-2.png
+1. Buttons im Einsatz
+2. Einstellungen
+3. Neues Design (Metro)
 
 == Changelog ==
+
+Version 1.5:
+
+* Zus&auml;tzliches Design (metro) ausw&auml;hlbar
+* Kleinere Bugfixes im Code (z.B. Fehler bei fehlendem Excerpt)
 
 Version 1.4:
 
@@ -62,6 +70,12 @@ Version 1.4:
 
 == Upgrade notice ==
 
+Version 1.5:
+
+* Zus&auml;tzliches Design (metro) ausw&auml;hlbar
+* Kleinere Bugfixes im Code (z.B. Fehler bei fehlendem Excerpt)
+
 Version 1.4:
+
 * Neue Share Buttons: LinkedIn, Pinterest, Stumbleupon, Tumblr
 * Neues Buttonset
