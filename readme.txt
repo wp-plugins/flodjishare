@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: Share,Social,Facebook,Twitter,Xing,Delicious,VZ,Digg,Google,Rich Snippets,Opengraph,Twitter Cards
 Requires at least: 3.3
 Tested up to: 3.5
-Stable tag: 1.5
+Stable tag: 1.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -58,6 +58,10 @@ Weitere Informationen gibt es auf <a target="_blank" href="http://flodji.de/flod
 
 == Changelog ==
 
+Version 1.6:
+
+* Metro Design lies sich nicht mehr deaktivieren.
+
 Version 1.5:
 
 * Zus&auml;tzliches Design (metro) ausw&auml;hlbar
@@ -69,6 +73,10 @@ Version 1.4:
 * Neues Buttonset
 
 == Upgrade notice ==
+
+Version 1.6:
+
+* Metro Design lies sich nicht mehr deaktivieren.
 
 Version 1.5:
 
