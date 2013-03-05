@@ -3,7 +3,7 @@
 Plugin Name: flodjiShare
 Plugin URI: http://flodji.de
 Description: Mit flodjiShare wird Webseitenbetreibern eine einfache L&ouml;sung angeboten die Social Sharing und Bookmark Buttons der gro&szlig;en Netzwerke in die eigene Seite einzubinden.
-Version: 1.5
+Version: 1.7
 Author: flodji
 Author URI: http://flodji.de
 License: GPL2
@@ -11,9 +11,20 @@ License: GPL2
 
 global $wpdb;
 add_action('wp_head', 'flodjiShareOpenGraph');
-add_filter('the_content', 'flodjishare');
 add_filter('language_attributes', 'flodjishare_schema');
 add_action('admin_menu', 'flodjishare_menu');
+$option_string = get_option('flodjishare');
+if ($option_string=='ueber' or $option_string=='unter' or $option_string=='shortcode') {
+		$option = array();
+		$option['position'] = get_option('flodjishare');
+} else {
+		$option = json_decode($option_string, true);
+}
+if ($option['position']=='shortcode') {
+add_shortcode( 'flodjishare', 'flodjishare' );
+} else {
+add_filter('the_content', 'flodjishare');
+}
 
 function flodjishare_menu(){
 	add_options_page('flodjishare Options', 'flodjishare', 'manage_options', 'flodjiShare', 'flodjishare_options');
@@ -57,7 +68,7 @@ function flodjishare($content) {
 global $wpdb;		
 
 	$option_string = get_option('flodjishare');
-	if ($option_string=='ueber' or $option_string=='unter') {
+	if ($option_string=='ueber' or $option_string=='unter' or $option_string=='shortcode') {
 		$option = array();
 		$option['active_buttons'] = array('facebook'=>true, 'twitter'=>true, 'digg'=>true, 'delicious'=>true, 'vz'=>true, 'xing'=>true, 'gplus'=>true, 'linkedin'=>true, 'pinterest'=>true, 'stumbleupon'=>true, 'tumblr'=>true, 'metro'=>true);
 		$option['position'] = get_option('flodjishare');
@@ -229,8 +240,12 @@ global $wpdb;
 
 		if ($option['position']=='unter') {
 		return $content . $outputa;
-		} else {
+		}
+		if ($option['position']=='ueber') {
 		return $outputa.$content;
+		}
+		if ($option['position']=='shortcode') {
+		return $outputa;
 		}
 }
 
@@ -410,7 +425,7 @@ function flodjishare_options () {
 		add_option($option_name, 'unter');
 		$option_string = get_option($option_name);
 	}
-	if ($option_string=='ueber' or $option_string=='unter') {
+	if ($option_string=='ueber' or $option_string=='unter' or $option_string=='shortcode') {
 		$flodjishare_options = explode('|||',$option_string);
 		$option = array();
 		$option['active_buttons'] = array('facebook'=>true, 'twitter'=>true, 'digg'=>true, 'delicious'=>true, 'vz'=>true, 'xing'=>true, 'gplus'=>true, 'linkedin'=>true, 'pinterest'=>true, 'stumbleupon'=>true, 'tumblr'=>true, 'opengraph'=>true, 'richsnippets'=>true, 'twittercards'=>true, 'metro'=>true);
@@ -426,6 +441,7 @@ function flodjishare_options () {
 	}
 	$sel_above = ($option['position']=='ueber') ? 'selected="selected"' : '';
 	$sel_below = ($option['position']=='unter') ? 'selected="selected"' : '';
+	$sel_short = ($option['position']=='shortcode') ? 'selected="selected"' : '';
 	$active_facebook 	= ($option['active_buttons']['facebook']==true) ? 'checked="checked"' : '';
 	$active_twitter  	= ($option['active_buttons']['twitter'] ==true) ? 'checked="checked"' : '';
 	$active_digg		= ($option['active_buttons']['digg']==true) ? 'checked="checked"' : '';
@@ -494,6 +510,7 @@ function flodjishare_options () {
 		<td><select name="flodjishare_position">
 			<option value="ueber" '.$sel_above.' > '.__('&Uuml;ber dem Beitrag', 'menu' ).'</option>
 			<option value="unter" '.$sel_below.' > '.__('Unter dem Beitrag', 'menu' ).'</option>
+			<option value="shortcode" '.$sel_short.' > '.__('Nur bei Shortcode [flodjishare]', 'menu' ).'</option>
 			</select><br /> 
 		<br /></td></tr>
 		
@@ -547,7 +564,7 @@ function flodjishare_options () {
 		</p>
 		</form>
 		Bei Problemen oder Fragen kannst Du gern das <a target="_blank" href="http://flodji.de/forum/">Support Forum</a> besuchen.</p>
-		<p>Die Buttons stammen von dieser <a target="_blank" href="http://wplift.com/freebie-70-32px-custom-social-media-website-icons">Seite</a>.</p>
+		<p>Die Buttons stammen von dieser <a target="_blank" href="http://wplift.com/freebie-70-32px-custom-social-media-website-icons">Seite</a>. | Das Metro Design habe ich ausschlie&szlig;lich mit CSS Anweisungen erstellt.</p>
 	</div>
 	';
 	echo $outputa;
