@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: Share,Social,Facebook,Twitter,Xing,Delicious,VZ,Digg,Google,Rich Snippets,Opengraph,Twitter Cards
 Requires at least: 3.3
 Tested up to: 3.5
-Stable tag: 1.7
+Stable tag: 1.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -58,6 +58,11 @@ Weitere Informationen gibt es auf <a target="_blank" href="http://flodji.de/flod
 
 == Changelog ==
 
+Version 1.8:
+
+* Text &uuml;ber den Buttons ist nun editierbar.
+* Facebook Link in den Plugin Einstellungen korrigiert.
+
 Version 1.7:
 
 * Buttons k&ouml;nnen nun auch ganz einfach per Shortcode [flodjishare] eingebunden werden.
@@ -77,6 +82,11 @@ Version 1.4:
 * Neues Buttonset
 
 == Upgrade notice ==
+
+Version 1.8:
+
+* Text &uuml;ber den Buttons ist nun editierbar.
+* Facebook Link in den Plugin Einstellungen korrigiert.
 
 Version 1.7:
 

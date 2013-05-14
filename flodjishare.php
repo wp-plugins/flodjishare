@@ -3,7 +3,7 @@
 Plugin Name: flodjiShare
 Plugin URI: http://flodji.de
 Description: Mit flodjiShare wird Webseitenbetreibern eine einfache L&ouml;sung angeboten die Social Sharing und Bookmark Buttons der gro&szlig;en Netzwerke in die eigene Seite einzubinden.
-Version: 1.7
+Version: 1.8
 Author: flodji
 Author URI: http://flodji.de
 License: GPL2
@@ -92,7 +92,7 @@ global $wpdb;
 	}
 	}
 		$outputa = '<div style="width:100%; padding-top:2px;">';
-		$outputa .= '<h3>Diesen Artikel teilen...</h3>';
+		$outputa .= '<h3>'.stripslashes($option['intro_text']).'</h3>';
 		
 		if ($option['active_buttons']['facebook']==true) {
 		if ($option['metro']==true) {
@@ -362,7 +362,7 @@ return '';
 }
 
 function followMeFlodjiShare(){
-$fb = '<a target="_blank" href="http://www.facebook.com/flodjishare"><img src="'.home_url().'/wp-content/plugins/flodjishare/buttons/facebook.png" /></a>';
+$fb = '<a target="_blank" href="https://www.facebook.com/pages/Flodjide/415996855137000"><img src="'.home_url().'/wp-content/plugins/flodjishare/buttons/facebook.png" /></a>';
 $tw = '<a target="_blank" href="http://www.twitter.com/flodji"><img src="'.home_url().'/wp-content/plugins/flodjishare/buttons/twitter.png" /></a>';
 $gp = '<a target="_blank" href="https://plus.google.com/104542622643572083517/"><img src="'.home_url().'/wp-content/plugins/flodjishare/buttons/googleplus.png" /></a>';
 $fd = '<a target="_blank" href="http://flodji.de/feed/"><img src="'.home_url().'/wp-content/plugins/flodjishare/buttons/rss.png" /></a>';
@@ -398,6 +398,7 @@ function flodjishare_options () {
 		if ($_POST['flodjishare_active_richsnippets']=='on') { $option['active_buttons']['richsnippets'] = true; }
 		if ($_POST['flodjishare_active_twittercards']=='on') { $option['active_buttons']['twittercards'] = true; }
 		$option['position'] = esc_html($_POST['flodjishare_position']);
+		$option['intro_text'] = esc_html($_POST['flodjishare_intro_text']);
 		$option['twitter_text'] = esc_html($_POST['flodjishare_twitter_text']);
 		$option['fb_app_id'] = esc_html($_POST['flodjishare_fb_app_id']);
 		$option['fb_admin'] = esc_html($_POST['flodjishare_fb_admin']);
@@ -417,6 +418,7 @@ function flodjishare_options () {
 		$option['active_buttons'] = array('facebook'=>true, 'twitter'=>true, 'digg'=>true, 'delicious'=>true, 'vz'=>true, 'xing'=>true, 'gplus'=>true, 'linkedin'=>true, 'pinterest'=>true, 'stumbleupon'=>true, 'tumblr'=>true, 'opengraph'=>true, 'richsnippets'=>true, 'twittercards'=>true, 'metro'=>true);
 		$option['position'] = 'unter';
 		$option['show_in'] = array('posts'=>true, 'pages'=>true, 'home'=>true);
+		$option['intro_text'] = array('intro_text'=>true);
 		$option['twitter_text'] = array('twitter_text'=>true);
 		$option['fb_app_id'] = array('fb_app_id'=>true);
 		$option['fb_admin'] = array('fb_admin'=>true);
@@ -431,6 +433,7 @@ function flodjishare_options () {
 		$option['active_buttons'] = array('facebook'=>true, 'twitter'=>true, 'digg'=>true, 'delicious'=>true, 'vz'=>true, 'xing'=>true, 'gplus'=>true, 'linkedin'=>true, 'pinterest'=>true, 'stumbleupon'=>true, 'tumblr'=>true, 'opengraph'=>true, 'richsnippets'=>true, 'twittercards'=>true, 'metro'=>true);
 		$option['position'] = $flodjishare_options[0];
 		$option['show_in'] = array('posts'=>true, 'pages'=>true, 'home'=>true);
+		$option['intro_text'] = array('intro_text'=>true);
 		$option['twitter_text'] = array('twitter_text'=>true);
 		$option['fb_app_id'] = array('fb_app_id'=>true);
 		$option['fb_admin'] = array('fb_admin'=>true);
@@ -460,6 +463,7 @@ function flodjishare_options () {
 	$show_in_posts 		= ($option['show_in']['posts']==true) ? 'checked="checked"' : '';
 	$show_in_pages 		= ($option['show_in']['pages'] ==true) ? 'checked="checked"' : '';
 	$show_in_home 		= ($option['show_in']['home'] ==true) ? 'checked="checked"' : '';
+	$intro_text			= ($option['intro_text']=='') ? 'selected="selected"' : '';
 	$twitter_text		= ($option['twitter_text']=='') ? 'selected="selected"' : '';
 	$fb_app_id			= ($option['fb_app_id']=='') ? 'selected="selected"' : '';
 	$fb_admin			= ($option['fb_admin']=='') ? 'selected="selected"' : '';
@@ -517,6 +521,12 @@ function flodjishare_options () {
 		<tr><td valign="top">'.__("Design", 'menu' ).':</td>
 		<td><input type="checkbox" name="flodjishare_active_metro" '.$active_metro.'> '
 		. __("Metro Design aktivieren", 'menu' ).' &nbsp;&nbsp;<br /><br /></td></tr>
+		
+		<tr><td valign="top">'.__("Intro Text", 'menu' ).':</td>
+		<td style="padding-bottom:20px;">
+		<input type="text" name="flodjishare_intro_text" value="'.stripslashes($option['intro_text']).'" size="100"><br />
+		<span class="description">'.__("Trage hier den Intro Text f&uuml;r die Share Buttons ein (z.B. Diesen Beitrag teilen...).<br />", 'menu' ).'</span>
+		</td></tr>
 		
 		<tr><td valign="top">'.__("Twitter Name", 'menu' ).':</td>
 		<td style="padding-bottom:20px;">
