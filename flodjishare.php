@@ -3,7 +3,7 @@
 Plugin Name: flodjiShare
 Plugin URI: http://flodji.de
 Description: Mit flodjiShare wird Webseitenbetreibern eine einfache L&ouml;sung angeboten die Social Sharing und Bookmark Buttons der gro&szlig;en Netzwerke in die eigene Seite einzubinden.
-Version: 1.9
+Version: 2.0
 Author: flodji
 Author URI: http://flodji.de
 License: GPL2
@@ -61,7 +61,6 @@ function flodjiShareShortText($string,$lenght) {
 function flodjishare_schema($attr) {
 	$attr .= "\n xmlns:og=\"http://opengraphprotocol.org/schema/\"";
 	$attr .= "\n xmlns:fb=\"http://www.facebook.com/2008/fbml\"";
-	$attr .= "\n itemscope itemtype=\"http://schema.org/Article\"";
 	return $attr;
 }
 function flodjishare($content) {
@@ -276,6 +275,8 @@ function flodjiShareOpenGraph() {
 }
 
 function flodjiShareMetas($parameter){
+$post_id = get_the_ID();
+$comments_count = wp_count_comments($post_id);
 $option_string = get_option('flodjishare');
 $option = array();
 $option['active_buttons'] = array('facebook'=>true, 'twitter'=>true, 'digg'=>true, 'delicious'=>true, 'vz'=>true, 'xing'=>true, 'gplus'=>true, 'linkedin'=>true, 'pinterest'=>true, 'stumbleupon'=>true, 'tumblr'=>true, 'opengraph'=>true, 'richsnippets'=>true, 'twittercards'=>true, 'metro'=>true, 'supportlink'=>true, 'privacy'=>true);
@@ -306,6 +307,8 @@ if($option['active_buttons']['opengraph']==true){
 	}
 	}
 	if($option['active_buttons']['richsnippets']==true){
+	$txt.="<div itemscope itemtype=\"http://schema.org/Article\">";
+	$txt.="\n";
 	$txt.="<meta itemprop='name' content='".$parameter[0]."'>";
 	$txt.="\n";
 	$txt.="<meta itemprop='description' content='".strip_tags($parameter[4])."'>";
@@ -316,10 +319,14 @@ if($option['active_buttons']['opengraph']==true){
 	}
 	$txt.="<meta itemprop='url' content='".$parameter[1]."'>";
 	$txt.="\n";
+	$txt.="<meta itemprop='interactionCount' content='".$comments_count->approved ."' />";
+	$txt.="\n";
+	$txt.="</div>";
+	$txt.="\n";
+	}
 	if($parameter[4] != ''){
 	$txt.="<meta name='description' content='".strip_tags(flodjiShareNormDesc($parameter[4]))."'/>";
 	$txt.="\n";
-	}
 	}
 	if($option['active_buttons']['twittercards']==true){
 	$txt.='<meta name="twitter:card" content="summary">';

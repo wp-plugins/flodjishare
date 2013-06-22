@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: Share,Social,Facebook,Twitter,Xing,Delicious,VZ,Digg,Google,Rich Snippets,Opengraph,Twitter Cards
 Requires at least: 3.3
 Tested up to: 3.5
-Stable tag: 1.9
+Stable tag: 2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -58,6 +58,11 @@ Weitere Informationen gibt es auf <a target="_blank" href="http://flodji.de/flod
 
 == Changelog ==
 
+Version 2.0:
+
+* Code Update: Neues Meta Tag f&uuml;r Rich Snippets: Interaction Count. In diesem Meta Tag wird die Anzahl der Kommentare f&uuml;r einen Artikel angezeigt.
+* Code Update: Schema aus HTML Tag entfernt und in Meta Tag Bereich eingef&uuml;gt.
+
 Version 1.9:
 
 * Einstellungen &uuml;berarbeitet:
@@ -89,6 +94,11 @@ Version 1.4:
 * Neues Buttonset
 
 == Upgrade notice ==
+
+Version 2.0:
+
+* Code Update: Neues Meta Tag f&uuml;r Rich Snippets: Interaction Count. In diesem Meta Tag wird die Anzahl der Kommentare f&uuml;r einen Artikel angezeigt.
+* Code Update: Schema aus HTML Tag entfernt und in Meta Tag Bereich eingef&uuml;gt.
 
 Version 1.9:
 
