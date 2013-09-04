@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: Share,Social,Facebook,Twitter,Xing,Delicious,VZ,Digg,Google,Rich Snippets,Opengraph,Twitter Cards
 Requires at least: 3.3
 Tested up to: 3.5
-Stable tag: 2.0
+Stable tag: 2.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -58,6 +58,14 @@ Weitere Informationen gibt es auf <a target="_blank" href="http://flodji.de/flod
 
 == Changelog ==
 
+Version 2.1:
+
+* Neue Funktion: Klickzähler für die Share-Buttons im Metro Design (Kann nach Bedarf aktiviert bzw. deaktiviert werden).
+* Code Update: Opengraph Schema wird nur noch bei aktiviertem Opengraph Support angezeigt.
+* Neue Funktion: flodjiShare Einstellungen haben jetzt eigene Menüpunkte im WordPress Admin-Bereich.
+* Neue Funktion: Neuer Punkt “flodjiShare Klick Counter” im flodjiShare Menü. Zeigt die Anzahl der Klicks auf die Buttons pro Button bzw. pro Beitrag an.
+* Code Update: CSS-Anweisungen erfolgen jetzt aus eigener CSS-Datei.
+
 Version 2.0:
 
 * Code Update: Neues Meta Tag f&uuml;r Rich Snippets: Interaction Count. In diesem Meta Tag wird die Anzahl der Kommentare f&uuml;r einen Artikel angezeigt.
@@ -94,6 +102,14 @@ Version 1.4:
 * Neues Buttonset
 
 == Upgrade notice ==
+
+Version 2.1:
+
+* Neue Funktion: Klickzähler für die Share-Buttons im Metro Design (Kann nach Bedarf aktiviert bzw. deaktiviert werden).
+* Code Update: Opengraph Schema wird nur noch bei aktiviertem Opengraph Support angezeigt.
+* Neue Funktion: flodjiShare Einstellungen haben jetzt eigene Menüpunkte im WordPress Admin-Bereich.
+* Neue Funktion: Neuer Punkt “flodjiShare Klick Counter” im flodjiShare Menü. Zeigt die Anzahl der Klicks auf die Buttons pro Button bzw. pro Beitrag an.
+* Code Update: CSS-Anweisungen erfolgen jetzt aus eigener CSS-Datei.
 
 Version 2.0:
 
