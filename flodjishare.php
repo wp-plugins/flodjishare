@@ -3,7 +3,7 @@
 Plugin Name: flodjiShare
 Plugin URI: http://flodji.de
 Description: Mit flodjiShare wird Webseitenbetreibern eine einfache L&ouml;sung angeboten die Social Sharing und Bookmark Buttons der gro&szlig;en Netzwerke in die eigene Seite einzubinden.
-Version: 2.1
+Version: 2.2
 Author: flodji
 Author URI: http://flodji.de
 License: GPL2
