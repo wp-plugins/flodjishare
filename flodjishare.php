@@ -425,6 +425,10 @@ global $wpdb;
 		$outputa .= '<span class="fssl">Social Sharing powered by <a target="_blank" href="http://flodji.de/?utm_source=flodjiShareWP&utm_medium=SupportLink&utm_campaign=flodjiShareWP"><u>flodjiShare</u></a></span>';
 		}
 		$outputa .= '<br />';
+		
+		if(is_feed()){
+		$outputa = '';
+		}
 
 		if ($option['position']=='unter') {
 		return $content.$outputa;
