@@ -4,16 +4,16 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: Share,Social,Facebook,Twitter,Xing,Delicious,VZ,Digg,Google,Rich Snippets,Opengraph,Twitter Cards
 Requires at least: 3.3
 Tested up to: 3.6
-Stable tag: 2.2
+Stable tag: 2.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Mit flodjiShare wird Webseitenbetreibern eine einfache Lösung angeboten die Social Sharing und Bookmark Buttons der großen Netzwerke in die eigene Seite einzubinden.
+Mit flodjiShare wird Webseitenbetreibern eine einfache und elegante Lösung angeboten Social Sharing Buttons in die eigene Seite einzubinden.
 
 == Description ==
 
 Mit flodjiShare f&uuml;r WordPress wird Betreibern einer WordPress-Seite eine einfache L&ouml;sung angeboten die Social Sharing und Bookmark Buttons der gro&szlig;en Netzwerke in die eigene Seite einzubinden.
-Zudem werden zus&auml;tzliche Metadaten (Opengraph Tags, Rich Snippets Tags, Twitter Card Tags, Schema.org/Artikel) in den Quellcode der WordPress-Seite und der Artikel eingebunden um diese Daten f&uuml;r die Anzeige in sozialen Netzwerken wie z.B. Facebook, Google Plus und Twitter zu optimieren. Durch Einbindung der Rich Snippets Tags werden ausserdem auch die Daten f&uuml;r die Anzeige in den gro&szlig;en Suchmaschinen wie z.B. Google, Bing und Yahoo aufbereitet.
+Zudem werden zus&auml;tzliche Metadaten (Opengraph Tags, Rich Snippets Tags, Twitter Card Tags, Schema.org/Artikel, Google Authorship Markup) in den Quellcode der WordPress-Seite und der Artikel eingebunden um diese Daten f&uuml;r die Anzeige in sozialen Netzwerken wie z.B. Facebook, Google Plus und Twitter zu optimieren. Durch Einbindung der Rich Snippets Tags werden ausserdem auch die Daten f&uuml;r die Anzeige in den gro&szlig;en Suchmaschinen wie z.B. Google, Bing und Yahoo aufbereitet.
 
 Die folgenden Buttons k&ouml;nnen nach belieben aktiviert bzw. deaktiviert werden:
 
@@ -34,10 +34,10 @@ Features:
 * Opengraph Support
 * Rich Snippets Support
 * Twitter Cards Support
-* Position: Unten, Oben oder individuell per Shortcode
-* Anzeige auf: Artikel, Blog-Ansicht, Seiten
+* Position: Unten, Oben, Beides oder individuell per Shortcode
+* Anzeige auf: Beitrag, Blog-Ansicht, Seiten, Custom-Post-Types
 
-Weitere Informationen gibt es auf <a target="_blank" href="http://flodji.de/flodjishare-fuer-wordpress/" rel="nofollow">flodji.de</a>. Bei Fragen und Problemen helfe ich gerne in meinem <a target="_blank" href="http://flodji.de/forum" rel="nofollow">Support Forum</a> weiter.
+Weitere Informationen gibt es auf <a target="_blank" href="http://flodji.de/flodjishare-fuer-wordpress/" >flodji.de</a>. Bei Fragen und Problemen helfe ich gerne in meinem <a target="_blank" href="http://flodji.de/forum">Support Forum</a> weiter.
 
 == Installation ==
 
@@ -57,6 +57,13 @@ Weitere Informationen gibt es auf <a target="_blank" href="http://flodji.de/flod
 3. Neues Design (Metro)
 
 == Changelog ==
+
+Version 2.3:
+
+* Neue Anzeigeposition: Über und Unter Beiträge gleichzeitig.
+* Google Plus Authorship Markup
+* Share Buttons für einzelne Custom-Post-Types aktivieren bzw. deaktivieren
+* Multi-Autor Unterstützung für Google Authorship Markup und Twitter Cards.
 
 Version 2.2:
 
@@ -106,6 +113,13 @@ Version 1.4:
 * Neues Buttonset
 
 == Upgrade notice ==
+
+Version 2.3:
+
+* Neue Anzeigeposition: Über und Unter Beiträge gleichzeitig.
+* Google Plus Authorship Markup
+* Share Buttons für einzelne Custom-Post-Types aktivieren bzw. deaktivieren
+* Multi-Autor Unterstützung für Google Authorship Markup und Twitter Cards.
 
 Version 2.2:
 

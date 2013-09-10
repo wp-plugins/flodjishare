@@ -3,7 +3,7 @@
 Plugin Name: flodjiShare
 Plugin URI: http://flodji.de
 Description: Mit flodjiShare wird Webseitenbetreibern eine einfache L&ouml;sung angeboten die Social Sharing und Bookmark Buttons der gro&szlig;en Netzwerke in die eigene Seite einzubinden.
-Version: 2.2
+Version: 2.3
 Author: flodji
 Author URI: http://flodji.de
 License: GPL2
@@ -12,7 +12,7 @@ global $wpdb;
 add_action('wp_head', 'flodjiShareOpenGraph');
 add_filter('language_attributes', 'flodjishare_schema');
 $option_string = get_option('flodjishare');
-if ($option_string=='ueber' or $option_string=='unter' or $option_string=='shortcode') {
+if ($option_string=='ueber' or $option_string=='unter' or $option_string=='both' or $option_string=='shortcode') {
 		$option = array();
 		$option['position'] = get_option('flodjishare');
 } else {
@@ -34,6 +34,39 @@ function flodjiShareMenu(){
     add_menu_page( 'flodjiShare Einstellungen', 'flodjiShare', 'manage_options', 'flodjishare_einstellungen', 'flodjishare_options', plugins_url( 'flodjishare/buttons/fs_ico.png' ), 102 );
 	add_submenu_page( 'flodjishare_einstellungen', 'flodjiShare Klick Counter', 'flodjiShare Klick Counter', 'manage_options', 'klick-counter', 'flodjiShareKlickCounter' ); 
 }
+
+function flodjiShareAddContactMethods($contactmethods){
+$option_string = get_option('flodjishare');
+$option = json_decode($option_string, true);
+if($option['active_buttons']['gplusAuthor']){
+	$contactmethods['gplusiduser'] = 'Google Plus ID';
+	$contactmethods['fstwittername'] = 'Twitter Name';
+	return $contactmethods;
+}
+}
+add_filter('user_contactmethods','flodjiShareAddContactMethods',10,1);
+
+function flodjiShareAutor(){
+$option_string = get_option('flodjishare');
+$option = json_decode($option_string, true);
+if($option['active_buttons']['gplusAuthor']){
+if($option['gplusidpage']){
+echo '<link href="https://plus.google.com/'.stripslashes($option['gplusidpage']).'/" rel="publisher" />';
+echo "\n";
+}
+if(($option['gplusiduser']) or (get_the_author_meta('gplusiduser') != '')){
+$user = get_the_author_meta('gplusiduser');
+if($user == ''){
+echo '<link href="https://plus.google.com/'.stripslashes($option['gplusiduser']).'?rel=author" rel="author" />';
+echo "\n";
+} else {
+echo '<link href="https://plus.google.com/'.stripslashes(get_the_author_meta('gplusiduser')).'?rel=author" rel="author" />';
+echo "\n";
+}
+}
+}
+}
+add_action('wp_head', 'flodjiShareAutor');
 
 function flodjiShareKlickCounter() {
 mysql_query("CREATE TABLE IF NOT EXISTS flodjiShareLinks (`id` int(255) NOT NULL auto_increment,
@@ -175,14 +208,7 @@ function flodjishare($content) {
 global $wpdb;		
 
 	$option_string = get_option('flodjishare');
-	if ($option_string=='ueber' or $option_string=='unter' or $option_string=='shortcode') {
-		$option = array();
-		$option['active_buttons'] = array('facebook'=>true, 'twitter'=>true, 'digg'=>true, 'delicious'=>true, 'vz'=>true, 'xing'=>true, 'gplus'=>true, 'linkedin'=>true, 'pinterest'=>true, 'stumbleupon'=>true, 'tumblr'=>true, 'metro'=>true, 'counter'=>true, 'supportlink'=>true, 'privacy'=>true);
-		$option['position'] = get_option('flodjishare');
-		$option['show_in'] = array('posts'=>true, 'pages'=>true, 'home'=>true);
-	} else {
-		$option = json_decode($option_string, true);
-	}
+	$option = json_decode($option_string, true);
 	
 	if(is_single()) {
 		if (!$option['show_in']['posts']) {
@@ -196,6 +222,18 @@ global $wpdb;
 	if(is_home() or is_category() or is_archive() or is_search()) {
 		if (!$option['show_in']['home']) {
 			return $content;
+	}
+	}
+	$args=array(
+	'public'   => true,
+	'_builtin' => false
+	); 
+	$output = 'object';
+	$operator = 'and';
+	$post_types=get_post_types($args,$output,$operator); 
+	foreach ($post_types  as $post_type ) {
+	if((!$option[$post_type->name]) && (get_post_type( get_the_ID() ) == $post_type->name)){
+    return $content;
 	}
 	}
 		$outputa = '<div class="fsmain">';
@@ -436,6 +474,9 @@ global $wpdb;
 		if ($option['position']=='ueber') {
 		return $outputa.$content;
 		}
+		if ($option['position']=='both') {
+		return $outputa.$content.$outputa;
+		}
 		if ($option['position']=='shortcode') {
 		return $outputa;
 		}
@@ -464,8 +505,6 @@ function flodjiShareMetas($parameter){
 $post_id = get_the_ID();
 $comments_count = wp_count_comments($post_id);
 $option_string = get_option('flodjishare');
-$option = array();
-$option['active_buttons'] = array('facebook'=>true, 'twitter'=>true, 'digg'=>true, 'delicious'=>true, 'vz'=>true, 'xing'=>true, 'gplus'=>true, 'linkedin'=>true, 'pinterest'=>true, 'stumbleupon'=>true, 'tumblr'=>true, 'opengraph'=>true, 'richsnippets'=>true, 'twittercards'=>true, 'metro'=>true, 'supportlink'=>true, 'privacy'=>true);
 $option = json_decode($option_string, true);
 if($option['active_buttons']['opengraph']==true){
 	$txt.="\n";
@@ -521,9 +560,14 @@ if($option['active_buttons']['opengraph']==true){
 	$txt.='<meta name="twitter:site" content="@'.stripslashes($option['twitsite']).'">';
 	$txt.="\n";
 	}
+	if(get_the_author_meta('fstwittername')!=''){
+	$txt.='<meta name="twitter:creator" content="@'.stripslashes(get_the_author_meta('fstwittername')).'">';
+	$txt.="\n";
+	} else {
 	if($option['twituser'] != ''){
 	$txt.='<meta name="twitter:creator" content="@'.stripslashes($option['twitter_text']).'">';
 	$txt.="\n";
+	}
 	}
 	$txt.='<meta name="twitter:url" content="'.$parameter[1].'">';
 	$txt.="\n";
@@ -543,7 +587,6 @@ if($option['active_buttons']['opengraph']==true){
 
 function flodjiShareFirstImage(){
 $option_string = get_option('flodjishare');
-$option = array();
 $option = json_decode($option_string, true);
 $Html = get_the_content();
 $extrae = '/<img .*src=["\']([^ ^"^\']*)["\']/';
@@ -597,11 +640,14 @@ function flodjishare_options () {
 		if ($_POST['flodjishare_active_opengraph']=='on') { $option['active_buttons']['opengraph'] = true; }
 		if ($_POST['flodjishare_active_richsnippets']=='on') { $option['active_buttons']['richsnippets'] = true; }
 		if ($_POST['flodjishare_active_twittercards']=='on') { $option['active_buttons']['twittercards'] = true; }
+		if ($_POST['flodjishare_active_googleAuthor']=='on') { $option['active_buttons']['gplusAuthor'] = true; }
 		if ($_POST['flodjishare_active_privacy']=='on') { $option['privacy'] = true; }
 		if ($_POST['flodjishare_active_supportlink']=='on') { $option['supportlink'] = true; }
 		$option['position'] = esc_html($_POST['flodjishare_position']);
 		$option['intro_text'] = esc_html($_POST['flodjishare_intro_text']);
 		$option['twitter_text'] = esc_html($_POST['flodjishare_twitter_text']);
+		$option['gplusidpage'] = esc_html($_POST['flodjishare_gplus_page']);
+		$option['gplusiduser'] = esc_html($_POST['flodjishare_gplus_user']);
 		$option['fb_app_id'] = esc_html($_POST['flodjishare_fb_app_id']);
 		$option['fb_admin'] = esc_html($_POST['flodjishare_fb_admin']);
 		$option['privacy_text'] = esc_html($_POST['flodjishare_privacy_text']);
@@ -611,6 +657,13 @@ function flodjishare_options () {
 		if ($_POST['flodjishare_show_posts']=='on') { $option['show_in']['posts'] = true; }
 		if ($_POST['flodjishare_show_pages']=='on') { $option['show_in']['pages'] = true; }
 		if ($_POST['flodjishare_show_home']=='on') { $option['show_in']['home'] = true; }
+		$args=array('public' => true,'_builtin' => false); 
+		$output = 'object';
+		$operator = 'and';
+		$post_types=get_post_types($args,$output,$operator);
+		foreach ($post_types  as $post_type ){
+		if ($_POST['flodjishare_show_'.$post_type->name]=='on') { $option[$post_type->name] = true; }
+		}
 		update_option($option_name, json_encode($option));
 		$outputa .= '<div class="updated"><p><strong>'.__('Einstellungen gespeichert.', 'menu' ).'</strong></p></div>';
 	}
@@ -618,27 +671,38 @@ function flodjishare_options () {
 	$option_string = get_option($option_name);
 	if ($option_string===false) {
 		$option = array();
-		$option['active_buttons'] = array('facebook'=>true, 'twitter'=>true, 'digg'=>true, 'delicious'=>true, 'vz'=>true, 'xing'=>true, 'gplus'=>true, 'linkedin'=>true, 'pinterest'=>true, 'stumbleupon'=>true, 'tumblr'=>true, 'opengraph'=>true, 'richsnippets'=>true, 'twittercards'=>true, 'metro'=>true, 'counter'=>true, 'supportlink'=>true, 'privacy'=>true);
+		$option['active_buttons'] = array('facebook'=>true, 'twitter'=>true, 'digg'=>true, 'delicious'=>true, 'vz'=>true, 'xing'=>true, 'gplus'=>true, 'linkedin'=>true, 'pinterest'=>true, 'stumbleupon'=>true, 'tumblr'=>true, 'opengraph'=>true, 'richsnippets'=>true, 'twittercards'=>true, 'gplusAthor'=>true, 'metro'=>true, 'counter'=>true, 'supportlink'=>true, 'privacy'=>true);
 		$option['position'] = 'unter';
 		$option['show_in'] = array('posts'=>true, 'pages'=>true, 'home'=>true);
 		$option['intro_text'] = array('intro_text'=>true);
 		$option['twitter_text'] = array('twitter_text'=>true);
+		$option['gplusidpage'] = array('gplusidpage'=>true);
+		$option['gplusiduser'] = array('gplusiduser'=>true);
 		$option['fb_app_id'] = array('fb_app_id'=>true);
 		$option['fb_admin'] = array('fb_admin'=>true);
 		$option['privacy_text'] = array('privacy_text'=>true);
 		$option['altimg'] = array('altimg'=>true);
 		$option['twitsite'] = array('twitsite'=>true);
+		$args=array('public' => true,'_builtin' => false); 
+		$output = 'object';
+		$operator = 'and';
+		$post_types=get_post_types($args,$output,$operator);
+		foreach ($post_types  as $post_type ){
+		$option[$post_type->name] = array($post_type->name=>true);
+		}
 		add_option($option_name, 'unter');
 		$option_string = get_option($option_name);
 	}
-	if ($option_string=='ueber' or $option_string=='unter' or $option_string=='shortcode') {
+	if ($option_string=='ueber' or $option_string=='unter' or $option_string=='both' or $option_string=='shortcode') {
 		$flodjishare_options = explode('|||',$option_string);
 		$option = array();
-		$option['active_buttons'] = array('facebook'=>true, 'twitter'=>true, 'digg'=>true, 'delicious'=>true, 'vz'=>true, 'xing'=>true, 'gplus'=>true, 'linkedin'=>true, 'pinterest'=>true, 'stumbleupon'=>true, 'tumblr'=>true, 'opengraph'=>true, 'richsnippets'=>true, 'twittercards'=>true, 'metro'=>true, 'counter'=>true, 'supportlink'=>true, 'privacy'=>true);
+		$option['active_buttons'] = array('facebook'=>true, 'twitter'=>true, 'digg'=>true, 'delicious'=>true, 'vz'=>true, 'xing'=>true, 'gplus'=>true, 'linkedin'=>true, 'pinterest'=>true, 'stumbleupon'=>true, 'tumblr'=>true, 'opengraph'=>true, 'richsnippets'=>true, 'twittercards'=>true, 'gplusAuthor'=>true, 'metro'=>true, 'counter'=>true, 'supportlink'=>true, 'privacy'=>true);
 		$option['position'] = $flodjishare_options[0];
 		$option['show_in'] = array('posts'=>true, 'pages'=>true, 'home'=>true);
 		$option['intro_text'] = array('intro_text'=>true);
 		$option['twitter_text'] = array('twitter_text'=>true);
+		$option['gplusidpage'] = array('gplusidpage'=>true);
+		$option['gplusiduser'] = array('gplusiduser'=>true);
 		$option['fb_app_id'] = array('fb_app_id'=>true);
 		$option['fb_admin'] = array('fb_admin'=>true);
 		$option['privacy_text'] = array('privacy_text'=>true);
@@ -647,9 +711,10 @@ function flodjishare_options () {
 	} else {
 		$option = json_decode($option_string, true);
 	}
-	$sel_above = ($option['position']=='ueber') ? 'selected="selected"' : '';
-	$sel_below = ($option['position']=='unter') ? 'selected="selected"' : '';
-	$sel_short = ($option['position']=='shortcode') ? 'selected="selected"' : '';
+	$sel_above 	= ($option['position']=='ueber') ? 'selected="selected"' : '';
+	$sel_below 	= ($option['position']=='unter') ? 'selected="selected"' : '';
+	$sel_both	= ($option['position']=='both') ? 'selected="selected"' : '';
+	$sel_short 	= ($option['position']=='shortcode') ? 'selected="selected"' : '';
 	$active_facebook 	= ($option['active_buttons']['facebook']==true) ? 'checked="checked"' : '';
 	$active_twitter  	= ($option['active_buttons']['twitter'] ==true) ? 'checked="checked"' : '';
 	$active_digg		= ($option['active_buttons']['digg']==true) ? 'checked="checked"' : '';
@@ -666,6 +731,7 @@ function flodjishare_options () {
 	$active_opengraph	= ($option['active_buttons']['opengraph']==true) ? 'checked="checked"' : '';
 	$active_richsnippets= ($option['active_buttons']['richsnippets']==true) ? 'checked="checked"' : '';
 	$active_twittercards= ($option['active_buttons']['twittercards']==true) ? 'checked="checked"' : '';
+	$active_gplusauthor	= ($option['active_buttons']['gplusAuthor']==true) ? 'checked="checked"' : '';
 	$active_privacy		= ($option['privacy']==true) ? 'checked="checked"' : '';
 	$active_supportlink	= ($option['supportlink']==true) ? 'checked="checked"' : '';
 	$show_in_posts 		= ($option['show_in']['posts']==true) ? 'checked="checked"' : '';
@@ -673,11 +739,20 @@ function flodjishare_options () {
 	$show_in_home 		= ($option['show_in']['home'] ==true) ? 'checked="checked"' : '';
 	$intro_text			= ($option['intro_text']=='') ? 'selected="selected"' : '';
 	$twitter_text		= ($option['twitter_text']=='') ? 'selected="selected"' : '';
+	$gplusidpage		= ($option['gplusidpage']=='') ? 'selected="selected"' : '';
+	$gplusiduser		= ($option['gplusiduser']=='') ? 'selected="selected"' : '';
 	$fb_app_id			= ($option['fb_app_id']=='') ? 'selected="selected"' : '';
 	$fb_admin			= ($option['fb_admin']=='') ? 'selected="selected"' : '';
 	$privacy_text		= ($option['privacy_text']=='') ? 'selected="selected"' : '';
 	$altimg				= ($option['altimg']=='') ? 'selected="selected"' : '';
 	$twitsite			= ($option['twitsite']=='') ? 'selected="selected"' : '';
+	$args=array('public' => true,'_builtin' => false); 
+	$output = 'object';
+	$operator = 'and';
+	$post_types=get_post_types($args,$output,$operator);
+	foreach ($post_types  as $post_type ){
+	$checked[$post_type->name]	= ($option[$post_type->name]==true) ? 'checked="checked"' : '';
+	}
 	$outputa .= '
 	<div style="width:400px;float:left;">
 		<h2>flodjiShare Einstellungen</h2>
@@ -687,12 +762,24 @@ function flodjishare_options () {
 		<tr><td valign="top">'.__("flodjiShare auf diesen Seiten zeigen", 'menu' ).':</td>
 		<td>'
 		.' <input type="checkbox" name="flodjishare_show_posts" '.$show_in_posts.'> '
-		. __("Einzelne Beitr&auml;ge", 'menu' ).' &nbsp;&nbsp;'
+		. __("Einzelne Beitr&auml;ge", 'menu' ).'<br />'
 		.' <input type="checkbox" name="flodjishare_show_pages" '.$show_in_pages.'> '
-		. __("Seiten", 'menu' ).' &nbsp;&nbsp;'
+		. __("Seiten", 'menu' ).'<br />'
 		.' <input type="checkbox" name="flodjishare_show_home" '.$show_in_home.'> '
-		. __("Startseite", 'menu' ).' &nbsp;&nbsp;'
-		.'<br /><br /></td></tr>
+		. __("Startseite", 'menu' ).'<br />';
+		$args=array('public' => true,'_builtin' => false); 
+		$output = 'object';
+		$operator = 'and';
+		$post_types=get_post_types($args,$output,$operator);
+		if(!$post_types){
+		$outputa .= 'Keine Custom-Post-Types vorhanden.<br /><small><a target="_blank" href="http://codex.wordpress.org/Post_Types">Was ist das? (engl.)</a></small>';
+		} else {
+		foreach ($post_types  as $post_type ){
+		$outputa .= ' <input type="checkbox" name="flodjishare_show_'.$post_type->name.'" '.$checked[$post_type->name].'> '
+		.$post_type->name.' &nbsp;&nbsp;';
+		}
+		}
+		$outputa .= '<br /><br /></td></tr>
 		<tr><td valign="top">'.__("flodjiShare Buttons", 'menu' ).':</td>
 		<td>'
 		.' <input type="checkbox" name="flodjishare_active_facebook" '.$active_facebook.'> '
@@ -717,11 +804,12 @@ function flodjishare_options () {
 		. __("Stumbleupon", 'menu' ).' &nbsp;&nbsp;<br />'
 		.' <input type="checkbox" name="flodjishare_active_tumblr" '.$active_tumblr.'> '
 		. __("Tumblr", 'menu' ).' &nbsp;&nbsp;<br />'	
-		.'<br /><br /></td></tr>
+		.'<br /></td></tr>
 		<tr><td valign="top">'.__("Position", 'menu' ).':</td>
 		<td><select name="flodjishare_position">
 			<option value="ueber" '.$sel_above.' > '.__('&Uuml;ber dem Beitrag', 'menu' ).'</option>
 			<option value="unter" '.$sel_below.' > '.__('Unter dem Beitrag', 'menu' ).'</option>
+			<option value="both" '.$sel_both.' > '.__('Beides', 'menu' ).'</option>
 			<option value="shortcode" '.$sel_short.' > '.__('Nur bei Shortcode [flodjishare]', 'menu' ).'</option>
 			</select><br /> 
 		<br /></td></tr>
@@ -748,8 +836,23 @@ function flodjishare_options () {
 		. __("Twitter Card Support", 'menu' ).' &nbsp;&nbsp;<br />
 		
 		<input type="checkbox" name="flodjishare_active_privacy" '.$active_privacy.'> '
-		. __("Datenschutzhinweis anzeigen", 'menu' ).' &nbsp;&nbsp;<br /><br />
+		. __("Datenschutzhinweis anzeigen", 'menu' ).' &nbsp;&nbsp;<br />
 		
+		<input type="checkbox" name="flodjishare_active_googleAuthor" '.$active_gplusauthor.'> '
+		. __("Google Authorship Markup", 'menu' ).' &nbsp;&nbsp;<br /><br />
+		
+		</td></tr>
+		
+		<tr><td valign="top">'.__("Google Plus Page ID", 'menu' ).':</td>
+		<td style="padding-bottom:20px;">
+		<input type="text" name="flodjishare_gplus_page" value="'.stripslashes($option['gplusidpage']).'" size="50"><br />
+		<span class="description">'.__("Trage hier die ID Deiner Google Plus Seite ein.<br />", 'menu' ).'</span>
+		</td></tr>
+		
+		<tr><td valign="top">'.__("Google Plus User ID", 'menu' ).':</td>
+		<td style="padding-bottom:20px;">
+		<input type="text" name="flodjishare_gplus_user" value="'.stripslashes($option['gplusiduser']).'" size="50"><br />
+		<span class="description">'.__("Trage hier die ID Deines pers&ouml;nlichen Google Plus Accounts ein.<br />", 'menu' ).'</span>
 		</td></tr>
 		
 		<tr><td valign="top">'.__("Twitter Name", 'menu' ).':</td>
