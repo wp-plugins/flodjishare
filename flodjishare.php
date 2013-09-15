@@ -3,7 +3,7 @@
 Plugin Name: flodjiShare
 Plugin URI: http://flodji.de
 Description: Mit flodjiShare wird Webseitenbetreibern eine einfache L&ouml;sung angeboten die Social Sharing und Bookmark Buttons der gro&szlig;en Netzwerke in die eigene Seite einzubinden.
-Version: 2.3
+Version: 2.4
 Author: flodji
 Author URI: http://flodji.de
 License: GPL2
@@ -104,17 +104,19 @@ while ( $datensatz = mysql_fetch_row( $ergebnis ) )
 $ausgabe .= "</table>\n";
 $result 		= mysql_query("SELECT title,network,klicks FROM flodjiShareLinks ORDER BY title");
 $menge 			= mysql_num_rows($result);
-$wieviel_seiten = $menge / $eintraege_pro_seite; 
+$mengr			= $menge[0];
+$wieviel_seiten = ceil($menge / $eintraege_pro_seite); 
 $ausgabe .= '<br /><div align="center">';
 $ausgabe .= '<strong>Seite:</strong>';
-for($a=0; $a < $wieviel_seiten; $a++){
-   $b = $a + 1;
-   if($seite == $b){
-      $ausgabe .= ' <strong>'.$b.'</strong>';
-   } else {
-      $ausgabe .= ' <a href="admin.php?page=klick-counter&seite='.$b.'&sort='.$sort.'">'.$b.'</a>';
-      }
-}
+//for($a=0; $a < $wieviel_seiten; $a++){
+//   $b = $a + 1;
+//   if($seite == $b){
+//      $ausgabe .= ' <strong>'.$b.'</strong>';
+//   } else {
+//      $ausgabe .= ' <a href="admin.php?page=klick-counter&seite='.$b.'&sort='.$sort.'">'.$b.'</a>';
+//      }
+//}
+$ausgabe .= blaetterfunktion($seite,$wieviel_seiten,'admin.php?page=klick-counter&sort='.$sort,3);
 $ausgabe .= '</div><br /><p><strong>Hinweis:</strong><br />Der Klickz&auml;hler zeigt die Anzahl der Klicks auf die Share Buttons an. Diese Zahl muss nicht zwingend mit der tats&auml;chlichen Anzahl von Shares &uuml;bereinstimmen.</p></div>';
 $ausgabe .= '<div style="margin-left:50px;border-left:thin solid #ccc;border-right:thin solid #ccc;border-bottom:thin solid #ccc;padding:3px;width:200px;float:left;box-shadow: 0 1px 1px #999;">
 <div>
@@ -156,10 +158,72 @@ $ausgabe .= '</ul>
 echo $ausgabe;
 }
 
+function blaetterfunktion($seite,$maxseite,$url="",$anzahl=4,$get_name="seite") {
+   if(preg_match("/\?/",$url)) $anhang = "&";
+   else $anhang = "?";
+
+   if(substr($url,-1,1) == "&") {
+      $url = substr_replace($url,"",-1,1);
+      }
+   else if(substr($url,-1,1) == "?") {
+      $anhang = "?";
+      $url = substr_replace($url,"",-1,1);
+      }
+
+   if($anzahl%2 != 0) $anzahl++;
+
+   $a = $seite-($anzahl/2);
+   $b = 0;
+   $blaetter = array();
+   while($b <= $anzahl)
+      {
+      if($a > 0 AND $a <= $maxseite)
+         {
+         $blaetter[] = $a;
+         $b++;
+         }
+      else if($a > $maxseite AND ($a-$anzahl-2)>=0)
+         {
+         $blaetter = array();
+         $a -= ($anzahl+2);
+         $b = 0;
+         }
+      else if($a > $maxseite AND ($a-$anzahl-2)<0)
+         {
+         break;
+         }
+
+      $a++;
+      }
+   $return = "";
+   if(!in_array(1,$blaetter) AND count($blaetter) > 1)
+      {
+      if(!in_array(2,$blaetter)) $return .= "&nbsp;<a href=\"{$url}{$anhang}{$get_name}=1\">1</a>&nbsp;...";
+      else $return .= "&nbsp;<a href=\"{$url}{$anhang}{$get_name}=1\">1</a>&nbsp;";
+      }
+
+   foreach($blaetter AS $blatt)
+      {
+      if($blatt == $seite) $return .= "&nbsp;<b>$blatt</b>&nbsp;";
+      else $return .= "&nbsp;<a href=\"{$url}{$anhang}{$get_name}=$blatt\">$blatt</a>&nbsp;";
+      }
+
+   if(!in_array($maxseite,$blaetter) AND count($blaetter) > 1)
+      {
+      if(!in_array(($maxseite-1),$blaetter)) $return .= "...&nbsp;<a href=\"{$url}{$anhang}{$get_name}=$maxseite\">letzte</a>&nbsp;";
+      else $return .= "&nbsp;<a href=\"{$url}{$anhang}{$get_name}=$maxseite\">$maxseite</a>&nbsp;";
+      }
+
+   if(empty($return))
+      return  "&nbsp;<b>1</b>&nbsp;";
+   else
+      return $return;
+}
+
 function flodjiShareNormDesc( $title ){
 $slug = $title;
-$bad = array( '"',"'",'“','”',"\n","\r", "&rarr;");
-$good = array( '','','','',' ','','');
+$bad = array( '"',"'",'“','”',"\n","\r", "&rarr;", "&#8230;");
+$good = array( '','','','',' ','','','...');
 $slug = str_replace( $bad, $good, $slug );
 $slug = trim($slug);
 return $slug;
@@ -254,7 +318,7 @@ global $wpdb;
 		if($klicks == ''){
 		$klicks = '0';
 		}
-		$outputa .= '<div class="fsleft"><a class="fsbase fsfb" href="/wp-content/plugins/flodjishare/klick.php?n='.$network.'&title='.urlencode(get_the_title()).'&fsurl='.urlencode('http://www.facebook.com/sharer.php?u='.urlencode(get_permalink()).'&amp;t='.urlencode(get_the_title())).'" onclick="return popup(this.href);" rel="nofollow"><strong>Facebook</strong></a><span class="fscounter"><strong>'.short_number($klicks).'</strong></span></div>';
+		$outputa .= '<div class="fsleft"><a class="fsbase fsfb" href="/wp-content/plugins/flodjishare/klick.php?n='.$network.'&title='.urlencode(get_the_title()).'&fsurl='.urlencode('http://www.facebook.com/sharer.php?u='.get_permalink().'&amp;t='.get_the_title()).'" onclick="return popup(this.href);" rel="nofollow"><strong>Facebook</strong></a><span class="fscounter"><strong>'.short_number($klicks).'</strong></span></div>';
 		} else {
 		$outputa .= '<div class="fsleft"><a class="fsbase fsfb" href="http://www.facebook.com/sharer.php?u='.urlencode(get_permalink()).'&amp;t='.urlencode(get_the_title()).'" onclick="return popup(this.href);" rel="nofollow"><strong>Facebook</strong></a></div>';
 		}
@@ -264,7 +328,8 @@ global $wpdb;
 		}
 
 		if ($option['active_buttons']['twitter']==true) {
-		$tw_link = 'https://twitter.com/share?url='.urlencode(get_permalink()).'&via='.stripslashes($option['twitter_text']).'&text='.urlencode(get_the_title());
+		$title = get_the_title();
+		$tw_link = 'https://twitter.com/share?url='.urlencode(get_permalink()).'&via='.stripslashes($option['twitter_text']).'&text='.urlencode($title);
 		if ($option['metro']==true){
 		if ($option['counter']==true){
 		$title=get_the_title();
