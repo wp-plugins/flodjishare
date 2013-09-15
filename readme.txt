@@ -72,7 +72,7 @@ Version 2.3:
 * Neue Anzeigeposition: &Uuml;ber und Unter Beitr&auml;ge gleichzeitig.
 * Google Plus Authorship Markup
 * Share Buttons f&uuml;r einzelne Custom-Post-Types aktivieren bzw. deaktivieren
-* Multi-Autor Unterst&uuml;tzung für Google Authorship Markup und Twitter Cards.
+* Multi-Autor Unterst&uuml;tzung f&uuml;r Google Authorship Markup und Twitter Cards.
 
 Version 2.2:
 
@@ -80,10 +80,10 @@ Version 2.2:
 
 Version 2.1:
 
-* Neue Funktion: Klickz&auml;hler für die Share-Buttons im Metro Design (Kann nach Bedarf aktiviert bzw. deaktiviert werden).
+* Neue Funktion: Klickz&auml;hler f&uuml;r die Share-Buttons im Metro Design (Kann nach Bedarf aktiviert bzw. deaktiviert werden).
 * Code Update: Opengraph Schema wird nur noch bei aktiviertem Opengraph Support angezeigt.
 * Neue Funktion: flodjiShare Einstellungen haben jetzt eigene Men&uuml;punkte im WordPress Admin-Bereich.
-* Neue Funktion: Neuer Punkt “flodjiShare Klick Counter” im flodjiShare Men&uuml;. Zeigt die Anzahl der Klicks auf die Buttons pro Button bzw. pro Beitrag an.
+* Neue Funktion: Neuer Punkt flodjiShare Klick Counter im flodjiShare Men&uuml;. Zeigt die Anzahl der Klicks auf die Buttons pro Button bzw. pro Beitrag an.
 * Code Update: CSS-Anweisungen erfolgen jetzt aus eigener CSS-Datei.
 
 Version 2.0:
@@ -133,7 +133,7 @@ Version 2.3:
 * Neue Anzeigeposition: &Uuml;ber und Unter Beitr&auml;ge gleichzeitig.
 * Google Plus Authorship Markup
 * Share Buttons f&uuml;r einzelne Custom-Post-Types aktivieren bzw. deaktivieren
-* Multi-Autor Unterst&uuml;tzung für Google Authorship Markup und Twitter Cards.
+* Multi-Autor Unterst&uuml;tzung f&uuml;r Google Authorship Markup und Twitter Cards.
 
 Version 2.2:
 
@@ -141,10 +141,10 @@ Version 2.2:
 
 Version 2.1:
 
-* Neue Funktion: Klickz&auml;hler für die Share-Buttons im Metro Design (Kann nach Bedarf aktiviert bzw. deaktiviert werden).
+* Neue Funktion: Klickz&auml;hler f&uuml;r die Share-Buttons im Metro Design (Kann nach Bedarf aktiviert bzw. deaktiviert werden).
 * Code Update: Opengraph Schema wird nur noch bei aktiviertem Opengraph Support angezeigt.
 * Neue Funktion: flodjiShare Einstellungen haben jetzt eigene Men&uuml;punkte im WordPress Admin-Bereich.
-* Neue Funktion: Neuer Punkt “flodjiShare Klick Counter” im flodjiShare Men&uuml;. Zeigt die Anzahl der Klicks auf die Buttons pro Button bzw. pro Beitrag an.
+* Neue Funktion: Neuer Punkt flodjiShare Klick Counter im flodjiShare Men&uuml;. Zeigt die Anzahl der Klicks auf die Buttons pro Button bzw. pro Beitrag an.
 * Code Update: CSS-Anweisungen erfolgen jetzt aus eigener CSS-Datei.
 
 Version 2.0:
