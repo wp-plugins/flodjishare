@@ -1,10 +1,10 @@
 === flodjiShare ===
 Contributors: flodji
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=K9U25CKQNA5GL
-Tags: Share,Social,Facebook,Twitter,Xing,Delicious,VZ,Digg,Google,Rich Snippets,Opengraph,Twitter Cards,Share Button,Google Authorship Markup,rel Author,Multi-Author,Klicktracker,Klick Counter
+Tags: Share,Social,Facebook,Twitter,Xing,Delicious,VZ,Digg,Google,Rich Snippets,Opengraph,Twitter Cards,Share Button,Google Authorship Markup,rel Author,Multi-Author,Klicktracker,Klick Counter,Metabox,Meta Box,Custom Post Types
 Requires at least: 3.3
 Tested up to: 3.6
-Stable tag: 2.4
+Stable tag: 2.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -40,6 +40,8 @@ Features:
 * Image oder CSS Layout
 * Position: Unten, Oben, Beides oder individuell per Shortcode
 * Anzeige auf: Beitrag, Blog-Ansicht, Seiten, Custom-Post-Types
+* Einzelne Beitr&auml;ge/Seiten/Custom Post Types per ID ausschlie&szlig;en
+* Metabox unter Beitr&auml;gen/Seiten/Custom Post Types f&uuml;r individuelle Snippet Gestaltung
 
 Weitere Informationen gibt es auf <a target="_blank" href="http://flodji.de/flodjishare-fuer-wordpress/" >flodji.de</a>. Bei Fragen und Problemen helfe ich gerne in meinem <a target="_blank" href="http://flodji.de/forum">Support Forum</a> weiter.
 
@@ -56,11 +58,15 @@ Weitere Informationen gibt es auf <a target="_blank" href="http://flodji.de/flod
 
 == Screenshots ==
 
-1. Buttons im Einsatz
-2. Einstellungen
-3. Neues Design (Metro)
+1. Standard-Buttons im Einsatz
+2. CSS-Design Buttons im Einsatz
 
 == Changelog ==
+
+Version 2.5:
+
+* Neue Funktion: Metabox unter Beitr&auml;gen, Seiten und Custom Post Types f&uuml;r individuelle Snippet Gestaltung.
+* Neue Funktion: Einzelne Beitr&auml;ge/Seiten/Custom Post Types per ID ausschlie&szlig;en.
 
 Version 2.4:
 
@@ -72,7 +78,7 @@ Version 2.3:
 * Neue Anzeigeposition: &Uuml;ber und Unter Beitr&auml;ge gleichzeitig.
 * Google Plus Authorship Markup
 * Share Buttons f&uuml;r einzelne Custom-Post-Types aktivieren bzw. deaktivieren
-* Multi-Autor Unterst&uuml;tzung f&uuml;r Google Authorship Markup und Twitter Cards.
+* Multi-Autor Unterst&uuml;tzung für Google Authorship Markup und Twitter Cards.
 
 Version 2.2:
 
@@ -80,10 +86,10 @@ Version 2.2:
 
 Version 2.1:
 
-* Neue Funktion: Klickz&auml;hler f&uuml;r die Share-Buttons im Metro Design (Kann nach Bedarf aktiviert bzw. deaktiviert werden).
+* Neue Funktion: Klickz&auml;hler für die Share-Buttons im Metro Design (Kann nach Bedarf aktiviert bzw. deaktiviert werden).
 * Code Update: Opengraph Schema wird nur noch bei aktiviertem Opengraph Support angezeigt.
 * Neue Funktion: flodjiShare Einstellungen haben jetzt eigene Men&uuml;punkte im WordPress Admin-Bereich.
-* Neue Funktion: Neuer Punkt flodjiShare Klick Counter im flodjiShare Men&uuml;. Zeigt die Anzahl der Klicks auf die Buttons pro Button bzw. pro Beitrag an.
+* Neue Funktion: Neuer Punkt “flodjiShare Klick Counter” im flodjiShare Men&uuml;. Zeigt die Anzahl der Klicks auf die Buttons pro Button bzw. pro Beitrag an.
 * Code Update: CSS-Anweisungen erfolgen jetzt aus eigener CSS-Datei.
 
 Version 2.0:
@@ -123,6 +129,11 @@ Version 1.4:
 
 == Upgrade notice ==
 
+Version 2.5:
+
+* Neue Funktion: Metabox unter Beitr&auml;gen, Seiten und Custom Post Types f&uuml;r individuelle Snippet Gestaltung.
+* Neue Funktion: Einzelne Beitr&auml;ge/Seiten/Custom Post Types per ID ausschlie&szlig;en.
+
 Version 2.4:
 
 * Code Update: Klickz&auml;hler z&auml;hlt nun keine Bots mehr.
@@ -133,7 +144,7 @@ Version 2.3:
 * Neue Anzeigeposition: &Uuml;ber und Unter Beitr&auml;ge gleichzeitig.
 * Google Plus Authorship Markup
 * Share Buttons f&uuml;r einzelne Custom-Post-Types aktivieren bzw. deaktivieren
-* Multi-Autor Unterst&uuml;tzung f&uuml;r Google Authorship Markup und Twitter Cards.
+* Multi-Autor Unterst&uuml;tzung für Google Authorship Markup und Twitter Cards.
 
 Version 2.2:
 
@@ -141,10 +152,10 @@ Version 2.2:
 
 Version 2.1:
 
-* Neue Funktion: Klickz&auml;hler f&uuml;r die Share-Buttons im Metro Design (Kann nach Bedarf aktiviert bzw. deaktiviert werden).
+* Neue Funktion: Klickz&auml;hler für die Share-Buttons im Metro Design (Kann nach Bedarf aktiviert bzw. deaktiviert werden).
 * Code Update: Opengraph Schema wird nur noch bei aktiviertem Opengraph Support angezeigt.
 * Neue Funktion: flodjiShare Einstellungen haben jetzt eigene Men&uuml;punkte im WordPress Admin-Bereich.
-* Neue Funktion: Neuer Punkt flodjiShare Klick Counter im flodjiShare Men&uuml;. Zeigt die Anzahl der Klicks auf die Buttons pro Button bzw. pro Beitrag an.
+* Neue Funktion: Neuer Punkt “flodjiShare Klick Counter” im flodjiShare Men&uuml;. Zeigt die Anzahl der Klicks auf die Buttons pro Button bzw. pro Beitrag an.
 * Code Update: CSS-Anweisungen erfolgen jetzt aus eigener CSS-Datei.
 
 Version 2.0:
