@@ -50,6 +50,9 @@ color: #fff;
 .fsfb{
 background-color: #2b4170;
 }
+.fsfl{
+background-color: #709b3f;
+}
 .fstw{
 background-color: #0081ce;
 }
@@ -91,4 +94,7 @@ display: block;
 margin:3px;
 text-align: left;
 font-size:0.8em;
+}
+.fsclear{
+clear: both;
 }

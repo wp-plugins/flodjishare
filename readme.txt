@@ -1,10 +1,10 @@
 === flodjiShare ===
 Contributors: flodji
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=K9U25CKQNA5GL
-Tags: Share,Social,Facebook,Twitter,Xing,Delicious,VZ,Digg,Google,Rich Snippets,Opengraph,Twitter Cards,Share Button,Google Authorship Markup,rel Author,Multi-Author,Klicktracker,Klick Counter,Metabox,Meta Box,Custom Post Types
+Tags: Share,Social,Facebook,Twitter,Xing,Delicious,VZ,Flattr,StumbleUpon,Digg,Google,Rich Snippets,Opengraph,Twitter Cards,Share Button,Google Authorship Markup,rel Author,Multi-Author,Klicktracker,Klick Counter,Metabox,Meta Box,Custom Post Types
 Requires at least: 3.3
 Tested up to: 3.6
-Stable tag: 2.5
+Stable tag: 2.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -28,6 +28,7 @@ Die folgenden Buttons k&ouml;nnen nach belieben aktiviert bzw. deaktiviert werde
 * Pinterest
 * Stumbleupon
 * Tumblr
+* Flattr
 
 Features:
 
@@ -63,6 +64,11 @@ Weitere Informationen gibt es auf <a target="_blank" href="http://flodji.de/flod
 
 == Changelog ==
 
+Version 2.6:
+
+* Neuer Button: Flattr Button hinzugef&uuml;gt.
+* Fehler behoben: Der Support Link / Datenschutz Hinweis wurde teilweise neben den Share Buttons angezeigt.
+
 Version 2.5:
 
 * Neue Funktion: Metabox unter Beitr&auml;gen, Seiten und Custom Post Types f&uuml;r individuelle Snippet Gestaltung.
@@ -78,7 +84,7 @@ Version 2.3:
 * Neue Anzeigeposition: &Uuml;ber und Unter Beitr&auml;ge gleichzeitig.
 * Google Plus Authorship Markup
 * Share Buttons f&uuml;r einzelne Custom-Post-Types aktivieren bzw. deaktivieren
-* Multi-Autor Unterst&uuml;tzung für Google Authorship Markup und Twitter Cards.
+* Multi-Autor Unterst&uuml;tzung f&uuml;r Google Authorship Markup und Twitter Cards.
 
 Version 2.2:
 
@@ -86,10 +92,10 @@ Version 2.2:
 
 Version 2.1:
 
-* Neue Funktion: Klickz&auml;hler für die Share-Buttons im Metro Design (Kann nach Bedarf aktiviert bzw. deaktiviert werden).
+* Neue Funktion: Klickz&auml;hler f&uuml;r die Share-Buttons im Metro Design (Kann nach Bedarf aktiviert bzw. deaktiviert werden).
 * Code Update: Opengraph Schema wird nur noch bei aktiviertem Opengraph Support angezeigt.
 * Neue Funktion: flodjiShare Einstellungen haben jetzt eigene Men&uuml;punkte im WordPress Admin-Bereich.
-* Neue Funktion: Neuer Punkt “flodjiShare Klick Counter” im flodjiShare Men&uuml;. Zeigt die Anzahl der Klicks auf die Buttons pro Button bzw. pro Beitrag an.
+* Neue Funktion: Neuer Punkt "flodjiShare Klick Counter" im flodjiShare Men&uuml;. Zeigt die Anzahl der Klicks auf die Buttons pro Button bzw. pro Beitrag an.
 * Code Update: CSS-Anweisungen erfolgen jetzt aus eigener CSS-Datei.
 
 Version 2.0:
@@ -129,6 +135,11 @@ Version 1.4:
 
 == Upgrade notice ==
 
+Version 2.6:
+
+* Neuer Button: Flattr Button hinzugef&uuml;gt.
+* Fehler behoben: Der Support Link / Datenschutz Hinweis wurde teilweise neben den Share Buttons angezeigt.
+
 Version 2.5:
 
 * Neue Funktion: Metabox unter Beitr&auml;gen, Seiten und Custom Post Types f&uuml;r individuelle Snippet Gestaltung.
@@ -144,7 +155,7 @@ Version 2.3:
 * Neue Anzeigeposition: &Uuml;ber und Unter Beitr&auml;ge gleichzeitig.
 * Google Plus Authorship Markup
 * Share Buttons f&uuml;r einzelne Custom-Post-Types aktivieren bzw. deaktivieren
-* Multi-Autor Unterst&uuml;tzung für Google Authorship Markup und Twitter Cards.
+* Multi-Autor Unterst&uuml;tzung f&uuml;r Google Authorship Markup und Twitter Cards.
 
 Version 2.2:
 
@@ -152,10 +163,10 @@ Version 2.2:
 
 Version 2.1:
 
-* Neue Funktion: Klickz&auml;hler für die Share-Buttons im Metro Design (Kann nach Bedarf aktiviert bzw. deaktiviert werden).
+* Neue Funktion: Klickz&auml;hler f&uuml;r die Share-Buttons im Metro Design (Kann nach Bedarf aktiviert bzw. deaktiviert werden).
 * Code Update: Opengraph Schema wird nur noch bei aktiviertem Opengraph Support angezeigt.
 * Neue Funktion: flodjiShare Einstellungen haben jetzt eigene Men&uuml;punkte im WordPress Admin-Bereich.
-* Neue Funktion: Neuer Punkt “flodjiShare Klick Counter” im flodjiShare Men&uuml;. Zeigt die Anzahl der Klicks auf die Buttons pro Button bzw. pro Beitrag an.
+* Neue Funktion: Neuer Punkt "flodjiShare Klick Counter" im flodjiShare Men&uuml;. Zeigt die Anzahl der Klicks auf die Buttons pro Button bzw. pro Beitrag an.
 * Code Update: CSS-Anweisungen erfolgen jetzt aus eigener CSS-Datei.
 
 Version 2.0:
