@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: Share,Social,Facebook,Twitter,Xing,Delicious,VZ,Flattr,StumbleUpon,Digg,Google,Rich Snippets,Opengraph,Twitter Cards,Share Button,Google Authorship Markup,rel Author,Multi-Author,Klicktracker,Klick Counter,Metabox,Meta Box,Custom Post Types
 Requires at least: 3.3
 Tested up to: 3.6
-Stable tag: 2.6
+Stable tag: 2.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -40,7 +40,7 @@ Features:
 * Schnelle Ladezeit
 * Image oder CSS Layout
 * Position: Unten, Oben, Beides oder individuell per Shortcode
-* Anzeige auf: Beitrag, Blog-Ansicht, Seiten, Custom-Post-Types
+* Anzeige auf: Beitrag, Blog-Ansicht, Seiten, Custom-Post-Types, Archive, Suchergenisse
 * Einzelne Beitr&auml;ge/Seiten/Custom Post Types per ID ausschlie&szlig;en
 * Metabox unter Beitr&auml;gen/Seiten/Custom Post Types f&uuml;r individuelle Snippet Gestaltung
 
@@ -63,6 +63,12 @@ Weitere Informationen gibt es auf <a target="_blank" href="http://flodji.de/flod
 2. CSS-Design Buttons im Einsatz
 
 == Changelog ==
+
+Version 2.7:
+
+* Code Update: Kleinere Korekturen
+* Neue Funktion: flodjiShare in Kategorie-Ansicht, Archiven und Suchergebnissen aktivieren / deaktivieren
+* Neue Funktion: Meta Description Tag ein- /ausblenden
 
 Version 2.6:
 
@@ -134,6 +140,12 @@ Version 1.4:
 * Neues Buttonset
 
 == Upgrade notice ==
+
+Version 2.7:
+
+* Code Update: Kleinere Korekturen
+* Neue Funktion: flodjiShare in Kategorie-Ansicht, Archiven und Suchergebnissen aktivieren / deaktivieren
+* Neue Funktion: Meta Description Tag ein- /ausblenden
 
 Version 2.6:
 
