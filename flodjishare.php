@@ -3,7 +3,7 @@
 Plugin Name: flodjiShare
 Plugin URI: http://flodji.de
 Description: Mit flodjiShare wird Webseitenbetreibern eine einfache L&ouml;sung angeboten die Social Sharing und Bookmark Buttons der gro&szlig;en Netzwerke in die eigene Seite einzubinden.
-Version: 2.7
+Version: 2.8
 Author: flodji
 Author URI: http://flodji.de
 License: GPL2
@@ -55,13 +55,15 @@ echo '<link href="https://plus.google.com/'.stripslashes($option['gplusidpage'])
 echo "\n";
 }
 if(($option['gplusiduser']) or (get_the_author_meta('gplusiduser') != '')){
+if(is_single()){
 $user = get_the_author_meta('gplusiduser');
 if($user == ''){
-echo '<link href="https://plus.google.com/'.stripslashes($option['gplusiduser']).'?rel=author" rel="author" />';
+echo '<link href="https://plus.google.com/'.stripslashes($option['gplusiduser']).'" rel="author" />';
 echo "\n";
 } else {
-echo '<link href="https://plus.google.com/'.stripslashes(get_the_author_meta('gplusiduser')).'?rel=author" rel="author" />';
+echo '<link href="https://plus.google.com/'.stripslashes(get_the_author_meta('gplusiduser')).'" rel="author" />';
 echo "\n";
+}
 }
 }
 }
@@ -1109,7 +1111,7 @@ function flodjishare_options(){
 	$checked[$post_type->name]	= ($option[$post_type->name]==true) ? 'checked="checked"' : '';
 	}
 	$outputa .= '
-	<div style="width:400px;float:left;">
+	<div style="width:600px;float:left;">
 		<h2>flodjiShare Einstellungen</h2>
 	<table><tr><td style="width:200px;">'.followMeFlodjiShare().'</td><td>'.spendPayPalFlodjiShare().'</td></tr></table><br />
 		<form name="form1" method="post" action="">
