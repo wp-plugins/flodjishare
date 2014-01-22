@@ -3,11 +3,15 @@
 Plugin Name: flodjiShare
 Plugin URI: http://flodji.de
 Description: Mit flodjiShare wird Webseitenbetreibern eine einfache L&ouml;sung angeboten die Social Sharing und Bookmark Buttons der gro&szlig;en Netzwerke in die eigene Seite einzubinden.
-Version: 2.8
+Version: 2.9
 Author: flodji
 Author URI: http://flodji.de
 License: GPL2
 */
+function flodjiShareLocalize(){
+load_plugin_textdomain('flodjishare', false, dirname(plugin_basename(__FILE__ ) ) . '/languages' );
+}
+add_action('init', 'flodjiShareLocalize');
 global $wpdb;
 add_action('wp_head', 'flodjiShareOpenGraph');
 add_filter('language_attributes', 'flodjishare_schema');
@@ -39,8 +43,8 @@ function flodjiShareAddContactMethods($contactmethods){
 $option_string = get_option('flodjishare');
 $option = json_decode($option_string, true);
 if($option['active_buttons']['gplusAuthor']){
-	$contactmethods['gplusiduser'] = 'Google Plus ID';
-	$contactmethods['fstwittername'] = 'Twitter Name';
+	$contactmethods['gplusiduser'] = __('Google Plus ID', 'flodjishare');
+	$contactmethods['fstwittername'] = __('Twitter Name', 'flodjishare');
 	return $contactmethods;
 }
 }
@@ -90,7 +94,7 @@ $start 		= $seite * $eintraege_pro_seite - $eintraege_pro_seite;
 $ergebnis 	= mysql_query( "SELECT title,network,klicks FROM flodjiShareLinks ORDER BY $sort LIMIT $start, $eintraege_pro_seite" );
 $anz_reihe 	= mysql_num_rows( $ergebnis );
 $anz_felde 	= mysql_num_fields( $ergebnis );
-$ausgabe = '<div style="width:400px;float:left;"><h2>flodjiShare Klick Counter</h2><table><tr><td style="width:200px;">'.followMeFlodjiShare().'</td><td>'.spendPayPalFlodjiShare().'</td></tr></table>';
+$ausgabe = '<div style="width:400px;float:left;"><h2>' . __('flodjiShare Klickzähler', 'flodjishare') . '</h2><table><tr><td style="width:200px;">'.followMeFlodjiShare().'</td><td>'.spendPayPalFlodjiShare().'</td></tr></table>';
 $ausgabe .= "<br><br>";
 $ausgabe .= '<table style="border:1px solid #000;" bgcolor="white"><tr>';
 for ( $x=0; $x<$anz_felde; $x++) $ausgabe .= '<th style="border:1px solid #000;"><b><a href="admin.php?page=klick-counter&sort='.mysql_field_name($ergebnis, $x).'">' . mysql_field_name($ergebnis, $x) . '</a></b></th>';
@@ -109,9 +113,9 @@ $menge 			= mysql_num_rows($result);
 $mengr			= $menge[0];
 $wieviel_seiten = ceil($menge / $eintraege_pro_seite); 
 $ausgabe .= '<br /><div align="center">';
-$ausgabe .= '<strong>Seite:</strong>';
+$ausgabe .= '<strong>' . __('Seite', 'flodjishare') . ':</strong>';
 $ausgabe .= blaetterfunktion($seite,$wieviel_seiten,'admin.php?page=klick-counter&sort='.$sort,3);
-$ausgabe .= '</div><br /><p><strong>Hinweis:</strong><br />Der Klickz&auml;hler zeigt die Anzahl der Klicks auf die Share Buttons an. Diese Zahl muss nicht zwingend mit der tats&auml;chlichen Anzahl von Shares &uuml;bereinstimmen.</p></div>';
+$ausgabe .= '</div><br /><p><strong>' . __('Hinweis', 'flodjishare') . ':</strong><br />' . __('Der Klickzähler zeigt die Anzahl der Klicks auf die Share Buttons an. Diese Zahl muss nicht zwingend mit der tatsächlichen Anzahl von Shares übereinstimmen.', 'flodjishare') . '</p></div>';
 $ausgabe .= '<div style="margin-left:50px;border-left:thin solid #ccc;border-right:thin solid #ccc;border-bottom:thin solid #ccc;padding:3px;width:200px;float:left;box-shadow: 0 1px 1px #999;">
 <div>
 <a target="_blank" href="http://flodji.de/?utm_source=flodjiShareWP&utm_medium=flodji.de_Logo&utm_campaign=flodjiShareWP"><img src="'.home_url().'/wp-content/plugins/flodjishare/buttons/flodjidelogo03.gif" width="180"/></a><h2>flodji.de Feed</h2>';
@@ -122,7 +126,7 @@ $rss_items = $rss->get_items( 0, $maxitems );
 }
 $ausgabe .= '<ul>';
 if($maxitems == 0){
-$ausgabe .= '<li>Keine Eintr&auml;ge</li>';
+$ausgabe .= '<li>' . __('Keine Einträge', 'flodjishare') . '</li>';
 } else {
 foreach ($rss_items as $item){
 $ausgabe .= '<li>
@@ -136,16 +140,13 @@ $ausgabe .= '</ul>
 <div>
 <h2>Weitere Links</h2>
 <ul>
-<li><a target="_blank" href="http://flodji.de/downloads/?utm_source=flodjiShareWP&utm_medium=Weitere_Links&utm_campaign=flodjiShareWP">Weitere Plugins / Themes</a></li>
-<li><a target="_blank" href="http://flodji.de/category/gewinnspiele/?utm_source=flodjiShareWP&utm_medium=Weitere_Links&utm_campaign=flodjiShareWP">Gewinnspiele</a></li>
-<li><a target="_blank" href="http://flodji.de/fragen-und-antworten/?utm_source=flodjiShareWP&utm_medium=Weitere_Links&utm_campaign=flodjiShareWP">FAQs</a></li>
-<li><a target="_blank" href="http://flodji.de/linkpartner/?utm_source=flodjiShareWP&utm_medium=Weitere_Links&utm_campaign=flodjiShareWP">Linkpartner werden</a></li>
-<li><a target="_blank" href="http://flodji.de/kontakt/?utm_source=flodjiShareWP&utm_medium=Weitere_Links&utm_campaign=flodjiShareWP">Kontakt</a></li>
-<li><a target="_blank" href="http://flodji.de/forum/?utm_source=flodjiShareWP&utm_medium=Weitere_Links&utm_campaign=flodjiShareWP">Forum</a></li>
-<li><a target="_blank" href="http://flodji.de/werben-auf-flodji-de/?utm_source=flodjiShareWP&utm_medium=Weitere_Links&utm_campaign=flodjiShareWP">Werben auf flodji.de</a></li>
-<li><a target="_blank" href="http://flodji.de/gastartikel/?utm_source=flodjiShareWP&utm_medium=Weitere_Links&utm_campaign=flodjiShareWP">Gastartikel schreiben</a></li>
-<li><a target="_blank" href="http://flodji.de/die-flodji-de-android-app-beta/?utm_source=flodjiShareWP&utm_medium=Weitere_Links&utm_campaign=flodjiShareWP">flodji.de Android App</a></li>
-<li><a target="_blank" href="http://flodji.de/impressum/?utm_source=flodjiShareWP&utm_medium=Weitere_Links&utm_campaign=flodjiShareWP">Impressum</a></li>
+<li><a target="_blank" href="http://flodji.de/downloads/?utm_source=flodjiShareWP&utm_medium=Weitere_Links&utm_campaign=flodjiShareWP">' . __('Weitere Plugins / Themes', 'flodjishare') . '</a></li>
+<li><a target="_blank" href="http://flodji.de/category/gewinnspiele/?utm_source=flodjiShareWP&utm_medium=Weitere_Links&utm_campaign=flodjiShareWP">' . __('Gewinnspiele', 'flodjishare') . '</a></li>
+<li><a target="_blank" href="http://flodji.de/fragen-und-antworten/?utm_source=flodjiShareWP&utm_medium=Weitere_Links&utm_campaign=flodjiShareWP">' . __('FAQs', 'flodjishare') . '</a></li>
+<li><a target="_blank" href="http://flodji.de/kontakt/?utm_source=flodjiShareWP&utm_medium=Weitere_Links&utm_campaign=flodjiShareWP">' . __('Kontakt', 'flodjishare') . '</a></li>
+<li><a target="_blank" href="http://flodji.de/forum/?utm_source=flodjiShareWP&utm_medium=Weitere_Links&utm_campaign=flodjiShareWP">' . __('Forum', 'flodjishare') . '</a></li>
+<li><a target="_blank" href="http://flodji.de/die-flodji-de-android-app-beta/?utm_source=flodjiShareWP&utm_medium=Weitere_Links&utm_campaign=flodjiShareWP">' . __('flodji.de Android App', 'flodjishare') . '</a></li>
+<li><a target="_blank" href="http://flodji.de/impressum/?utm_source=flodjiShareWP&utm_medium=Weitere_Links&utm_campaign=flodjiShareWP">' . __('Impressum', 'flodjishare') . '</a></li>
 </ul>
 </div>
 </div>';
@@ -204,7 +205,7 @@ function blaetterfunktion($seite,$maxseite,$url="",$anzahl=4,$get_name="seite") 
 
    if(!in_array($maxseite,$blaetter) AND count($blaetter) > 1)
       {
-      if(!in_array(($maxseite-1),$blaetter)) $return .= "...&nbsp;<a href=\"{$url}{$anhang}{$get_name}=$maxseite\">letzte</a>&nbsp;";
+      if(!in_array(($maxseite-1),$blaetter)) $return .= "...&nbsp;<a href=\"{$url}{$anhang}{$get_name}=$maxseite\">" . __('Letzte', 'flodjishare') . "</a>&nbsp;";
       else $return .= "&nbsp;<a href=\"{$url}{$anhang}{$get_name}=$maxseite\">$maxseite</a>&nbsp;";
       }
 
@@ -345,14 +346,14 @@ global $wpdb, $post;
 		if ($option['metro']==true){
 		if ($option['counter']==true){
 		$title = strip_tags(get_the_title());
-		$network='Facebook';
+		$network= __('Facebook', 'flodjishare');
 		$klicks = $wpdb->get_var("SELECT klicks FROM flodjiShareLinks WHERE title='$title' AND network='$network'");
 		if($klicks == ''){
 		$klicks = '0';
 		}
-		$outputa .= '<div class="fsleft"><a class="fsbase fsfb" href="/wp-content/plugins/flodjishare/klick.php?n='.$network.'&title='.urlencode($title).'&fsurl='.urlencode('http://www.facebook.com/sharer.php?u='.get_permalink().'&amp;t='.get_the_title()).'" onclick="return popup(this.href);" rel="nofollow"><strong>Facebook</strong></a><span class="fscounter"><strong>'.short_number($klicks).'</strong></span></div>';
+		$outputa .= '<div class="fsleft"><a class="fsbase fsfb" href="/wp-content/plugins/flodjishare/klick.php?n='.$network.'&title='.urlencode($title).'&fsurl='.urlencode('http://www.facebook.com/sharer.php?u='.get_permalink().'&amp;t='.get_the_title()).'" onclick="return popup(this.href);" rel="nofollow"><strong>' . __('Facebook', 'flodjishare') . '</strong></a><span class="fscounter"><strong>'.short_number($klicks).'</strong></span></div>';
 		} else {
-		$outputa .= '<div class="fsleft"><a class="fsbase fsfb" href="http://www.facebook.com/sharer.php?u='.urlencode(get_permalink()).'&amp;t='.urlencode(strip_tags(get_the_title())).'" onclick="return popup(this.href);" rel="nofollow"><strong>Facebook</strong></a></div>';
+		$outputa .= '<div class="fsleft"><a class="fsbase fsfb" href="http://www.facebook.com/sharer.php?u='.urlencode(get_permalink()).'&amp;t='.urlencode(strip_tags(get_the_title())).'" onclick="return popup(this.href);" rel="nofollow"><strong>' . __('Facebook', 'flodjishare') . '</strong></a></div>';
 		}
 		} else {
 		$outputa .= '<div class="fsbtnfloat"><a href="http://www.facebook.com/sharer.php?u='.urlencode(get_permalink()).'&amp;t='.urlencode(strip_tags(get_the_title())).'" onclick="return popup(this.href);" rel="nofollow"><img style="max-width: 100%;" src="'.home_url().'/wp-content/plugins/flodjishare/buttons/facebook.png" border="0" /></a></div>'; 
@@ -364,14 +365,14 @@ global $wpdb, $post;
 		if ($option['metro']==true){
 		if ($option['counter']==true){
 		$title = strip_tags(get_the_title());
-		$network='Flattr';
+		$network= __('Flattr', 'flodjishare');
 		$klicks = $wpdb->get_var("SELECT klicks FROM flodjiShareLinks WHERE title='$title' AND network='$network'");
 		if($klicks == ''){
 		$klicks = '0';
 		}
-		$outputa .= '<div class="fsleft"><a class="fsbase fsfl" href="/wp-content/plugins/flodjishare/klick.php?n='.$network.'&title='.urlencode(strip_tags(get_the_title())).'&fsurl='.urlencode($flattrurl).'" target="_blank" rel="nofollow"><strong>Flattr</strong></a><span class="fscounter"><strong>'.short_number($klicks).'</strong></span></div>';
+		$outputa .= '<div class="fsleft"><a class="fsbase fsfl" href="/wp-content/plugins/flodjishare/klick.php?n='.$network.'&title='.urlencode(strip_tags(get_the_title())).'&fsurl='.urlencode($flattrurl).'" target="_blank" rel="nofollow"><strong>' . __('Flattr', 'flodjishare') . '</strong></a><span class="fscounter"><strong>'.short_number($klicks).'</strong></span></div>';
 		} else {
-		$outputa .= '<div class="fsleft"><a class="fsbase fsfl" href="'.$flattrurl.'" onclick="return popup(this.href);" rel="nofollow"><strong>Flattr</strong></a></div>';
+		$outputa .= '<div class="fsleft"><a class="fsbase fsfl" href="'.$flattrurl.'" onclick="return popup(this.href);" rel="nofollow"><strong>' . __('Flattr', 'flodjishare') . '</strong></a></div>';
 		}
 		} else {
 		$outputa .= '<div class="fsbtnfloat"><a href="'.$flattrurl.'" onclick="return popup(this.href);" rel="nofollow"><img style="max-width: 100%;" src="'.home_url().'/wp-content/plugins/flodjishare/buttons/flattr.png" border="0" /></a></div>'; 
@@ -383,14 +384,14 @@ global $wpdb, $post;
 		$tw_link = 'https://twitter.com/share?url='.urlencode(get_permalink()).'&via='.stripslashes($option['twitter_text']).'&text='.urlencode(html_entity_decode(strip_tags($title)));
 		if ($option['metro']==true){
 		if ($option['counter']==true){		
-		$network='Twitter';
+		$network= __('Twitter', 'flodjishare');
 		$klicks = $wpdb->get_var("SELECT klicks FROM flodjiShareLinks WHERE title='$title' AND network='$network'");
 		if($klicks == ''){
 		$klicks = '0';
 		}
-		$outputa .= '<div class="fsleft"><a class="fsbase fstw" href="/wp-content/plugins/flodjishare/klick.php?n='.$network.'&title='.urlencode(strip_tags(get_the_title())).'&fsurl='.urlencode($tw_link).'" onclick="return popup(this.href);" rel="nofollow"><strong>Twitter</strong></a><span class="fscounter"><strong>'.short_number($klicks).'</strong></span></div>';
+		$outputa .= '<div class="fsleft"><a class="fsbase fstw" href="/wp-content/plugins/flodjishare/klick.php?n='.$network.'&title='.urlencode(strip_tags(get_the_title())).'&fsurl='.urlencode($tw_link).'" onclick="return popup(this.href);" rel="nofollow"><strong>' . __('Twitter', 'flodjishare') . '</strong></a><span class="fscounter"><strong>'.short_number($klicks).'</strong></span></div>';
 		} else {
-		$outputa .= '<div class="fsleft"><a class="fsbase fstw" href="'.$tw_link.'" onclick="return popup(this.href);" rel="nofollow"><strong>Twitter</strong></a></div>';
+		$outputa .= '<div class="fsleft"><a class="fsbase fstw" href="'.$tw_link.'" onclick="return popup(this.href);" rel="nofollow"><strong>' . __('Twitter', 'flodjishare') . '</strong></a></div>';
 		}
 		} else {
 		$outputa .= '<div class="fsbtnfloat"> 
@@ -403,14 +404,14 @@ global $wpdb, $post;
 		if ($option['metro']==true) {
 		if ($option['counter']==true){
 		$title = strip_tags(get_the_title());
-		$network='Digg';
+		$network= __('Digg', 'flodjishare');
 		$klicks = $wpdb->get_var("SELECT klicks FROM flodjiShareLinks WHERE title='$title' AND network='$network'");
 		if($klicks == ''){
 		$klicks = '0';
 		}
-		$outputa .= '<div class="fsleft"><a class="fsbase fsdigg" target="_blank" href="/wp-content/plugins/flodjishare/klick.php?n='.$network.'&title='.urlencode(strip_tags(get_the_title())).'&fsurl='.urlencode($digg_link).'" rel="nofollow"><strong>Digg</strong></a><span class="fscounter"><strong>'.short_number($klicks).'</strong></span></div>';
+		$outputa .= '<div class="fsleft"><a class="fsbase fsdigg" target="_blank" href="/wp-content/plugins/flodjishare/klick.php?n='.$network.'&title='.urlencode(strip_tags(get_the_title())).'&fsurl='.urlencode($digg_link).'" rel="nofollow"><strong>' . __('Digg', 'flodjishare') . '</strong></a><span class="fscounter"><strong>'.short_number($klicks).'</strong></span></div>';
 		} else {
-		$outputa .= '<div class="fsleft"><a class="fsbase fsdigg" target="_blank" href="'.$digg_link.'" rel="nofollow"><strong>Digg</strong></a></div>';
+		$outputa .= '<div class="fsleft"><a class="fsbase fsdigg" target="_blank" href="'.$digg_link.'" rel="nofollow"><strong>' . __('Digg', 'flodjishare') . '</strong></a></div>';
 		}
 		} else {
 		$outputa .= '<div class="fsbtnfloat"> 
@@ -423,18 +424,18 @@ global $wpdb, $post;
 		if ($option['metro']==true) {
 		if ($option['counter']==true){
 		$title = strip_tags(get_the_title());
-		$network='Delicious';
+		$network= __('Delicious', 'flodjishare');
 		$klicks = $wpdb->get_var("SELECT klicks FROM flodjiShareLinks WHERE title='$title' AND network='$network'");
 		if($klicks == ''){
 		$klicks = '0';
 		}
-		$outputa .= '<div class="fsleft"><a class="fsbase fsdel" href="/wp-content/plugins/flodjishare/klick.php?n='.$network.'&title='.urlencode(strip_tags(get_the_title())).'&fsurl='.urlencode($del_link).'" target="_blank"><strong>Delicious</strong></a><span class="fscounter"><strong>'.short_number($klicks).'</strong></span></div>';
+		$outputa .= '<div class="fsleft"><a class="fsbase fsdel" href="/wp-content/plugins/flodjishare/klick.php?n='.$network.'&title='.urlencode(strip_tags(get_the_title())).'&fsurl='.urlencode($del_link).'" target="_blank"><strong>' . __('Delicious', 'flodjishare') . '</strong></a><span class="fscounter"><strong>'.short_number($klicks).'</strong></span></div>';
 		} else {
-		$outputa .= '<div class="fsleft"><a class="fsbase fsdel" href="'.$del_link.'" target="_blank"><strong>Delicious</strong></a></div>';
+		$outputa .= '<div class="fsleft"><a class="fsbase fsdel" href="'.$del_link.'" target="_blank"><strong>' . __('Delicious', 'flodjishare') . '</strong></a></div>';
 		}
 		} else {
 		$outputa .= '<div class="fsbtnfloat"> 
-					<a href="'.$del_link.'" target="_blank" rel="nofollow"><img style="max-width: 100%;" src="'.home_url().'/wp-content/plugins/flodjishare/buttons/delicious.png" alt="Delicious" border="0" /></a></div>';
+					<a href="'.$del_link.'" target="_blank" rel="nofollow"><img style="max-width: 100%;" src="'.home_url().'/wp-content/plugins/flodjishare/buttons/delicious.png" border="0" /></a></div>';
 		}
 		}
 
@@ -443,17 +444,17 @@ global $wpdb, $post;
 		if ($option['metro']==true) {
 		if ($option['counter']==true){
 		$title = strip_tags(get_the_title());
-		$network='VZ';
+		$network= __('VZ', 'flodjishare');
 		$klicks = $wpdb->get_var("SELECT klicks FROM flodjiShareLinks WHERE title='$title' AND network='$network'");
 		if($klicks == ''){
 		$klicks = '0';
 		}
-		$outputa .= '<div class="fsleft"><a class="fsbase fsvz" href="/wp-content/plugins/flodjishare/klick.php?n='.$network.'&title='.urlencode(strip_tags(get_the_title())).'&fsurl='.urlencode($vz_link).'" title=" ' . $title . ' Deinen Freunden im VZ zeigen" target="_blank" rel="nofllow"><strong>VZ</strong></a><span class="fscounter"><strong>'.short_number($klicks).'</strong></span></div>';
+		$outputa .= '<div class="fsleft"><a class="fsbase fsvz" href="/wp-content/plugins/flodjishare/klick.php?n='.$network.'&title='.urlencode(strip_tags(get_the_title())).'&fsurl='.urlencode($vz_link).'" target="_blank" rel="nofllow"><strong>' . __('VZ', 'flodjishare') . '</strong></a><span class="fscounter"><strong>'.short_number($klicks).'</strong></span></div>';
 		} else {
-		$outputa .= '<div class="fsleft"><a class="fsbase fsvz" href="'.$vz_link.'" title=" ' . urlencode(strip_tags(get_the_title())) . ' Deinen Freunden im VZ zeigen" target="_blank" rel="nofllow"><strong>VZ</strong></a></div>';
+		$outputa .= '<div class="fsleft"><a class="fsbase fsvz" href="'.$vz_link.'"  target="_blank" rel="nofllow"><strong>' . __('VZ', 'flodjishare') . '</strong></a></div>';
 		}
 		} else {
-		$outputa .= '<div style="float:left; padding-left:3px;margin-right:-2px;"><a target="_blank" rel="nofollow" href="'.$vz_link.'"><img style="max-width: 100%;margin:-1px;" src="'.home_url().'/wp-content/plugins/flodjishare/buttons/vz_follow.png" title="studiVZ meinVZ sch&uuml;lerVZ" border="0" alt="VZ Netzwerke" width="38" /></a></div>'; 
+		$outputa .= '<div style="float:left; padding-left:3px;margin-right:-2px;"><a target="_blank" rel="nofollow" href="'.$vz_link.'"><img style="max-width: 100%;margin:-1px;" src="'.home_url().'/wp-content/plugins/flodjishare/buttons/vz_follow.png" border="0" width="38" /></a></div>'; 
 		}
 		}
 		
@@ -461,17 +462,17 @@ global $wpdb, $post;
 		if ($option['metro']==true) {
 		if ($option['counter']==true){
 		$title = strip_tags(get_the_title());
-		$network='Google Plus';
+		$network= __('Google Plus', 'flodjishare');
 		$klicks = $wpdb->get_var("SELECT klicks FROM flodjiShareLinks WHERE title='$title' AND network='$network'");
 		if($klicks == ''){
 		$klicks = '0';
 		}
-		$outputa .= '<div class="fsleft"><a class="fsbase fsgp" href="/wp-content/plugins/flodjishare/klick.php?n='.$network.'&title='.urlencode(strip_tags(get_the_title())).'&fsurl='.urlencode('https://plus.google.com/share?url=' . urlencode(get_permalink())) . '" onclick="return popup(this.href);" rel="nofollow"><strong>Google Plus</strong></a><span class="fscounter"><strong>'.short_number($klicks).'</strong></span></div>';
+		$outputa .= '<div class="fsleft"><a class="fsbase fsgp" href="/wp-content/plugins/flodjishare/klick.php?n='.$network.'&title='.urlencode(strip_tags(get_the_title())).'&fsurl='.urlencode('https://plus.google.com/share?url=' . urlencode(get_permalink())) . '" onclick="return popup(this.href);" rel="nofollow"><strong>' . __('Google Plus', 'flodjishare') . '</strong></a><span class="fscounter"><strong>'.short_number($klicks).'</strong></span></div>';
 		} else {
-		$outputa .= '<div class="fsleft"><a class="fsbase fsgp" href="https://plus.google.com/share?url=' . urlencode(get_permalink()) . '" onclick="return popup(this.href);" rel="nofollow"><strong>Google Plus</strong></a></div>';
+		$outputa .= '<div class="fsleft"><a class="fsbase fsgp" href="https://plus.google.com/share?url=' . urlencode(get_permalink()) . '" onclick="return popup(this.href);" rel="nofollow"><strong>' . __('Google Plus', 'flodjishare') . '</strong></a></div>';
 		}
 		} else {
-		$outputa .= '<div class="fsbtnfloat"><a href="https://plus.google.com/share?url=' . urlencode(get_permalink()) . '" onclick="return popup(this.href);"><img style="max-width: 100%;" src="'.home_url().'/wp-content/plugins/flodjishare/buttons/googleplus.png" border="0" alt="Ihren Google Plus-Kontakten zeigen" /></a></div>';
+		$outputa .= '<div class="fsbtnfloat"><a href="https://plus.google.com/share?url=' . urlencode(get_permalink()) . '" onclick="return popup(this.href);"><img style="max-width: 100%;" src="'.home_url().'/wp-content/plugins/flodjishare/buttons/googleplus.png" border="0" /></a></div>';
 		}
 		}
 		
@@ -480,17 +481,17 @@ global $wpdb, $post;
 		if ($option['metro']==true) {
 		if ($option['counter']==true){
 		$title = strip_tags(get_the_title());
-		$network='Xing';
+		$network= __('Xing', 'flodjishare');
 		$klicks = $wpdb->get_var("SELECT klicks FROM flodjiShareLinks WHERE title='$title' AND network='$network'");
 		if($klicks == ''){
 		$klicks = '0';
 		}
-		$outputa .= '<div class="fsleft"><a class="fsbase fsxi" href="/wp-content/plugins/flodjishare/klick.php?n='.$network.'&title='.urlencode(strip_tags(get_the_title())).'&fsurl='.urlencode($xing_link).'" target="_blank" rel="nofollow"><strong>Xing</strong></a><span class="fscounter"><strong>'.short_number($klicks).'</strong></span></div>';
+		$outputa .= '<div class="fsleft"><a class="fsbase fsxi" href="/wp-content/plugins/flodjishare/klick.php?n='.$network.'&title='.urlencode(strip_tags(get_the_title())).'&fsurl='.urlencode($xing_link).'" target="_blank" rel="nofollow"><strong>' . __('Xing', 'flodjishare') . '</strong></a><span class="fscounter"><strong>'.short_number($klicks).'</strong></span></div>';
 		} else {
-		$outputa .= '<div class="fsleft"><a class="fsbase fsxi" href="'.$xing_link.'" target="_blank" rel="nofollow"><strong>Xing</strong></a></div>';
+		$outputa .= '<div class="fsleft"><a class="fsbase fsxi" href="'.$xing_link.'" target="_blank" rel="nofollow"><strong>' . __('Xing', 'flodjishare') . '</strong></a></div>';
 		}
 		} else {
-		$outputa .= '<div class="fsbtnfloat"><a href="'.$xing_link.'" target="_blank" title="Ihren XING-Kontakten zeigen" rel="nofollow"><img style="max-width: 100%;" src="'.home_url().'/wp-content/plugins/flodjishare/buttons/xing.png" border="0" alt="Ihren XING-Kontakten zeigen" /></a></div>';
+		$outputa .= '<div class="fsbtnfloat"><a href="'.$xing_link.'" target="_blank" title="Ihren XING-Kontakten zeigen" rel="nofollow"><img style="max-width: 100%;" src="'.home_url().'/wp-content/plugins/flodjishare/buttons/xing.png" border="0" /></a></div>';
 		}
 		}
 		
@@ -499,17 +500,17 @@ global $wpdb, $post;
 		if ($option['metro']==true) {
 		if ($option['counter']==true){
 		$title = strip_tags(get_the_title());
-		$network='LikedIn';
+		$network= __('LinkedIn', 'flodjishare');
 		$klicks = $wpdb->get_var("SELECT klicks FROM flodjiShareLinks WHERE title='$title' AND network='$network'");
 		if($klicks == ''){
 		$klicks = '0';
 		}
-		$outputa .= '<div class="fsleft"><a class="fsbase fsli" target="_blank" rel="nofollow" href="/wp-content/plugins/flodjishare/klick.php?n='.$network.'&title='.urlencode(strip_tags(get_the_title())).'&fsurl='.urlencode($linkedin_link).'"><strong>LinkedIn</strong></a><span class="fscounter"><strong>'.short_number($klicks).'</strong></span></div>';
+		$outputa .= '<div class="fsleft"><a class="fsbase fsli" target="_blank" rel="nofollow" href="/wp-content/plugins/flodjishare/klick.php?n='.$network.'&title='.urlencode(strip_tags(get_the_title())).'&fsurl='.urlencode($linkedin_link).'"><strong>' . __('LinkedIn', 'flodjishare') . '</strong></a><span class="fscounter"><strong>'.short_number($klicks).'</strong></span></div>';
 		} else {
-		$outputa .= '<div class="fsleft"><a class="fsbase fsli" target="_blank" rel="nofollow" href="'.$linkedin_link.'"><strong>LinkedIn</strong></a></div>';
+		$outputa .= '<div class="fsleft"><a class="fsbase fsli" target="_blank" rel="nofollow" href="'.$linkedin_link.'"><strong>' . __('LinkedIn', 'flodjishare') . '</strong></a></div>';
 		}
 		} else {
-		$outputa .= '<div class="fsbtnfloat"><a href="'.$linkedin_link.'" target="_blank" title="Ihren LinkedIn Kontakten zeigen" rel="nofollow"><img style="max-width: 100%;" src="'.home_url().'/wp-content/plugins/flodjishare/buttons/linkedin.png" border="0" alt="Ihren LinkedIn Kontakten zeigen" /></a></div>';
+		$outputa .= '<div class="fsbtnfloat"><a href="'.$linkedin_link.'" target="_blank" title="Ihren LinkedIn Kontakten zeigen" rel="nofollow"><img style="max-width: 100%;" src="'.home_url().'/wp-content/plugins/flodjishare/buttons/linkedin.png" border="0" /></a></div>';
 		}
 		}
 		
@@ -518,17 +519,17 @@ global $wpdb, $post;
 		if ($option['metro']==true) {
 		if ($option['counter']==true){
 		$title = strip_tags(get_the_title());
-		$network='Pinterest';
+		$network= __('Pinterest', 'flodjishare');
 		$klicks = $wpdb->get_var("SELECT klicks FROM flodjiShareLinks WHERE title='$title' AND network='$network'");
 		if($klicks == ''){
 		$klicks = '0';
 		}
-		$outputa .= '<div class="fsleft"><a class="fsbase fspi" rel="nofollow" href="/wp-content/plugins/flodjishare/klick.php?n='.$network.'&title='.urlencode(strip_tags(get_the_title())).'&fsurl='.urlencode($pin_link).'" onclick="return popup(this.href);"><strong>Pinterest</strong></a><span class="fscounter"><strong>'.short_number($klicks).'</strong></span></div>';
+		$outputa .= '<div class="fsleft"><a class="fsbase fspi" rel="nofollow" href="/wp-content/plugins/flodjishare/klick.php?n='.$network.'&title='.urlencode(strip_tags(get_the_title())).'&fsurl='.urlencode($pin_link).'" onclick="return popup(this.href);"><strong>' . __('Pinterest', 'flodjishare') . '</strong></a><span class="fscounter"><strong>'.short_number($klicks).'</strong></span></div>';
 		} else {
-		$outputa .= '<div class="fsleft"><a class="fsbase fspi" rel="nofollow" href="'.$pin_link.'" onclick="return popup(this.href);"><strong>Pinterest</strong></a></div>';
+		$outputa .= '<div class="fsleft"><a class="fsbase fspi" rel="nofollow" href="'.$pin_link.'" onclick="return popup(this.href);"><strong>' . __('Pinterest', 'flodjishare') . '</strong></a></div>';
 		}
 		} else {
-		$outputa .= '<div class="fsbtnfloat"><a href="'.$pin_link.'" target="_blank" title="Auf Pinterest zeigen" rel="nofollow"><img style="max-width: 100%;" src="'.home_url().'/wp-content/plugins/flodjishare/buttons/pinterest.png" border="0" alt="Auf Pinterest zeigen" /></a></div>';
+		$outputa .= '<div class="fsbtnfloat"><a href="'.$pin_link.'" target="_blank" title="Auf Pinterest zeigen" rel="nofollow"><img style="max-width: 100%;" src="'.home_url().'/wp-content/plugins/flodjishare/buttons/pinterest.png" border="0" /></a></div>';
 		}
 		}
 		
@@ -537,17 +538,17 @@ global $wpdb, $post;
 		if ($option['metro']==true) {
 		if ($option['counter']==true){
 		$title = strip_tags(get_the_title());
-		$network='StumbleUpon';
+		$network= __('StumbleUpon', 'flodjishare');
 		$klicks = $wpdb->get_var("SELECT klicks FROM flodjiShareLinks WHERE title='$title' AND network='$network'");
 		if($klicks == ''){
 		$klicks = '0';
 		}
-		$outputa .= '<div class="fsleft"><a class="fsbase fssu" href="/wp-content/plugins/flodjishare/klick.php?n='.$network.'&title='.urlencode(strip_tags(get_the_title())).'&fsurl='.urlencode($stumble_link).'" target="_blank" title="Auf Stumbleupon zeigen" rel="nofollow"><strong>StumbleUpon</strong></a><span class="fscounter"><strong>'.short_number($klicks).'</strong></span></div>';
+		$outputa .= '<div class="fsleft"><a class="fsbase fssu" href="/wp-content/plugins/flodjishare/klick.php?n='.$network.'&title='.urlencode(strip_tags(get_the_title())).'&fsurl='.urlencode($stumble_link).'" target="_blank" title="Auf Stumbleupon zeigen" rel="nofollow"><strong>' . __('StumbleUpon', 'flodjishare') . '</strong></a><span class="fscounter"><strong>'.short_number($klicks).'</strong></span></div>';
 		} else {
-		$outputa .= '<div class="fsleft"><a class="fsbase fssu" href="'.$stumble_link.'" target="_blank" title="Auf Stumbleupon zeigen" rel="nofollow"><strong>StumbleUpon</strong></a></div>';
+		$outputa .= '<div class="fsleft"><a class="fsbase fssu" href="'.$stumble_link.'" target="_blank" rel="nofollow"><strong>' . __('StumbleUpon', 'flodjishare') . '</strong></a></div>';
 		}
 		} else {
-		$outputa .= '<div class="fsbtnfloat"><a href="'.$stumble_link.'" target="_blank" title="Auf Stumbleupon zeigen" rel="nofollow"><img style="max-width: 100%;" src="'.home_url().'/wp-content/plugins/flodjishare/buttons/stumbleupon.png" border="0" alt="Auf Stumbleupon zeigen" /></a></div>';
+		$outputa .= '<div class="fsbtnfloat"><a href="'.$stumble_link.'" target="_blank" rel="nofollow"><img style="max-width: 100%;" src="'.home_url().'/wp-content/plugins/flodjishare/buttons/stumbleupon.png" border="0" alt="Auf Stumbleupon zeigen" /></a></div>';
 		}
 		}
 		
@@ -556,26 +557,26 @@ global $wpdb, $post;
 		if ($option['metro']==true) {
 		if ($option['counter']==true){
 		$title = strip_tags(get_the_title());
-		$network='Tumblr.';
+		$network= __('Tumblr.', 'flodjishare');
 		$klicks = $wpdb->get_var("SELECT klicks FROM flodjiShareLinks WHERE title='$title' AND network='$network'");
 		if($klicks == ''){
 		$klicks = '0';
 		}
-		$outputa .= '<div class="fsleft"><a class="fsbase fstu" href="/wp-content/plugins/flodjishare/klick.php?n='.$network.'&title='.urlencode(strip_tags(get_the_title())).'&fsurl='.urlencode($tumblr_link).'" target="_blank" title="Auf tumblr zeigen" rel="nofollow"><strong>Tumblr.</strong></a><span class="fscounter"><strong>'.short_number($klicks).'</strong></span></div>';
+		$outputa .= '<div class="fsleft"><a class="fsbase fstu" href="/wp-content/plugins/flodjishare/klick.php?n='.$network.'&title='.urlencode(strip_tags(get_the_title())).'&fsurl='.urlencode($tumblr_link).'" target="_blank" rel="nofollow"><strong>' . __('Tumblr.', 'flodjishare') . '</strong></a><span class="fscounter"><strong>'.short_number($klicks).'</strong></span></div>';
 		} else {
-		$outputa .= '<div class="fsleft"><a class="fsbase fstu" href="'.$tumblr_link.'" target="_blank" title="Auf tumblr zeigen" rel="nofollow"><strong>Tumblr.</strong></a></div>';
+		$outputa .= '<div class="fsleft"><a class="fsbase fstu" href="'.$tumblr_link.'" target="_blank" rel="nofollow"><strong>' . __('Tumblr.', 'flodjishare') . '</strong></a></div>';
 		}
 		} else {
-		$outputa .= '<div class="fsbtnfloat"><a href="'.$tumblr_link.'" target="_blank" title="Auf tumblr zeigen" rel="nofollow"><img style="max-width: 100%;" src="'.home_url().'/wp-content/plugins/flodjishare/buttons/tumblr.png" border="0" alt="Auf tumblr zeigen" /></a></div>';
+		$outputa .= '<div class="fsbtnfloat"><a href="'.$tumblr_link.'" target="_blank" rel="nofollow"><img style="max-width: 100%;" src="'.home_url().'/wp-content/plugins/flodjishare/buttons/tumblr.png" border="0" alt="Auf tumblr zeigen" /></a></div>';
 		}
 		}
 
 		$outputa .= '</div><div class="fsclear"></div>';
 		if ($option['privacy']==true) {
-		$outputa .= '<span class="fsprivacy" title="'.stripslashes($option['privacy_text']).'"><u>Datenschutz Hinweis</u></span>';
+		$outputa .= '<span class="fsprivacy" title="'.stripslashes($option['privacy_text']).'"><u>' . __('Datenschutz Hinweis', 'flodjishare') . '</u></span>';
 		}
 		if ($option['supportlink']==false) {
-		$outputa .= '<span class="fssl">Social Sharing powered by <a target="_blank" href="http://flodji.de/?utm_source=flodjiShareWP&utm_medium=SupportLink&utm_campaign=flodjiShareWP"><u>flodjiShare</u></a></span>';
+		$outputa .= '<span class="fssl">' . __('Social Sharing powered by', 'flodjishare') . ' <a target="_blank" href="http://flodji.de/?utm_source=flodjiShareWP&utm_medium=SupportLink&utm_campaign=flodjiShareWP"><u>flodjiShare</u></a></span>';
 		}
 		$outputa .= '<br />';
 
@@ -846,12 +847,12 @@ $fb = '<a target="_blank" href="https://www.facebook.com/pages/Flodjide/41599685
 $tw = '<a target="_blank" href="http://www.twitter.com/flodji"><img src="'.home_url().'/wp-content/plugins/flodjishare/buttons/twitter.png" /></a> ';
 $gp = '<a target="_blank" href="https://plus.google.com/104542622643572083517/"><img src="'.home_url().'/wp-content/plugins/flodjishare/buttons/googleplus.png" /></a> ';
 $fd = '<a target="_blank" href="http://flodji.de/feed/"><img src="'.home_url().'/wp-content/plugins/flodjishare/buttons/rss.png" /></a>';
-return '<h3>Folge mir:</h3>' . $fb . $tw . $gp . $fd;
+return '<h3>' . __('Folge mir', 'flodjishare') . ':</h3>' . $fb . $tw . $gp . $fd;
 }
 
 function spendPayPalFlodjiShare(){
 $paypalbutton = '<a target="_blank" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=K9U25CKQNA5GL"><img src="'.home_url().'/wp-content/plugins/flodjishare/buttons/donate.png" height="32"/></a>';
-return '<h3>Spenden:</h3>' . $paypalbutton;
+return '<h3>' . __('Spenden', 'flodjishare') . ':</h3>' . $paypalbutton;
 }
 
 function flodjishare_metabox() {
@@ -890,24 +891,24 @@ display: inline-block;
 width: 300px;
 }
 </style>
-<p>Aus diesen Daten werden die Meta-Tags f&uuml;r <strong>Facebook</strong> <small><a target="_blank" href="http://ogp.me/"><u>(Opengraph)</u></a></small>, <strong>Twitter</strong> <small><a target="_blank" href="https://dev.twitter.com/docs/cards"><u>(Twitter Cards)</u></a></small>, <strong>Google (Google+) und Suchergebnisse</strong> z.B. bei Google, Yahoo oder Bing <small><a target="_blank" href="https://support.google.com/webmasters/answer/99170?hl=de"><u>(Rich Snippets)</u></a></small> erzeugt. Werden hier keine Daten eingetragen, dann werden der Beitrags/Seitentitel, -auszug und die URL des Post-Thumbnails bzw. des ersten Bildes verwendet.</p>
+<p><?php echo __('Aus diesen Daten werden die Meta-Tags für <strong>Facebook</strong> <small><a target="_blank" href="http://ogp.me/"><u>(Opengraph)</u></a></small>, <strong>Twitter</strong> <small><a target="_blank" href="https://dev.twitter.com/docs/cards"><u>(Twitter Cards)</u></a></small>, <strong>Google (Google+) und Suchergebnisse</strong> z.B. bei Google, Yahoo oder Bing <small><a target="_blank" href="https://support.google.com/webmasters/answer/99170?hl=de"><u>(Rich Snippets)</u></a></small> erzeugt. Werden hier keine Daten eingetragen, dann werden der Beitrags/Seitentitel, -auszug und die URL des Post-Thumbnails bzw. des ersten Bildes verwendet.</p>', 'flodjishare'); ?>
     <p>
-        <label class="flodjishare" for="fs_title">&Uuml;berschrift:</label>
-        <input class="flodjishare" type="flodjisharebox_breite" name="_flodjisharebox_fs_title" id="fs_title" value="<?php echo $_flodjisharebox_fs_title[0]; ?>" /><small>Max. 70 Zeichen</small>
+        <label class="flodjishare" for="fs_title"><?php echo __('Überschrift', 'flodjishare'); ?>:</label>
+        <input class="flodjishare" type="flodjisharebox_breite" name="_flodjisharebox_fs_title" id="fs_title" value="<?php echo $_flodjisharebox_fs_title[0]; ?>" /><small><?php echo __('Max. 70 Zeichen', 'flodjishare'); ?></small>
     </p>
     <p>
-        <label class="flodjishare" for="fs_desc">Beschreibung:</label>
-        <input class="flodjishare" type="flodjisharebox_breite" name="_flodjisharebox_fs_desc" id="fs_desc" value="<?php echo $_flodjisharebox_fs_desc[0]; ?>" /><small>Max. 140 Zeichen</small>
+        <label class="flodjishare" for="fs_desc"><?php echo __('Beschreibung', 'flodjishare'); ?>:</label>
+        <input class="flodjishare" type="flodjisharebox_breite" name="_flodjisharebox_fs_desc" id="fs_desc" value="<?php echo $_flodjisharebox_fs_desc[0]; ?>" /><small><?php echo __('Max. 140 Zeichen', 'flodjishare'); ?></small>
     </p>
     <p>
-        <label class="flodjishare" for="fs_image">Bild-URL:</label>
+        <label class="flodjishare" for="fs_image"><?php echo __('Bild-URL', 'flodjishare'); ?>:</label>
         <input class="flodjishare" type="flodjisharebox_breite" name="_flodjisharebox_fs_image" id="fs_image" value="<?php echo $_flodjisharebox_fs_image[0]; ?>" />
     </p>
-	<p><strong>So k&ouml;nnten Deine Suchergebnisse aktuell etwa aussehen:</strong> <small>(Beitrag/Seite speichern um zu aktualisieren)</small></p>
+	<p><strong><?php echo __('So könnten Deine Suchergebnisse aktuell aussehen', 'flodjishare'); ?>:</strong> <small><?php echo __('(Beitrag / Seite speichern um zu aktualisieren)', 'flodjishare'); ?></small></p>
 	<p style="max-width:512px;background-color:white;border:thin solid #ccc;padding:3px;"><span style="color:#2518b5;text-decoration:underline;"><?php if($_flodjisharebox_fs_title[0] != ''){ echo strip_tags(flodjiShareShortText($_flodjisharebox_fs_title[0], 70)); } else { echo strip_tags(flodjiShareShortText(get_the_title(), 70)); } ?></span><br />
 	<span style="color:green"><?php echo get_permalink(); ?></span><br />
 	<?php if($_flodjisharebox_fs_desc[0] != ''){ echo strip_tags(flodjiShareShortText($_flodjisharebox_fs_desc[0], 140)); } else { echo strip_tags(flodjiShareShortText(get_the_excerpt(), 140)); } ?></p>
-	<p><strong>So k&ouml;nnte dieser Beitrag beim Teilen auf Facebook, Twitter und Google + aussehen:</strong> <small>(Beitrag/Seite speichern um zu aktualisieren)</small></p>
+	<p><strong><?php echo __('So könnte dieser Beitrag beim Teilen auf Facebook, Twitter und Google + aussehen', 'flodjishare'); ?>:</strong> <small><?php echo __('(Beitrag / Seite speichern um zu aktualisieren)', 'flodjishare'); ?></small></p>
 	<?php if($_flodjisharebox_fs_image[0] != ''){ ?><img style="float:left;width:150px;margin-right:3px;" src="<?php echo $_flodjisharebox_fs_image[0]; ?>" /><?php } ?><p style="max-width:512px;background-color:white;border:thin solid #ccc;min-height:100px;"><span style="color:#2518b5;text-decoration:underline;"><?php if($_flodjisharebox_fs_title[0] != ''){ echo strip_tags(flodjiShareShortText($_flodjisharebox_fs_title[0], 70)); } else { echo strip_tags(flodjiShareShortText(get_the_title(), 70)); } ?></span><br />
 	<span style="color:green"><?php echo get_permalink(); ?></span><br />
 	<?php if($_flodjisharebox_fs_desc[0] != ''){ echo strip_tags(flodjiShareShortText($_flodjisharebox_fs_desc[0], 140)); } else { echo strip_tags(flodjiShareShortText(get_the_excerpt(), 140)); } ?></p>
@@ -948,7 +949,7 @@ add_action( 'save_post', 'flodjishare_meta_box_save_meta' );
 function flodjishare_options(){
 	$option_name = 'flodjishare';
 	if (!current_user_can('manage_options')) {
-		wp_die( __('You do not have sufficient permissions to access this page.') );
+		wp_die( __('Deine Benutzerrechte reichen nicht aus um diese Seite anzuzeigen.', 'flodjishare') );
 	}
 	if( isset($_POST['flodjishare_position'])) {
 		$option = array();
@@ -1004,7 +1005,7 @@ function flodjishare_options(){
 		if ($_POST['flodjishare_show_'.$post_type->name]=='on') { $option[$post_type->name] = true; }
 		}
 		update_option($option_name, json_encode($option));
-		$outputa .= '<div class="updated"><p><strong>'.__('Einstellungen gespeichert.', 'flodjishare' ).'</strong></p></div>';
+		$outputa .= '<div class="updated"><p><strong>' . __('Einstellungen gespeichert.', 'flodjishare' ) . '</strong></p></div>';
 	}
 	$option = array();
 	$option_string = get_option($option_name);
@@ -1112,14 +1113,14 @@ function flodjishare_options(){
 	}
 	$outputa .= '
 	<div style="width:600px;float:left;">
-		<h2>flodjiShare Einstellungen</h2>
+		<h2>' . __('flodjiShare Einstellungen', 'flodjishare') . '</h2>
 	<table><tr><td style="width:200px;">'.followMeFlodjiShare().'</td><td>'.spendPayPalFlodjiShare().'</td></tr></table><br />
 		<form name="form1" method="post" action="">
 		<table>
-		<tr><td valign="top"><strong>'.__("flodjiShare hier aktivieren", 'flodjishare' ).':</strong></td>
+		<tr><td valign="top"><strong>' . __("flodjiShare hier aktivieren", 'flodjishare' ) . ':</strong></td>
 		<td>'
 		.' <input type="checkbox" name="flodjishare_show_posts" '.$show_in_posts.'> '
-		. __("Einzelne Beitr&auml;ge", 'flodjishare' ).'<br />'
+		. __("Einzelne Beiträge", 'flodjishare' ).'<br />'
 		.' <input type="checkbox" name="flodjishare_show_pages" '.$show_in_pages.'> '
 		. __("Seiten", 'flodjishare' ).'<br />'
 		.' <input type="checkbox" name="flodjishare_show_home" '.$show_in_home.'> '
@@ -1129,7 +1130,7 @@ function flodjishare_options(){
 		$operator = 'and';
 		$post_types=get_post_types($args,$output,$operator);
 		if(!$post_types){
-		$outputa .= 'Keine Custom-Post-Types vorhanden.<br /><small><a target="_blank" href="http://codex.wordpress.org/Post_Types">Was ist das? (engl.)</a></small>';
+		$outputa .= __('Keine Custom Post Types vorhanden', 'flodjishare') . '<br /><small><a target="_blank" href="http://codex.wordpress.org/Post_Types">' . __('Was ist das? (engl.)', 'flodjishare') . '</a></small>';
 		} else {
 		foreach ($post_types  as $post_type ){
 		$outputa .= ' <input type="checkbox" name="flodjishare_show_'.$post_type->name.'" '.$checked[$post_type->name].'> '
@@ -1138,179 +1139,179 @@ function flodjishare_options(){
 		}
 		$outputa .= '<br />
 		<input type="checkbox" name="flodjishare_show_category" '.$show_in_category.'> ' 
-		. __("Kategorien", 'flodjishare' ).'<br />
+		. __("Kategorien", 'flodjishare' ) . '<br />
 		<input type="checkbox" name="flodjishare_show_search" '.$show_in_search.'> ' 
-		. __("Suchergebnisse", 'flodjishare' ).'<br />
+		. __("Suchergebnisse", 'flodjishare' ) . '<br />
 		<input type="checkbox" name="flodjishare_show_archive" '.$show_in_archive.'> ' 
-		. __("Archive", 'flodjishare' ).'<br /><br /></td></tr>
+		. __("Archive", 'flodjishare' ) . '<br /><br /></td></tr>
 		
-		<tr><td valign="top"><strong>'.__("Beitr&auml;ge ausschlie&szlig;en", 'flodjishare' ).':</strong></td>
+		<tr><td valign="top"><strong>' . __('Beiträge ausschließen', 'flodjishare' ) . ':</strong></td>
 		<td style="padding-bottom:20px;">
 		<input type="text" name="flodjishare_skip_single" value="'.$option['skip_single'].'" size="50"><br />
-		<span class="description">'.__("Trage hier die IDs der Beitr&auml;ge / Custom Post Types ein, in denen keine Share Buttons angezeigt und keine Meta Tags genereiert  werden sollen. (Mehrere durch Komma getrennt.)<br />", 'flodjishare' ).'</span>
+		<span class="description">' . __('Trage hier die IDs der Beiträge / Custom Post Types ein, in denen keine Share Buttons angezeigt und keine Meta Tags genereiert  werden sollen. (Mehrere durch Komma getrennt.)', 'flodjishare' ) . '<br /></span>
 		</td></tr>
 		
-		<tr><td valign="top"><strong>'.__("Seiten ausschlie&szlig;en", 'flodjishare' ).':</strong></td>
+		<tr><td valign="top"><strong>' . __('Seiten ausschließen', 'flodjishare' ).':</strong></td>
 		<td style="padding-bottom:20px;">
 		<input type="text" name="flodjishare_skip_page" value="'.$option['skip_page'].'" size="50"><br />
-		<span class="description">'.__("Trage hier die IDs der Seiten ein, in denen keine Share Buttons angezeigt und keine Meta Tags genereiert  werden sollen. (Mehrere durch Komma getrennt.)<br />", 'flodjishare' ).'</span>
+		<span class="description">' . __('Trage hier die IDs der Seiten ein, in denen keine Share Buttons angezeigt und keine Meta Tags genereiert  werden sollen. (Mehrere durch Komma getrennt.)', 'flodjishare' ) . '<br /></span>
 		</td></tr>
 		
-		<tr><td valign="top"><strong>'.__("Kategorien ausschlie&szlig;en", 'flodjishare' ).':</strong></td>
+		<tr><td valign="top"><strong>'.__('Kategorien ausschließen', 'flodjishare' ) . ':</strong></td>
 		<td style="padding-bottom:20px;">
 		<input type="text" name="flodjishare_skip_cat" value="'.$option['skip_cat'].'" size="50"><br />
-		<span class="description">'.__("Trage hier die IDs der Kategorien ein, in deren &Uuml;bersicht keine Share Buttons angezeigt und keine Meta Tags genereiert werden sollen. (Mehrere durch Komma getrennt.)<br />", 'flodjishare' ).'</span>
+		<span class="description">' . __('Trage hier die IDs der Kategorien ein, in deren &Uuml;bersicht keine Share Buttons angezeigt und keine Meta Tags genereiert werden sollen. (Mehrere durch Komma getrennt.)', 'flodjishare' ) . '<br /></span>
 		</td></tr>
 		
-		<tr><td valign="top"><strong>'.__("flodjiShare Buttons", 'flodjishare' ).':</strong></td>
+		<tr><td valign="top"><strong>' . __('flodjiShare Buttons', 'flodjishare' ) . ':</strong></td>
 		<td>'
 		.' <input type="checkbox" name="flodjishare_active_facebook" '.$active_facebook.'> '
-		. __("Facebook Share", 'flodjishare' ).' &nbsp;&nbsp;<br />'
+		. __('Facebook Share', 'flodjishare' ).' &nbsp;&nbsp;<br />'
 		.' <input type="checkbox" name="flodjishare_active_twitter" '.$active_twitter.'> '
-		. __("Twitter", 'flodjishare' ).' &nbsp;&nbsp;<br />'
+		. __('Twitter', 'flodjishare' ).' &nbsp;&nbsp;<br />'
 		.' <input type="checkbox" name="flodjishare_active_digg" '.$active_digg.'> '
-		. __("Digg", 'flodjishare' ).' &nbsp;&nbsp;<br />'
+		. __('Digg', 'flodjishare' ).' &nbsp;&nbsp;<br />'
 		.' <input type="checkbox" name="flodjishare_active_delicious" '.$active_delicious.'> '
-		. __("Delicious", 'flodjishare' ).' &nbsp;&nbsp;<br />'
+		. __('Delicious', 'flodjishare' ).' &nbsp;&nbsp;<br />'
 		.' <input type="checkbox" name="flodjishare_active_vz" '.$active_vz.'> '
-		. __("VZ-Netzwerke", 'flodjishare' ).' &nbsp;&nbsp;<br />'
+		. __('VZ-Netzwerke', 'flodjishare' ).' &nbsp;&nbsp;<br />'
 		.' <input type="checkbox" name="flodjishare_active_xing" '.$active_xing.'> '
-		. __("Xing", 'flodjishare' ).' &nbsp;&nbsp;<br />'
+		. __('Xing', 'flodjishare' ).' &nbsp;&nbsp;<br />'
 		.' <input type="checkbox" name="flodjishare_active_gplus" '.$active_gplus.'> '
-		. __("Google Plus", 'flodjishare' ).' &nbsp;&nbsp;<br />'		
+		. __('Google Plus', 'flodjishare' ).' &nbsp;&nbsp;<br />'		
 		.' <input type="checkbox" name="flodjishare_active_linkedin" '.$active_linkedin.'> '
-		. __("LinkedIn", 'flodjishare' ).' &nbsp;&nbsp;<br />'
+		. __('LinkedIn', 'flodjishare' ).' &nbsp;&nbsp;<br />'
 		.' <input type="checkbox" name="flodjishare_active_pinterest" '.$active_pinterest.'> '
-		. __("Pinterest", 'flodjishare' ).' &nbsp;&nbsp;<br />'
+		. __('Pinterest', 'flodjishare' ).' &nbsp;&nbsp;<br />'
 		.' <input type="checkbox" name="flodjishare_active_stumbleupon" '.$active_stumbleupon.'> '
-		. __("Stumbleupon", 'flodjishare' ).' &nbsp;&nbsp;<br />'
+		. __('Stumbleupon', 'flodjishare' ).' &nbsp;&nbsp;<br />'
 		.' <input type="checkbox" name="flodjishare_active_flattr" '.$active_flattr.'> '
-		. __("Flattr", 'flodjishare' ).' &nbsp;&nbsp;<br />'
+		. __('Flattr', 'flodjishare' ).' &nbsp;&nbsp;<br />'
 		.' <input type="checkbox" name="flodjishare_active_tumblr" '.$active_tumblr.'> '
-		. __("Tumblr", 'flodjishare' ).' &nbsp;&nbsp;<br />'	
+		. __('Tumblr', 'flodjishare' ).' &nbsp;&nbsp;<br />'	
 		.'<br /></td></tr>
-		<tr><td valign="top"><strong>'.__("Position", 'flodjishare' ).':</strong></td>
+		<tr><td valign="top"><strong>'.__('Position', 'flodjishare' ).':</strong></td>
 		<td><select name="flodjishare_position">
-			<option value="ueber" '.$sel_above.' > '.__('&Uuml;ber dem Beitrag', 'flodjishare' ).'</option>
+			<option value="ueber" '.$sel_above.' > '.__('Über dem Beitrag', 'flodjishare' ).'</option>
 			<option value="unter" '.$sel_below.' > '.__('Unter dem Beitrag', 'flodjishare' ).'</option>
 			<option value="both" '.$sel_both.' > '.__('Beides', 'flodjishare' ).'</option>
 			<option value="shortcode" '.$sel_short.' > '.__('Nur bei Shortcode [flodjishare]', 'flodjishare' ).'</option>
 			</select><br /> 
 		<br /></td></tr>
 		
-		<tr><td valign="top"><strong>'.__("Design", 'flodjishare' ).':</strong></td>
+		<tr><td valign="top"><strong>'.__('Design', 'flodjishare' ).':</strong></td>
 		<td><input type="checkbox" name="flodjishare_active_metro" '.$active_metro.'> '
-		. __("Metro Design aktivieren", 'flodjishare' ).'<br /><input type="checkbox" name="flodjishare_active_counter" '.$active_counter.'> '
-		. __("Klickz&auml;hler aktivieren (nur Metro Design)", 'flodjishare' ).'&nbsp;&nbsp;<br /><br /></td></tr>
+		. __('Metro Design aktivieren', 'flodjishare' ).'<br /><input type="checkbox" name="flodjishare_active_counter" '.$active_counter.'> '
+		. __('Klickzähler aktivieren (nur Metro Design)', 'flodjishare' ).'&nbsp;&nbsp;<br /><br /></td></tr>
 		
-		<tr><td valign="top"><strong>'.__("&Uuml;berschrift", 'flodjishare' ).':</strong></td>
+		<tr><td valign="top"><strong>'.__('Überschrift', 'flodjishare' ).':</strong></td>
 		<td style="padding-bottom:20px;">
 		<input type="text" name="flodjishare_intro_text" value="'.stripslashes($option['intro_text']).'" size="50"><br />
-		<span class="description">'.__("Dieser Text steht sp&auml;ter &uuml;ber den Share Buttons (z.B. Diesen Beitrag teilen...).<br />", 'flodjishare' ).'</span>
+		<span class="description">'.__('Dieser Text steht später über den Share Buttons (z.B. Diesen Beitrag teilen...).', 'flodjishare' ).'<br /></span>
 		</td></tr>
 		
-		<tr><td valign="top"><strong>'.__("Extras", 'flodjishare' ).':</strong></td>
+		<tr><td valign="top"><strong>'.__('Extras', 'flodjishare' ).':</strong></td>
 		<td><input type="checkbox" name="flodjishare_active_opengraph" '.$active_opengraph.'> '
-		. __("Opengraph Support", 'flodjishare' ).' &nbsp;&nbsp;<br />
-		<span class="description"><small>'.__("Diese Tags werden z.B. von Facebook zum Teilen von Beitr&auml;gen ausgelesen.", 'flodjishare' ).'</small></span><br />
+		. __('Opengraph Support', 'flodjishare' ).' &nbsp;&nbsp;<br />
+		<span class="description"><small>'.__('Diese Tags werden z.B. von Facebook zum Teilen von Beiträgen ausgelesen.', 'flodjishare' ).'</small></span><br />
 		
 		<input type="checkbox" name="flodjishare_active_richsnippets" '.$active_richsnippets.'> '
-		. __("Rich Snippets Support", 'flodjishare' ).' &nbsp;&nbsp;<br />
+		. __('Rich Snippets Support', 'flodjishare' ).' &nbsp;&nbsp;<br />
 		<span class="description"><small>'.__("Diese Tags werden von Suchmaschinen zum Indexieren und z.B. von Google Plus zum Teilen von Beitr&auml;gen ausgelesen.", 'flodjishare' ).'</small></span><br />
 
 		<input type="checkbox" name="flodjishare_active_twittercards" '.$active_twittercards.'> '
-		. __("Twitter Card Support", 'flodjishare' ).' &nbsp;&nbsp;<br />
-		<span class="description"><small>'.__("Diese Tags werden von Twitter zum Teilen von Beitr&auml;gen ausgelesen.", 'flodjishare' ).'</small></span><br />
+		. __('Twitter Card Support', 'flodjishare' ).' &nbsp;&nbsp;<br />
+		<span class="description"><small>'.__('Diese Tags werden von Twitter zum Teilen von Beiträgen ausgelesen.', 'flodjishare' ).'</small></span><br />
 		
 		<input type="checkbox" name="flodjishare_active_metabox" '.$active_metabox.'> '
-		. __("Metaboxen aktivieren", 'flodjishare' ).' &nbsp;&nbsp;<br />
-		<span class="description"><small>'.__("Im Editor wird eine Metabox zum Anpassen der Opengraph, Rich Snippets und Twitter Cards Meta Tags angezeigt.", 'flodjishare' ).'</small></span><br />
+		. __('Metaboxen aktivieren', 'flodjishare' ).' &nbsp;&nbsp;<br />
+		<span class="description"><small>'.__('Im Editor wird eine Metabox zum Anpassen der Opengraph, Rich Snippets und Twitter Cards Meta Tags angezeigt.', 'flodjishare' ).'</small></span><br />
 		
 		<input type="checkbox" name="flodjishare_active_metadesc" '.$active_metadesc.'> '
-		. __("Meta Description Tag aktivieren", 'flodjishare' ).' &nbsp;&nbsp;<br />
-		<span class="description"><small>'.__("Aktiviert das Meta Description Tag.", 'flodjishare' ).'</small></span><br />
+		. __('Meta Description Tag aktivieren', 'flodjishare' ).' &nbsp;&nbsp;<br />
+		<span class="description"><small>'.__('Aktiviert das Meta Description Tag.', 'flodjishare' ).'</small></span><br />
 		
 		<input type="checkbox" name="flodjishare_active_privacy" '.$active_privacy.'> '
-		. __("Datenschutzhinweis anzeigen", 'flodjishare' ).' &nbsp;&nbsp;<br />
-		<span class="description"><small>'.__("Zeigt einen kleinen Hoverlink mit Datenschutzhinweisen unter den Share Buttons an. Der Hinweistext muss weiter unten noch eingegeben werden.", 'flodjishare' ).'</small></span><br />
+		. __('Datenschutzhinweis anzeigen', 'flodjishare' ).' &nbsp;&nbsp;<br />
+		<span class="description"><small>'.__('Zeigt einen kleinen Hoverlink mit Datenschutzhinweisen unter den Share Buttons an. Der Hinweistext muss weiter unten noch eingegeben werden.', 'flodjishare' ).'</small></span><br />
 		
 		<input type="checkbox" name="flodjishare_active_googleAuthor" '.$active_gplusauthor.'> '
-		. __("Google Authorship Markup", 'flodjishare' ).' &nbsp;&nbsp;<br />
-		<span class="description"><small>'.__("F&uuml;gt das Google Authorship Markup Tag f&uuml;r die Anzeige von Autorenfotos in den Suchergebnissen in den Quellcode ein.", 'flodjishare' ).'</small></span><br />
+		. __('Google Authorship Markup', 'flodjishare' ).' &nbsp;&nbsp;<br />
+		<span class="description"><small>'.__('Fügt das Google Authorship Markup Tag für die Anzeige von Autorenfotos in den Suchergebnissen in den Quellcode ein.', 'flodjishare' ).'</small></span><br />
 		
 		</td></tr>
 		
-		<tr><td valign="top"><strong>'.__("Google Plus Page ID", 'flodjishare' ).':</strong></td>
+		<tr><td valign="top"><strong>'.__('Google Plus Page ID', 'flodjishare' ).':</strong></td>
 		<td style="padding-bottom:20px;">
 		<input type="text" name="flodjishare_gplus_page" value="'.stripslashes($option['gplusidpage']).'" size="50"><br />
-		<span class="description">'.__("Trage hier die ID Deiner Google Plus Seite ein.", 'flodjishare' ).'</span><br />
+		<span class="description">'.__('Trage hier die ID Deiner Google Plus Seite ein.', 'flodjishare' ).'</span><br />
 		</td></tr>
 		
-		<tr><td valign="top"><strong>'.__("Google Plus User ID", 'flodjishare' ).':</strong></td>
+		<tr><td valign="top"><strong>'.__('Google Plus User ID', 'flodjishare' ).':</strong></td>
 		<td style="padding-bottom:20px;">
 		<input type="text" name="flodjishare_gplus_user" value="'.stripslashes($option['gplusiduser']).'" size="50"><br />
-		<span class="description">'.__("Trage hier die ID Deines pers&ouml;nlichen Google Plus Accounts ein.", 'flodjishare' ).'</span><br />
+		<span class="description">'.__('Trage hier die ID Deines pers&ouml;nlichen Google Plus Accounts ein.', 'flodjishare' ).'</span><br />
 		</td></tr>
 		
-		<tr><td valign="top"><strong>'.__("Flattr ID", 'flodjishare' ).':</strong></td>
+		<tr><td valign="top"><strong>'.__('Flattr ID', 'flodjishare' ).':</strong></td>
 		<td style="padding-bottom:20px;">
 		<input type="text" name="flodjishare_flattr_id" value="'.stripslashes($option['flattr_id']).'" size="50"><br />
-		<span class="description">'.__("Trage hier Deine Flattr ID ein. Diese wird f&uuml;r den Flattr Button ben&ouml;tigt.", 'flodjishare' ).'</span><br />
+		<span class="description">'.__('Trage hier Deine Flattr ID ein. Diese wird für den Flattr Button benötigt.', 'flodjishare' ).'</span><br />
 		</td></tr>
 		
-		<tr><td valign="top"><strong>'.__("Twitter Name", 'flodjishare' ).':</strong></td>
+		<tr><td valign="top"><strong>'.__('Twitter Name', 'flodjishare' ).':</strong></td>
 		<td style="padding-bottom:20px;">
 		<input type="text" name="flodjishare_twitter_text" value="'.stripslashes($option['twitter_text']).'" size="50"><br />
-		<span class="description">'.__("Trage hier Deinen Twitter Usernamen ein. Dieser wird dann in den Twitter Cards (wenn aktiviert)<br />und am Ende der Tweets erscheinen, z.B. (via @Dein Twitter Name).", 'flodjishare' ).'</span><br />
+		<span class="description">'.__('Trage hier Deinen Twitter Usernamen ein. Dieser wird dann in den Twitter Cards (wenn aktiviert)<br />und am Ende der Tweets erscheinen, z.B. (via @Dein Twitter Name).', 'flodjishare' ).'</span><br />
 		</td></tr>
 
-		<tr><td valign="top"><strong>'.__("Twitter Seite", 'flodjishare' ).':</strong></td>
+		<tr><td valign="top"><strong>'.__('Twitter Seite', 'flodjishare' ).':</strong></td>
 		<td style="padding-bottom:20px;">
 		<input type="text" name="twitsite" value="'.stripslashes($option['twitsite']).'" size="50"><br />
-		<span class="description">'.__("Trage hier den Twitter Usernamen Deiner Worspress Seite ein. Falls nicht vorhanden, trage einfach Deinen Twitter Usernamen ein.", 'flodjishare' ).'</span><br />
+		<span class="description">'.__('Trage hier den Twitter Usernamen Deiner Worspress Seite ein. Falls nicht vorhanden, trage einfach Deinen Twitter Usernamen ein.', 'flodjishare' ).'</span><br />
 		</td></tr>
 		
-		<tr><td valign="top"><strong>'.__("Ersatzbild", 'flodjishare' ).':</strong></td>
+		<tr><td valign="top"><strong>'.__('Ersatzbild', 'flodjishare' ).':</strong></td>
 		<td style="padding-bottom:20px;">
 		<input type="text" name="altimg" value="'.stripslashes($option['altimg']).'" size="50"><br />
-		<span class="description">'.__("Trage hier den Link zu einem Ersatzbild ein. Dieses wird beim Teilen verwendet, wenn im Artikel kein Bild vorhanden ist.", 'flodjishare' ).'</span><br />
+		<span class="description">'.__('Trage hier die URL zu einem Ersatzbild ein. Dieses wird beim Teilen verwendet, wenn im Artikel kein Bild vorhanden ist.', 'flodjishare' ).'</span><br />
 		</td></tr>
 		
-		<tr><td valign="top"><strong>'.__("Facebook AppId", 'flodjishare' ).':</strong></td>
+		<tr><td valign="top"><strong>'.__('Facebook AppId', 'flodjishare' ).':</strong></td>
 		<td style="padding-bottom:20px;">
 		<input type="text" name="flodjishare_fb_app_id" value="'.stripslashes($option['fb_app_id']).'" size="50"><br />
-		<span class="description">'.__("Trage hier Deine Facebook AppId ein.", 'flodjishare' ).'</span><br />
+		<span class="description">'.__('Trage hier Deine Facebook AppId ein.', 'flodjishare' ).'</span><br />
 		</td></tr>
 		
-		<tr><td valign="top"><strong>'.__("Facebook Admin", 'flodjishare' ).':</strong></td>
+		<tr><td valign="top"><strong>'.__('Facebook Admin', 'flodjishare' ).':</strong></td>
 		<td style="padding-bottom:20px;">
 		<input type="text" name="flodjishare_fb_admin" value="'.stripslashes($option['fb_admin']).'" size="50"><br />
-		<span class="description">'.__("Trage hier Deinen Facebook Usernamen ein.", 'flodjishare' ).'</span><br />
+		<span class="description">'.__('Trage hier Deinen Facebook Usernamen ein.', 'flodjishare' ).'</span><br />
 		</td></tr>		
 			
-		<tr><td valign="top"><strong>'.__("Datenschutzhinweistext", 'flodjishare' ).':</strong></td>
+		<tr><td valign="top"><strong>'.__('Datenschutzhinweistext', 'flodjishare' ).':</strong></td>
 		<td style="padding-bottom:20px;">
 		<textarea name="flodjishare_privacy_text" value="'.stripslashes($option['privacy_text']).'" cols="50" rows="5">'.stripslashes($option['privacy_text']).'</textarea><br />
-		<span class="description">'.__("Trage hier den Datenschutzhinweistext ein.", 'flodjishare' ).'</span><br />
+		<span class="description">'.__('Trage hier den Datenschutzhinweistext ein.', 'flodjishare' ).'</span><br />
 		</td></tr>
 		
-		<tr><td valign="top"><strong>'.__("Supportlink", 'flodjishare' ).':</strong></td>
+		<tr><td valign="top"><strong>'.__('Supportlink', 'flodjishare' ).':</strong></td>
 		<td style="padding-bottom:20px;">
 		<input type="checkbox" name="flodjishare_active_supportlink" '.$active_supportlink.'> '
-		. __("Supportlink deaktivieren", 'flodjishare' ).'&nbsp;&nbsp;<br /></td></tr>
+		. __('Supportlink deaktivieren', 'flodjishare' ).'&nbsp;&nbsp;<br /></td></tr>
 		
 		</table>
 		<hr />
 		<p class="submit">
-			<input type="submit" name="Submit" class="button-primary" value="'.esc_attr('Speichern').'" />
+			<input type="submit" name="Submit" class="button-primary" value="'.esc_attr( __('Speichern', 'flodjishare')).'" />
 		</p>
 		</form>
-		Bei Problemen oder Fragen kannst Du gern das <a target="_blank" href="http://flodji.de/forum/">Support Forum</a> besuchen.</p>
-		<p>Die Buttons stammen von dieser <a target="_blank" href="http://wplift.com/freebie-70-32px-custom-social-media-website-icons">Seite</a>. | Das Men&uuml;-Icon habe ich <a target="_blank" href="http://salleedesign.com/">hier</a> gefunden. | Das Metro Design habe ich ausschlie&szlig;lich mit CSS Anweisungen erstellt.</p>
+		' . __('Bei Problemen oder Fragen kannst Du gern das', 'flodjishare') . ' <a target="_blank" href="http://flodji.de/forum/">' . __('Support Forum', 'flodjishare') . '</a> ' . __('besuchen', 'flodjishare') . '.</p>
+		<p>' . __('Die Buttons stammen von dieser', 'flodjishare') . ' <a target="_blank" href="http://wplift.com/freebie-70-32px-custom-social-media-website-icons">' . __('Seite', 'flodjishare') . '</a>. | ' . __('Das Menü-Icon habe ich', 'flodjishare') . ' <a target="_blank" href="http://salleedesign.com/">' . __('hier', 'flodjishare') . '</a> ' . __('gefunden', 'flodjishare') . '. | ' . __('Das Metro Design habe ich ausschließlich mit CSS Anweisungen erstellt', 'flodjishare') . '</p>
 	</div>';
 	$outputa .= '<div style="margin-left:50px;border-left:thin solid #ccc;border-right:thin solid #ccc;border-bottom:thin solid #ccc;padding:3px;width:200px;float:left;box-shadow: 0 1px 1px #999;">
 <div>
-<a target="_blank" href="http://flodji.de/?utm_source=flodjiShareWP&utm_medium=flodji.de_Logo&utm_campaign=flodjiShareWP"><img src="'.home_url().'/wp-content/plugins/flodjishare/buttons/flodjidelogo03.gif" width="180"/></a><h2>flodji.de Feed</h2>';
+<a target="_blank" href="http://flodji.de/?utm_source=flodjiShareWP&utm_medium=flodji.de_Logo&utm_campaign=flodjiShareWP"><img src="'.home_url().'/wp-content/plugins/flodjishare/buttons/flodjidelogo03.gif" width="180"/></a><h2>' . __('flodji.de Feed', 'flodjishare') . '</h2>';
 $rss = fetch_feed( "http://flodji.de/feed/" );
 if(!is_wp_error($rss)){
 $maxitems = $rss->get_item_quantity( 5 ); 
@@ -1318,7 +1319,7 @@ $rss_items = $rss->get_items( 0, $maxitems );
 }
 $outputa .= '<ul>';
 if($maxitems == 0){
-$outputa .= '<li>Keine Eintr&auml;ge</li>';
+$outputa .= '<li>' . __('Keine Einträge', 'flodjishare') . '</li>';
 } else {
 foreach ($rss_items as $item){
 $outputa .= '<li>
@@ -1330,18 +1331,15 @@ $outputa .= '</a></li>';
 $outputa .= '</ul>
 </div>
 <div>
-<h2>Weitere Links</h2>
+<h2>' . __('Weitere Links', 'flodjishare') . '</h2>
 <ul>
-<li><a target="_blank" href="http://flodji.de/downloads/?utm_source=flodjiShareWP&utm_medium=Weitere_Links&utm_campaign=flodjiShareWP">Weitere Plugins / Themes</a></li>
-<li><a target="_blank" href="http://flodji.de/category/gewinnspiele/?utm_source=flodjiShareWP&utm_medium=Weitere_Links&utm_campaign=flodjiShareWP">Gewinnspiele</a></li>
-<li><a target="_blank" href="http://flodji.de/fragen-und-antworten/?utm_source=flodjiShareWP&utm_medium=Weitere_Links&utm_campaign=flodjiShareWP">FAQs</a></li>
-<li><a target="_blank" href="http://flodji.de/linkpartner/?utm_source=flodjiShareWP&utm_medium=Weitere_Links&utm_campaign=flodjiShareWP">Linkpartner werden</a></li>
-<li><a target="_blank" href="http://flodji.de/kontakt/?utm_source=flodjiShareWP&utm_medium=Weitere_Links&utm_campaign=flodjiShareWP">Kontakt</a></li>
-<li><a target="_blank" href="http://flodji.de/forum/?utm_source=flodjiShareWP&utm_medium=Weitere_Links&utm_campaign=flodjiShareWP">Forum</a></li>
-<li><a target="_blank" href="http://flodji.de/werben-auf-flodji-de/?utm_source=flodjiShareWP&utm_medium=Weitere_Links&utm_campaign=flodjiShareWP">Werben auf flodji.de</a></li>
-<li><a target="_blank" href="http://flodji.de/gastartikel/?utm_source=flodjiShareWP&utm_medium=Weitere_Links&utm_campaign=flodjiShareWP">Gastartikel schreiben</a></li>
-<li><a target="_blank" href="http://flodji.de/die-flodji-de-android-app-beta/?utm_source=flodjiShareWP&utm_medium=Weitere_Links&utm_campaign=flodjiShareWP">flodji.de Android App</a></li>
-<li><a target="_blank" href="http://flodji.de/impressum/?utm_source=flodjiShareWP&utm_medium=Weitere_Links&utm_campaign=flodjiShareWP">Impressum</a></li>
+<li><a target="_blank" href="http://flodji.de/downloads/?utm_source=flodjiShareWP&utm_medium=Weitere_Links&utm_campaign=flodjiShareWP">' . __('Weitere Plugins / Themes', 'flodjishare') . '</a></li>
+<li><a target="_blank" href="http://flodji.de/category/gewinnspiele/?utm_source=flodjiShareWP&utm_medium=Weitere_Links&utm_campaign=flodjiShareWP">' . __('Gewinnspiele', 'flodjishare') . '</a></li>
+<li><a target="_blank" href="http://flodji.de/fragen-und-antworten/?utm_source=flodjiShareWP&utm_medium=Weitere_Links&utm_campaign=flodjiShareWP">' . __('FAQs', 'flodjishare') . '</a></li>
+<li><a target="_blank" href="http://flodji.de/kontakt/?utm_source=flodjiShareWP&utm_medium=Weitere_Links&utm_campaign=flodjiShareWP">' . __('Kontakt', 'flodjishare') . '</a></li>
+<li><a target="_blank" href="http://flodji.de/forum/?utm_source=flodjiShareWP&utm_medium=Weitere_Links&utm_campaign=flodjiShareWP">' . __('Forum', 'flodjishare') . '</a></li>
+<li><a target="_blank" href="http://flodji.de/die-flodji-de-android-app-beta/?utm_source=flodjiShareWP&utm_medium=Weitere_Links&utm_campaign=flodjiShareWP">' . __('flodji.de Android App', 'flodjishare') . '</a></li>
+<li><a target="_blank" href="http://flodji.de/impressum/?utm_source=flodjiShareWP&utm_medium=Weitere_Links&utm_campaign=flodjiShareWP">' . __('Impressum', 'flodjishare') . '</a></li>
 </ul>
 </div>
 </div>';

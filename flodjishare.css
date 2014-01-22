@@ -35,17 +35,21 @@ text-align: center;
 width: 95px;
 text-decoration:none;
 }
+a.fsbase{
+text-decoration:none ! important;
+color: #fff ! important;
+}
 a.fsbase:hover{
-text-decoration:none;
-color: #fff;
+text-decoration:none ! important;
+color: #fff ! important;
 }
 a.fsbase:link{
-text-decoration:none;
-color: #fff;
+text-decoration:none ! important;
+color: #fff ! important;
 }
 a.fsbase:visited{
-text-decoration:none;
-color: #fff;
+text-decoration:none ! important;
+color: #fff ! important;
 }
 .fsfb{
 background-color: #2b4170;
