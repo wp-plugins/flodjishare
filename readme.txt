@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: Share,Social,Facebook,Twitter,Xing,Delicious,VZ,Flattr,StumbleUpon,Digg,Google,Rich Snippets,Opengraph,Twitter Cards,Share Button,Google Authorship Markup,rel Author,Multi-Author,Klicktracker,Klick Counter,Metabox,Meta Box,Custom Post Types
 Requires at least: 3.3
 Tested up to: 3.8
-Stable tag: 2.9
+Stable tag: 3.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -29,6 +29,7 @@ Die folgenden Buttons k&ouml;nnen nach belieben aktiviert bzw. deaktiviert werde
 * Stumbleupon
 * Tumblr
 * Flattr
+* Bis zu drei eigene Buttons
 
 Features:
 
@@ -36,6 +37,9 @@ Features:
 * Rich Snippets Support
 * Twitter Cards Support
 * Google Authorship Markup
+* Meta Keywords Tag
+* News Keywords Tag f&uuml;r Google News
+* Bis zu drei eigene Share Buttons
 * Klickz&auml;hler
 * Schnelle Ladezeit
 * Image oder CSS Layout
@@ -63,6 +67,12 @@ Weitere Informationen gibt es auf <a target="_blank" href="http://flodji.de/flod
 2. CSS-Design Buttons im Einsatz
 
 == Changelog ==
+
+Version 3.0:
+
+* Neue Funktion: Bis zu drei eigene Share Buttons definierbar.
+* Neue Funktion: Google News Keywords Tag
+* Neue Funktion: Keywords Metatag
 
 Version 2.9:
 
@@ -149,6 +159,12 @@ Version 1.4:
 * Neues Buttonset
 
 == Upgrade notice ==
+
+Version 3.0:
+
+* Neue Funktion: Bis zu drei eigene Share Buttons definierbar.
+* Neue Funktion: Google News Keywords Tag
+* Neue Funktion: Keywords Metatag
 
 Version 2.9:
 
