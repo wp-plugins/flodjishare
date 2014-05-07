@@ -3,7 +3,7 @@ Contributors: flodji
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=K9U25CKQNA5GL
 Tags: Share,Social,Facebook,Twitter,Xing,Delicious,VZ,Flattr,StumbleUpon,Digg,Google,Rich Snippets,Opengraph,Twitter Cards,Share Button,Google Authorship Markup,rel Author,Multi-Author,Klicktracker,Klick Counter,Metabox,Meta Box,Custom Post Types
 Requires at least: 3.3
-Tested up to: 3.8
+Tested up to: 3.9
 Stable tag: 3.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
