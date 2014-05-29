@@ -3,7 +3,7 @@
 Plugin Name: flodjiShare
 Plugin URI: http://flodji.de/downloads/flodjishare-fuer-wordpress/
 Description: Mit flodjiShare wird Webseitenbetreibern eine einfache L&ouml;sung angeboten die Social Sharing und Bookmark Buttons der gro&szlig;en Netzwerke in die eigene Seite einzubinden.
-Version: 3.0
+Version: 3.1
 Author: flodji
 Author URI: http://flodji.de
 License: GPL2
@@ -139,8 +139,8 @@ $ausgabe .= '</ul>
 </div>
 
 <div>
-<a target="_blank" href="http://found-footage.eu/?utm_source=flodjiShareWP&utm_medium=ff_Logo&utm_campaign=flodjiShareWP"><img src="'.home_url().'/wp-content/plugins/flodjishare/buttons/ff_logo.gif" width="180"/></a><h2>' . __('Found-Footage.eu Feed', 'flodjishare') . '</h2>';
-$rss = fetch_feed( "http://found-footage.eu/feed/" );
+<a target="_blank" href="http://found-footage.de/?utm_source=flodjiShareWP&utm_medium=ff_Logo&utm_campaign=flodjiShareWP"><img src="'.home_url().'/wp-content/plugins/flodjishare/buttons/ff_logo.gif" width="180"/></a><h2>' . __('found-footage.de Feed', 'flodjishare') . '</h2>';
+$rss = fetch_feed( "http://found-footage.de/feed/" );
 if(!is_wp_error($rss)){
 $maxitems = $rss->get_item_quantity( 5 ); 
 $rss_items = $rss->get_items( 0, $maxitems );
@@ -1514,8 +1514,8 @@ $outputa .= '</ul>
 </div>
 
 <div>
-<a target="_blank" href="http://found-footage.eu/?utm_source=flodjiShareWP&utm_medium=ff_Logo&utm_campaign=flodjiShareWP"><img src="'.home_url().'/wp-content/plugins/flodjishare/buttons/ff_logo.gif" width="180"/></a><h2>' . __('Found-Footage.eu Feed', 'flodjishare') . '</h2>';
-$rss = fetch_feed( "http://found-footage.eu/feed/" );
+<a target="_blank" href="http://found-footage.de/?utm_source=flodjiShareWP&utm_medium=ff_Logo&utm_campaign=flodjiShareWP"><img src="'.home_url().'/wp-content/plugins/flodjishare/buttons/ff_logo.gif" width="180"/></a><h2>' . __('found-footage.de Feed', 'flodjishare') . '</h2>';
+$rss = fetch_feed( "http://found-footage.de/feed/" );
 if(!is_wp_error($rss)){
 $maxitems = $rss->get_item_quantity( 5 ); 
 $rss_items = $rss->get_items( 0, $maxitems );

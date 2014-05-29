@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: Share,Social,Facebook,Twitter,Xing,Delicious,VZ,Flattr,StumbleUpon,Digg,Google,Rich Snippets,Opengraph,Twitter Cards,Share Button,Google Authorship Markup,rel Author,Multi-Author,Klicktracker,Klick Counter,Metabox,Meta Box,Custom Post Types
 Requires at least: 3.3
 Tested up to: 3.9
-Stable tag: 3.0
+Stable tag: 3.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -67,6 +67,10 @@ Weitere Informationen gibt es auf <a target="_blank" href="http://flodji.de/flod
 2. CSS-Design Buttons im Einsatz
 
 == Changelog ==
+
+Version 3.1:
+
+* Korrektur: Feed Adresse in den Einstellungen korrigiert.
 
 Version 3.0:
 
@@ -159,6 +163,10 @@ Version 1.4:
 * Neues Buttonset
 
 == Upgrade notice ==
+
+Version 3.1:
+
+* Korrektur: Feed Adresse in den Einstellungen korrigiert.
 
 Version 3.0:
 
