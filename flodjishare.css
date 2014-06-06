@@ -32,8 +32,9 @@ display: inline-block;
 font-size: 14px;
 padding: 5px 15px;
 text-align: center;
-width: 95px;
+min-width: 120px;
 text-decoration:none;
+line-height:1,5;
 }
 a.fsbase{
 text-decoration:none ! important;
@@ -87,6 +88,9 @@ background-color: #ea4a24;
 .fstu{
 background-color: #2c4762;
 }
+.fswa{
+background-color: #33CC66;
+}
 .fsprivacy{
 display: block;
 text-align: left;
@@ -101,4 +105,20 @@ font-size:0.8em;
 }
 .fsclear{
 clear: both;
+}
+.fsbar{
+position:fixed;
+bottom:0;
+left:0;
+right:0;
+width:100%;
+background-color:black;
+text-align:center;
+z-index:1;
+clear:both;
+height:64px;
+margin-top:-64px;
+}
+.fsbar a{
+margin:5px;
 }

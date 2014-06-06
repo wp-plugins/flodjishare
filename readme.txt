@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: Share,Social,Facebook,Twitter,Xing,Delicious,VZ,Flattr,StumbleUpon,Digg,Google,Rich Snippets,Opengraph,Twitter Cards,Share Button,Google Authorship Markup,rel Author,Multi-Author,Klicktracker,Klick Counter,Metabox,Meta Box,Custom Post Types
 Requires at least: 3.3
 Tested up to: 3.9
-Stable tag: 3.1
+Stable tag: 3.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -19,7 +19,6 @@ Die folgenden Buttons k&ouml;nnen nach belieben aktiviert bzw. deaktiviert werde
 
 * Facebook
 * Twitter
-* VZ-Netzwerke (StudiVZ, MeinVZ, Sch&uuml;lerVZ)
 * Digg
 * Delicious
 * Google Plus
@@ -29,6 +28,7 @@ Die folgenden Buttons k&ouml;nnen nach belieben aktiviert bzw. deaktiviert werde
 * Stumbleupon
 * Tumblr
 * Flattr
+* Whatsapp (vorerst nur f&uuml;r iOS Ger&auml;te)
 * Bis zu drei eigene Buttons
 
 Features:
@@ -43,6 +43,7 @@ Features:
 * Klickz&auml;hler
 * Schnelle Ladezeit
 * Image oder CSS Layout
+* Sharebar f&uuml;r Android und iOS Ger&auml;te
 * Position: Unten, Oben, Beides oder individuell per Shortcode
 * Anzeige auf: Beitrag, Blog-Ansicht, Seiten, Custom-Post-Types, Archive, Suchergenisse
 * Einzelne Beitr&auml;ge/Seiten/Custom Post Types per ID ausschlie&szlig;en
@@ -67,6 +68,14 @@ Weitere Informationen gibt es auf <a target="_blank" href="http://flodji.de/flod
 2. CSS-Design Buttons im Einsatz
 
 == Changelog ==
+
+Version 3.3:
+
+* Neue Funktion: Sharebar f&uuml;r Android und iOS Ger&auml;te
+
+Version 3.2:
+
+* Neuer Button: Whatsapp Share Button hinzugef&uuml;gt (Aktuell nur f&uuml;r iOS Ger&auml;te).
 
 Version 3.1:
 
@@ -163,6 +172,14 @@ Version 1.4:
 * Neues Buttonset
 
 == Upgrade notice ==
+
+Version 3.3:
+
+* Neue Funktion: Sharebar f&uuml;r Android und iOS Ger&auml;te
+
+Version 3.2:
+
+* Neuer Button: Whatsapp Share Button hinzugef&uuml;gt (Aktuell nur f&uuml;r iOS Ger&auml;te).
 
 Version 3.1:
 
