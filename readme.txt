@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: Share,Social,Facebook,Twitter,Xing,Delicious,Flattr,StumbleUpon,Digg,Google,Rich Snippets,Whatsapp,iOS,Android,Opengraph,Twitter Cards,Share Button,Google Authorship Markup,rel Author,Multi-Author,Klicktracker,Klick Counter,Metabox,Meta Box,Custom Post Types
 Requires at least: 3.3
 Tested up to: 3.9
-Stable tag: 3.3
+Stable tag: 3.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -68,6 +68,12 @@ Weitere Informationen gibt es auf <a target="_blank" href="http://flodji.de/flod
 2. CSS-Design Buttons im Einsatz
 
 == Changelog ==
+
+Version 3.4:
+
+* Code aufger&auml;mt: Veraltete PHP Funktionen ersetzt.
+* Einstellungen angepasst: Rechte Spalte erneuert und Klickz&auml;hler &uuml;berarbeitet.
+* Buttons: GIF Buttons in PNG Dateien umgewandelt und komprimiert
 
 Version 3.3:
 
@@ -172,6 +178,12 @@ Version 1.4:
 * Neues Buttonset
 
 == Upgrade notice ==
+
+Version 3.4:
+
+* Code aufger&auml;mt: Veraltete PHP Funktionen ersetzt.
+* Einstellungen angepasst: Rechte Spalte erneuert und Klickz&auml;hler &uuml;berarbeitet.
+* Buttons: GIF Buttons in PNG Dateien umgewandelt und komprimiert
 
 Version 3.3:
 
