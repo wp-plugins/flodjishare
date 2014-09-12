@@ -4,13 +4,53 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: Share,Social,Facebook,Twitter,Xing,Delicious,Flattr,StumbleUpon,Digg,Google,Rich Snippets,Whatsapp,iOS,Android,Opengraph,Twitter Cards,Share Button,Google Authorship Markup,rel Author,Multi-Author,Klicktracker,Klick Counter,Metabox,Meta Box,Custom Post Types
 Requires at least: 3.3
 Tested up to: 3.9
-Stable tag: 3.4
+Stable tag: 3.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Mit flodjiShare wird Webseitenbetreibern eine einfache und elegante Lösung angeboten Social Sharing Buttons in die eigene Seite einzubinden.
 
 == Description ==
+
+EN:
+
+Just install flodjiShare to enable Social Sharing and SEO-Features on your Wordpress site. This Plugin is also compatible to Multi-Author Blogs.
+ 
+Let Visitors share your Posts, Pages and Custom Post Types on these social networks to increase traffic:
+ 
+Facebook
+Twitter
+StudiVZ, MeinVZ, SchülerVZ
+Digg
+Delicious
+Google Plus
+Xing
+LinkedIn
+Pinterest
+Stumbleupon
+Tumblr.
+Flattr
+Whatsapp
+Pocket
+Feedly
+ 
+Features:
+ 
+Opengraph Support
+Rich Snippets Support
+Twitter Cards Support
+Google Authorship Markup
+Click Counter
+Fast Loading
+Image or CSS Layout
+Position: Below Content, Above Content, Both or shortcode
+Show in: Posts, Archives, Pages, Custom-Post-Types, Search Results
+Metabox for individual Snippet Layouts 
+Translation ready!
+ 
+More Information and Support: http://flodji.de/downloads/flodjishare-fuer-wordpress/
+
+DE:
 
 Mit flodjiShare f&uuml;r WordPress wird Betreibern einer WordPress-Seite eine einfache L&ouml;sung angeboten die Social Sharing und Bookmark Buttons der gro&szlig;en Netzwerke in die eigene Seite einzubinden.
 Zudem werden zus&auml;tzliche Metadaten (Opengraph Tags, Rich Snippets Tags, Twitter Card Tags, Schema.org/Artikel, Google Authorship Markup) in den Quellcode der WordPress-Seite und der Artikel eingebunden um diese Daten f&uuml;r die Anzeige in sozialen Netzwerken wie z.B. Facebook, Google Plus und Twitter zu optimieren. Durch Einbindung der Rich Snippets Tags werden ausserdem auch die Daten f&uuml;r die Anzeige in den gro&szlig;en Suchmaschinen wie z.B. Google, Bing und Yahoo aufbereitet.
@@ -28,7 +68,9 @@ Die folgenden Buttons k&ouml;nnen nach belieben aktiviert bzw. deaktiviert werde
 * Stumbleupon
 * Tumblr
 * Flattr
-* Whatsapp (vorerst nur f&uuml;r iOS Ger&auml;te)
+* Whatsapp
+* Pocket
+* Feedly
 * Bis zu drei eigene Buttons
 
 Features:
@@ -68,6 +110,13 @@ Weitere Informationen gibt es auf <a target="_blank" href="http://flodji.de/flod
 2. CSS-Design Buttons im Einsatz
 
 == Changelog ==
+
+Version 3.5:
+
+* Klick Counter: Es kann nun nach einzelnen Netzwerken gefiltert werden.
+* Neue Buttons: Add to Feedly + Pocket Buttons hinzugef&uuml;gt.
+* Fehlender Button: Amazon Button (Plugin Einstellungen) fehlte.
+* Whatsapp Share Button: Der Button ist jetzt auch f&uuml;r Android User mit aktueller Whatsapp Version nutzbar.
 
 Version 3.4:
 
@@ -178,6 +227,13 @@ Version 1.4:
 * Neues Buttonset
 
 == Upgrade notice ==
+
+Version 3.5:
+
+* Klick Counter: Es kann nun nach einzelnen Netzwerken gefiltert werden.
+* Neue Buttons: Add to Feedly + Pocket Buttons hinzugef&uuml;gt.
+* Fehlender Button: Amazon Button (Plugin Einstellungen) fehlte.
+* Whatsapp Share Button: Der Button ist jetzt auch f&uuml;r Android User mit aktueller Whatsapp Version nutzbar.
 
 Version 3.4:
 

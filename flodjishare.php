@@ -3,7 +3,7 @@
 Plugin Name: flodjiShare
 Plugin URI: http://flodji.de/downloads/flodjishare-fuer-wordpress/
 Description: Mit flodjiShare wird Webseitenbetreibern eine einfache L&ouml;sung angeboten die Social Sharing und Bookmark Buttons der gro&szlig;en Netzwerke in die eigene Seite einzubinden.
-Version: 3.4
+Version: 3.5
 Author: flodji
 Author URI: http://flodji.de
 License: GPL2
@@ -411,8 +411,8 @@ global $wpdb, $post;
 		}
 		
 		if ($option['active_buttons']['whatsapp']==true) {
-		$isios = flodjishare_is_ios();
-		if($isios === true){
+		$ismobile = flodjishare_is_mobile();
+		if($ismobile === true){
 		$wa_link = 'whatsapp://send?text='.strip_tags(get_the_title()).' - '.urlencode(get_permalink());
 		if ($option['metro']==true) {
 		if ($option['counter']==true){
@@ -429,6 +429,44 @@ global $wpdb, $post;
 		} else {
 		$outputa .= '<div class="fsbtnfloat"><a href="'.$wa_link.'" target="_blank" rel="nofollow"><img style="max-width: 100%;" src="'.home_url().'/wp-content/plugins/flodjishare/buttons/WhatsApp32px.png" border="0" alt="Bei Whatsapp teilen" /></a></div>';
 		}
+		}
+		}
+		
+		if ($option['active_buttons']['pocket']==true) {
+		$po_link = 'https://getpocket.com/save?title=' . rawurlencode( get_the_title() ) . '&url=' . rawurlencode( get_the_permalink() );
+		if ($option['metro']==true) {
+		if ($option['counter']==true){
+		$title = strip_tags(get_the_title());
+		$network= __('Pocket', 'flodjishare');
+		$klicks = $wpdb->get_var("SELECT klicks FROM flodjiShareLinks WHERE title='$title' AND network='$network'");
+		if($klicks == ''){
+		$klicks = '0';
+		}
+		$outputa .= '<div class="fsleft"><a class="fsbase fspo" href="/wp-content/plugins/flodjishare/klick.php?n='.$network.'&title='.urlencode($title).'&fsurl='.urlencode($po_link).'" target="_blank" rel="nofollow"><strong>' . __('Pocket', 'flodjishare') . '</strong></a><span class="fscounter"><strong>'.short_number($klicks).'</strong></span></div>';
+		} else {
+		$outputa .= '<div class="fsleft"><a class="fsbase fspo" href="'.$po_link.'" target="_blank" rel="nofollow"><strong>' . __('Pocket', 'flodjishare') . '</strong></a></div>';
+		}
+		} else {
+		$outputa .= '<div class="fsbtnfloat"><a href="'.$po_link.'" target="_blank" rel="nofollow"><img style="max-width: 100%;" src="'.home_url().'/wp-content/plugins/flodjishare/buttons/Pocket32px.png" border="0" alt="In meinem Pocket Account ablegen" /></a></div>';
+		}
+		}
+		
+		if ($option['active_buttons']['feedly']==true) {
+		$fe_link = 'http://cloud.feedly.com/#subscription' . rawurlencode( '/feed/' . get_feed_link( 'rss2' ) );
+		if ($option['metro']==true) {
+		if ($option['counter']==true){
+		$title = strip_tags(get_the_title());
+		$network= __('Feedly', 'flodjishare');
+		$klicks = $wpdb->get_var("SELECT klicks FROM flodjiShareLinks WHERE title='$title' AND network='$network'");
+		if($klicks == ''){
+		$klicks = '0';
+		}
+		$outputa .= '<div class="fsleft"><a class="fsbase fsfe" href="/wp-content/plugins/flodjishare/klick.php?n='.$network.'&title='.urlencode($title).'&fsurl='.urlencode($fe_link).'" target="_blank" rel="nofollow"><strong>' . __('Feedly', 'flodjishare') . '</strong></a><span class="fscounter"><strong>'.short_number($klicks).'</strong></span></div>';
+		} else {
+		$outputa .= '<div class="fsleft"><a class="fsbase fsfe" href="'.$fe_link.'" target="_blank" rel="nofollow"><strong>' . __('Feedly', 'flodjishare') . '</strong></a></div>';
+		}
+		} else {
+		$outputa .= '<div class="fsbtnfloat"><a href="'.$fe_link.'" target="_blank" rel="nofollow"><img style="max-width: 100%;" src="'.home_url().'/wp-content/plugins/flodjishare/buttons/Feedly32px.png" border="0" alt="Bei Feedly folgen" /></a></div>';
 		}
 		}
 		
@@ -471,8 +509,8 @@ global $wpdb, $post;
 		}
 		
 		if($option['active_buttons']['whatsapp']==true){
-		$isios = flodjishare_is_ios();
-		if($isios === true){
+		$ismobile = flodjishare_is_mobile();
+		if($ismobile === true){
 		$wa_link = 'whatsapp://send?text='.$title.' - '.urlencode(get_permalink());
 		if($option['counter']==true){
 		$outputa .= '<a  href="/wp-content/plugins/flodjishare/klick.php?n=Whatsapp&title='.urlencode($title).'&fsurl='.urlencode($wa_link).'" target="_blank" rel="nofollow"><img style="max-width: 100%;" src="'.home_url().'/wp-content/plugins/flodjishare/buttons/WhatsApp64px.png" border="0" alt="Bei Whatsapp teilen" /></a>';
@@ -526,13 +564,6 @@ global $wpdb, $post;
 		if ($option['position']=='shortcode'){
 		return $outputa;
 		}
-}
-
-function flodjishare_is_ios(){
-if(preg_match('/(iphone|ipad|ipaq|ipod)/i', $_SERVER['HTTP_USER_AGENT']))
-return true; 
-else
-return false;
 }
 
 function flodjishare_is_mobile(){
@@ -627,7 +658,9 @@ $option_string = get_option('flodjishare');
 	}
 	if(!is_paged()){
 	if(!is_tag()){
+	if(!is_404()){
 	echo flodjiShareMetas($parameter);
+	}
 	}
 	}
 }
@@ -970,7 +1003,7 @@ function flodjishare_options(){
 	}
 	if( isset($_POST['flodjishare_position'])) {
 		$option = array();
-		$option['active_buttons'] = array('facebook'=>false, 'twitter'=>false, 'digg'=>false, 'delicious'=>false, 'xing'=>false, 'gplus'=>false, 'linkedin'=>false, 'pinterest'=>false, 'stumbleupon'=>false, 'tumblr'=>false, 'whatsapp'=>false, 'flattr'=>false, 'opengraph'=>false, 'richsnippets'=>false, 'twittercards'=>false, 'metabox'=>false, 'metadesc'=>false, 'news_keywords'=>false, 'meta_keywords'=>false, 'metro'=>false, 'counter'=>false, 'sharebar'=>false, 'supportlink'=>false, 'privacy'=>false, 'own1'=>false, 'own2'=>false, 'own3'=>false);
+		$option['active_buttons'] = array('facebook'=>false, 'twitter'=>false, 'digg'=>false, 'delicious'=>false, 'xing'=>false, 'gplus'=>false, 'linkedin'=>false, 'pinterest'=>false, 'stumbleupon'=>false, 'tumblr'=>false, 'whatsapp'=>false, 'pocket'=>false, 'feedly'=>false, 'flattr'=>false, 'opengraph'=>false, 'richsnippets'=>false, 'twittercards'=>false, 'metabox'=>false, 'metadesc'=>false, 'news_keywords'=>false, 'meta_keywords'=>false, 'metro'=>false, 'counter'=>false, 'sharebar'=>false, 'supportlink'=>false, 'privacy'=>false, 'own1'=>false, 'own2'=>false, 'own3'=>false);
 		if ($_POST['flodjishare_active_facebook']=='on') { $option['active_buttons']['facebook'] = true; }
 		if ($_POST['flodjishare_active_twitter']=='on') { $option['active_buttons']['twitter'] = true; }
 		if ($_POST['flodjishare_active_digg']=='on') { $option['active_buttons']['digg'] = true; }
@@ -983,6 +1016,8 @@ function flodjishare_options(){
 		if ($_POST['flodjishare_active_tumblr']=='on') { $option['active_buttons']['tumblr'] = true; }
 		if ($_POST['flodjishare_active_whatsapp']=='on') { $option['active_buttons']['whatsapp'] = true; }
 		if ($_POST['flodjishare_active_flattr']=='on') { $option['active_buttons']['flattr'] = true; }
+		if ($_POST['flodjishare_active_pocket']=='on') { $option['active_buttons']['pocket'] = true; }
+		if ($_POST['flodjishare_active_feedly']=='on') { $option['active_buttons']['feedly'] = true; }
 		if ($_POST['flodjishare_active_metro']=='on') { $option['metro'] = true; }
 		if ($_POST['flodjishare_active_counter']=='on') { $option['counter'] = true; }
 		if ($_POST['flodjishare_active_sharebar']=='on') { $option['sharebar'] = true; }
@@ -1039,7 +1074,7 @@ function flodjishare_options(){
 	$option_string = get_option($option_name);
 	if ($option_string===false) {
 		$option = array();
-		$option['active_buttons'] = array('facebook'=>true, 'twitter'=>true, 'digg'=>true, 'delicious'=>true, 'xing'=>true, 'gplus'=>true, 'linkedin'=>true, 'pinterest'=>true, 'stumbleupon'=>true, 'tumblr'=>true, 'whatsapp'=>true, 'flattr'=>true, 'opengraph'=>true, 'richsnippets'=>true, 'twittercards'=>true, 'metabox'=>true, 'metadesc'=>true, 'news_keywords'=>true, 'meta_keywords'=>true, 'gplusAthor'=>true, 'metro'=>true, 'counter'=>true,  'sharebar'=>true, 'supportlink'=>true, 'privacy'=>true, 'own1'=>true, 'own2'=>true, 'own3'=>true);
+		$option['active_buttons'] = array('facebook'=>true, 'twitter'=>true, 'digg'=>true, 'delicious'=>true, 'xing'=>true, 'gplus'=>true, 'linkedin'=>true, 'pinterest'=>true, 'stumbleupon'=>true, 'tumblr'=>true, 'whatsapp'=>true, 'pocket'=>true, 'feedly'=>true, 'flattr'=>true, 'opengraph'=>true, 'richsnippets'=>true, 'twittercards'=>true, 'metabox'=>true, 'metadesc'=>true, 'news_keywords'=>true, 'meta_keywords'=>true, 'gplusAthor'=>true, 'metro'=>true, 'counter'=>true,  'sharebar'=>true, 'supportlink'=>true, 'privacy'=>true, 'own1'=>true, 'own2'=>true, 'own3'=>true);
 		$option['position'] = 'unter';
 		$option['show_in'] = array('posts'=>true, 'pages'=>true, 'home'=>true, 'category'=>true, 'search'=>true, 'archive'=>true);
 		$option['skip_single'] = array('skip_single'=>true);
@@ -1073,7 +1108,7 @@ function flodjishare_options(){
 	if ($option_string=='ueber' or $option_string=='unter' or $option_string=='both' or $option_string=='shortcode') {
 		$flodjishare_options = explode('|||',$option_string);
 		$option = array();
-		$option['active_buttons'] = array('facebook'=>true, 'twitter'=>true, 'digg'=>true, 'delicious'=>true, 'xing'=>true, 'gplus'=>true, 'linkedin'=>true, 'pinterest'=>true, 'stumbleupon'=>true, 'tumblr'=>true, 'whatsapp'=>true, 'flattr'=>true, 'opengraph'=>true, 'richsnippets'=>true, 'twittercards'=>true, 'metabox'=>true, 'metadesc'=>true, 'news_keywords'=>true, 'meta_keywords'=>true, 'gplusAuthor'=>true, 'metro'=>true, 'counter'=>true,  'sharebar'=>true, 'supportlink'=>true, 'privacy'=>true,'own1'=>true, 'own2'=>true, 'own3'=>true);
+		$option['active_buttons'] = array('facebook'=>true, 'twitter'=>true, 'digg'=>true, 'delicious'=>true, 'xing'=>true, 'gplus'=>true, 'linkedin'=>true, 'pinterest'=>true, 'stumbleupon'=>true, 'tumblr'=>true, 'whatsapp'=>true, 'flattr'=>true, 'pocket'=>true, 'feedly'=>true, 'opengraph'=>true, 'richsnippets'=>true, 'twittercards'=>true, 'metabox'=>true, 'metadesc'=>true, 'news_keywords'=>true, 'meta_keywords'=>true, 'gplusAuthor'=>true, 'metro'=>true, 'counter'=>true,  'sharebar'=>true, 'supportlink'=>true, 'privacy'=>true,'own1'=>true, 'own2'=>true, 'own3'=>true);
 		$option['position'] = $flodjishare_options[0];
 		$option['show_in'] = array('posts'=>true, 'pages'=>true, 'home'=>true, 'category'=>true, 'search'=>true, 'archive'=>true);
 		$option['skip_single'] = array('skip_single'=>true);
@@ -1116,6 +1151,8 @@ function flodjishare_options(){
 	$active_stumbleupon	= ($option['active_buttons']['stumbleupon']==true) ? 'checked="checked"' : '';
 	$active_tumblr		= ($option['active_buttons']['tumblr']==true) ? 'checked="checked"' : '';
 	$active_whatsapp	= ($option['active_buttons']['whatsapp']==true) ? 'checked="checked"' : '';
+	$active_pocket		= ($option['active_buttons']['pocket']==true) ? 'checked="checked"' : '';
+	$active_feedly		= ($option['active_buttons']['feedly']==true) ? 'checked="checked"' : '';
 	$active_metro		= ($option['metro']==true) ? 'checked="checked"' : '';
 	$active_counter		= ($option['counter']==true) ? 'checked="checked"' : '';
 	$active_sharebar	= ($option['sharebar']==true) ? 'checked="checked"' : '';
@@ -1236,6 +1273,10 @@ function flodjishare_options(){
 		. __('Flattr', 'flodjishare' ).' &nbsp;&nbsp;<br />'
 		.' <input type="checkbox" name="flodjishare_active_tumblr" '.$active_tumblr.'> '
 		. __('Tumblr', 'flodjishare' ).' &nbsp;&nbsp;<br />'
+		.' <input type="checkbox" name="flodjishare_active_pocket" '.$active_pocket.'> '
+		. __('Pocket', 'flodjishare' ).' &nbsp;&nbsp;<br />'
+		.' <input type="checkbox" name="flodjishare_active_feedly" '.$active_feedly.'> '
+		. __('Feedly', 'flodjishare' ).' &nbsp;&nbsp;<br />'
 		.' <input type="checkbox" name="flodjishare_active_whatsapp" '.$active_whatsapp.'> '
 		. __('Whatsapp', 'flodjishare' ).' &nbsp;&nbsp;<br />'
 		.'<br /></td></tr>
@@ -1295,7 +1336,7 @@ function flodjishare_options(){
 		
 		<input type="checkbox" name="flodjishare_active_sharebar" '.$active_sharebar.'> '
 		. __('Mobile Sharebar', 'flodjishare' ).' &nbsp;&nbsp;<br />
-		<span class="description"><small>'.__("Aktiviert die mobile Sharebar (mit Facebook, Twitter, Google Plus und für iOS Besucher auch Whatsapp).", 'flodjishare' ).'</small></span><br />
+		<span class="description"><small>'.__("Aktiviert die mobile Sharebar (mit Facebook, Twitter, Google Plus und Whatsapp).", 'flodjishare' ).'</small></span><br />
 		
 		<input type="checkbox" name="flodjishare_active_opengraph" '.$active_opengraph.'> '
 		. __('Opengraph Support', 'flodjishare' ).' &nbsp;&nbsp;<br />
@@ -1501,33 +1542,48 @@ $seite		= $_GET['seite'];
 if($seite == ''){
 $seite 		= 1; 
 }
-$start 		= $seite * $eintraege_pro_seite - $eintraege_pro_seite; 
+$feldfilter = $_GET['feld'];
+$start 		= $seite * $eintraege_pro_seite - $eintraege_pro_seite;
+if(!empty($feldfilter)){
+$ergebnis 	= mysqli_query($connection, "SELECT title,network,klicks FROM flodjiShareLinks WHERE network='$feldfilter' ORDER BY $sort LIMIT $start, $eintraege_pro_seite" );
+} else {
 $ergebnis 	= mysqli_query($connection, "SELECT title,network,klicks FROM flodjiShareLinks ORDER BY $sort LIMIT $start, $eintraege_pro_seite" );
+}
 $anz_reihe 	= mysqli_num_rows( $ergebnis );
 $anz_felde 	= mysqli_num_fields( $ergebnis );
 $ausgabe = '<div style="width:600px;float:left;"><h2>' . __('flodjiShare Klickzähler', 'flodjishare') . '</h2><table><tr><td style="width:200px;">'.followMeFlodjiShare().'</td><td>'.spendPayPalFlodjiShare().'</td></tr></table>';
 $ausgabe .= "<br><br>";
 $ausgabe .= '<table style="border:1px solid #000;" bgcolor="white"><tr>';
 $tablename = mysqli_fetch_fields($ergebnis);
-foreach ($tablename as $rowname) $ausgabe .= '<th style="border:1px solid #000;"><b><a href="admin.php?page=klick-counter&sort='.$rowname->name.'">' . strtoupper($rowname->name) . '</a></b></th>';
+foreach ($tablename as $rowname) $ausgabe .= '<th style="border:1px solid #000;"><b><a href="admin.php?page=klick-counter&sort='.$rowname->name.'&feld='.$feldfilter.'">' . strtoupper($rowname->name) . '</a></b></th>';
 $ausgabe .= "</tr>";
 while ( $datensatz = mysqli_fetch_row( $ergebnis ) )
     {
     $ausgabe .= "<tr>\n";
     foreach ( $datensatz as $feld ) {
-
-        $ausgabe .= '<td style="border:1px solid #000;">'.$feld.'</td>';  }
+		$netzwerke = array('Facebook','Twitter','Google Plus','Whatsapp','Xing','Flattr','Pocket','Feedly','Digg','Delicious','LinkedIn','Pinterest','StumbleUpon','Tumblr');
+        if(in_array($feld, $netzwerke)){
+		$ausgabe .= '<td style="border:1px solid #000;"><a href="admin.php?page=klick-counter&sort='.$sort.'&seite='.$seite.'&feld='.$feld.'" title="' . __('Nur Einträge mit diesem Netzwerk anzeigen.', 'flodjishare') . '">'.$feld.'</a></td>';
+		} else {
+		$ausgabe .= '<td style="border:1px solid #000;">'.$feld.'</td>';
+		}
+		}
     $ausgabe .= "</tr>\n";
     }
 $ausgabe .= "</table>\n";
+if(!empty($feldfilter)){
+$result 		= mysqli_query($connection, "SELECT title,network,klicks FROM flodjiShareLinks WHERE network='$feldfilter' ORDER BY title");
+} else {
 $result 		= mysqli_query($connection, "SELECT title,network,klicks FROM flodjiShareLinks ORDER BY title");
+}
 $menge 			= mysqli_num_rows($result);
 $mengr			= $menge[0];
 $wieviel_seiten = ceil($menge / $eintraege_pro_seite); 
 $ausgabe .= '<br /><div align="center">';
 $ausgabe .= '<strong>' . __('Seite', 'flodjishare') . ':</strong>';
-$ausgabe .= blaetterfunktion($seite,$wieviel_seiten,'admin.php?page=klick-counter&sort='.$sort,3);
-$ausgabe .= '</div><br /><p><span style="font-weight: bold;">' . __('Hinweis', 'flodjishare') . ':</span><br />' . __('Der Klickzähler zeigt die Anzahl der Klicks auf die Share Buttons an. Diese Zahl muss nicht zwingend mit der tatsächlichen Anzahl von Shares übereinstimmen.', 'flodjishare') . '</p></div>';
+$ausgabe .= blaetterfunktion($seite,$wieviel_seiten,'admin.php?page=klick-counter&sort='.$sort.'&feld='.$feldfilter,3);
+$ausgabe .= '</div><br /><p><small><a href="admin.php?page=klick-counter&sort=&seite=&feld=">Filter zurücksetzen</a></small></p>';
+$ausgabe .= '<br /><p><span style="font-weight: bold;">' . __('Hinweis', 'flodjishare') . ':</span><br />' . __('Der Klickzähler zeigt die Anzahl der Klicks auf die Share Buttons an. Diese Zahl muss nicht zwingend mit der tatsächlichen Anzahl von Shares übereinstimmen.', 'flodjishare') . '</p></div>';
 $ausgabe .= '<div style="margin-left:50px;border-left:thin solid #ccc;border-right:thin solid #ccc;border-bottom:thin solid #ccc;padding:3px;width:200px;float:left;box-shadow: 0 1px 1px #999;">
 <div>
 <a target="_blank" href="http://flodji.de/?utm_source=flodjiShareWP&utm_medium=flodji.de_Logo&utm_campaign=flodjiShareWP"><img src="'.home_url().'/wp-content/plugins/flodjishare/buttons/flodjidelogo03.png" width="180"/></a><h2>flodji.de Feed</h2>';

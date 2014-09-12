@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: flodjishare\n"
-"POT-Creation-Date: 2014-06-04 11:50+0100\n"
-"PO-Revision-Date: 2014-06-04 11:50+0100\n"
+"POT-Creation-Date: 2014-09-12 16:19+0100\n"
+"PO-Revision-Date: 2014-09-12 16:20+0100\n"
 "Last-Translator: Florian Grewe <info@flodji.de>\n"
 "Language-Team: flodji.de <info@flodji.de>\n"
 "Language: German\n"
@@ -19,7 +19,7 @@ msgstr ""
 msgid "Google Plus ID"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:47 ../flodjishare/flodjishare.php:1314
+#: ../flodjishare/flodjishare.php:47 ../flodjishare/flodjishare.php:1409
 msgid "Twitter Name"
 msgstr ""
 
@@ -29,82 +29,91 @@ msgid "Facebook"
 msgstr ""
 
 #: ../flodjishare/flodjishare.php:227 ../flodjishare/flodjishare.php:232
-#: ../flodjishare/flodjishare.php:234 ../flodjishare/flodjishare.php:1188
+#: ../flodjishare/flodjishare.php:234 ../flodjishare/flodjishare.php:1273
 msgid "Flattr"
 msgstr ""
 
 #: ../flodjishare/flodjishare.php:246 ../flodjishare/flodjishare.php:251
-#: ../flodjishare/flodjishare.php:253 ../flodjishare/flodjishare.php:1170
+#: ../flodjishare/flodjishare.php:253 ../flodjishare/flodjishare.php:1257
 msgid "Twitter"
 msgstr ""
 
 #: ../flodjishare/flodjishare.php:266 ../flodjishare/flodjishare.php:271
-#: ../flodjishare/flodjishare.php:273 ../flodjishare/flodjishare.php:1172
+#: ../flodjishare/flodjishare.php:273 ../flodjishare/flodjishare.php:1259
 msgid "Digg"
 msgstr ""
 
 #: ../flodjishare/flodjishare.php:286 ../flodjishare/flodjishare.php:291
-#: ../flodjishare/flodjishare.php:293 ../flodjishare/flodjishare.php:1174
+#: ../flodjishare/flodjishare.php:293 ../flodjishare/flodjishare.php:1261
 msgid "Delicious"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:305 ../flodjishare/flodjishare.php:310
-#: ../flodjishare/flodjishare.php:312
-msgid "VZ"
-msgstr ""
-
-#: ../flodjishare/flodjishare.php:323 ../flodjishare/flodjishare.php:328
-#: ../flodjishare/flodjishare.php:330 ../flodjishare/flodjishare.php:1180
+#: ../flodjishare/flodjishare.php:304 ../flodjishare/flodjishare.php:309
+#: ../flodjishare/flodjishare.php:311 ../flodjishare/flodjishare.php:1265
 msgid "Google Plus"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:342 ../flodjishare/flodjishare.php:347
-#: ../flodjishare/flodjishare.php:349 ../flodjishare/flodjishare.php:1178
+#: ../flodjishare/flodjishare.php:323 ../flodjishare/flodjishare.php:328
+#: ../flodjishare/flodjishare.php:330 ../flodjishare/flodjishare.php:1263
 msgid "Xing"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:361 ../flodjishare/flodjishare.php:366
-#: ../flodjishare/flodjishare.php:368 ../flodjishare/flodjishare.php:1182
+#: ../flodjishare/flodjishare.php:342 ../flodjishare/flodjishare.php:347
+#: ../flodjishare/flodjishare.php:349 ../flodjishare/flodjishare.php:1267
 msgid "LinkedIn"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:380 ../flodjishare/flodjishare.php:385
-#: ../flodjishare/flodjishare.php:387 ../flodjishare/flodjishare.php:1184
+#: ../flodjishare/flodjishare.php:361 ../flodjishare/flodjishare.php:366
+#: ../flodjishare/flodjishare.php:368 ../flodjishare/flodjishare.php:1269
 msgid "Pinterest"
+msgstr ""
+
+#: ../flodjishare/flodjishare.php:380 ../flodjishare/flodjishare.php:385
+#: ../flodjishare/flodjishare.php:387
+msgid "StumbleUpon"
 msgstr ""
 
 #: ../flodjishare/flodjishare.php:399 ../flodjishare/flodjishare.php:404
 #: ../flodjishare/flodjishare.php:406
-msgid "StumbleUpon"
-msgstr ""
-
-#: ../flodjishare/flodjishare.php:418 ../flodjishare/flodjishare.php:423
-#: ../flodjishare/flodjishare.php:425
 msgid "Tumblr."
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:439 ../flodjishare/flodjishare.php:444
-#: ../flodjishare/flodjishare.php:446 ../flodjishare/flodjishare.php:1192
+#: ../flodjishare/flodjishare.php:420 ../flodjishare/flodjishare.php:425
+#: ../flodjishare/flodjishare.php:427 ../flodjishare/flodjishare.php:1281
 msgid "Whatsapp"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:474
+#: ../flodjishare/flodjishare.php:440 ../flodjishare/flodjishare.php:445
+#: ../flodjishare/flodjishare.php:447 ../flodjishare/flodjishare.php:1277
+msgid "Pocket"
+msgstr ""
+
+#: ../flodjishare/flodjishare.php:459 ../flodjishare/flodjishare.php:464
+#: ../flodjishare/flodjishare.php:466 ../flodjishare/flodjishare.php:1279
+msgid "Feedly"
+msgstr ""
+
+#: ../flodjishare/flodjishare.php:548
 msgid "Datenschutz Hinweis"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:477
+#: ../flodjishare/flodjishare.php:551
 msgid "Social Sharing powered by"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:817
+#: ../flodjishare/flodjishare.php:892
 msgid "Folge mir"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:822
+#: ../flodjishare/flodjishare.php:899
+msgid "found-footage.de folgen"
+msgstr ""
+
+#: ../flodjishare/flodjishare.php:905
 msgid "Spenden"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:861
+#: ../flodjishare/flodjishare.php:944
 msgid ""
 "Aus diesen Daten werden die Meta-Tags für <strong>Facebook</strong> "
 "<small><a target=\"_blank\" href=\"http://ogp.me/\"><u>(Opengraph)</u></a></"
@@ -117,186 +126,182 @@ msgid ""
 "auszug und die URL des Post-Thumbnails bzw. des ersten Bildes verwendet.</p>"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:863 ../flodjishare/flodjishare.php:1239
+#: ../flodjishare/flodjishare.php:946 ../flodjishare/flodjishare.php:1328
 msgid "Überschrift"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:864
+#: ../flodjishare/flodjishare.php:947
 msgid "Max. 55 Zeichen"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:867
+#: ../flodjishare/flodjishare.php:950
 msgid "Beschreibung"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:868
+#: ../flodjishare/flodjishare.php:951
 msgid "Max. 160 Zeichen"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:871
+#: ../flodjishare/flodjishare.php:954
 msgid "Bild-URL"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:874
+#: ../flodjishare/flodjishare.php:957
 msgid "So könnten Deine Suchergebnisse aktuell aussehen"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:874 ../flodjishare/flodjishare.php:878
+#: ../flodjishare/flodjishare.php:957 ../flodjishare/flodjishare.php:961
 msgid "(Beitrag / Seite speichern um zu aktualisieren)"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:878
+#: ../flodjishare/flodjishare.php:961
 msgid ""
 "So könnte dieser Beitrag beim Teilen auf Facebook, Twitter und Google + "
 "aussehen"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:919
+#: ../flodjishare/flodjishare.php:1002
 msgid "Deine Benutzerrechte reichen nicht aus um diese Seite anzuzeigen."
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:986
+#: ../flodjishare/flodjishare.php:1071
 msgid "Einstellungen gespeichert."
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1115
+#: ../flodjishare/flodjishare.php:1202
 msgid "flodjiShare Einstellungen"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1119
+#: ../flodjishare/flodjishare.php:1206
 msgid "flodjiShare hier aktivieren"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1122
+#: ../flodjishare/flodjishare.php:1209
 msgid "Einzelne Beiträge"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1124
+#: ../flodjishare/flodjishare.php:1211
 msgid "Seiten"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1126
+#: ../flodjishare/flodjishare.php:1213
 msgid "Startseite"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1132
+#: ../flodjishare/flodjishare.php:1219
 msgid "Keine Custom Post Types vorhanden"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1132
+#: ../flodjishare/flodjishare.php:1219
 msgid "Was ist das? (engl.)"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1141
+#: ../flodjishare/flodjishare.php:1228
 msgid "Kategorien"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1143
+#: ../flodjishare/flodjishare.php:1230
 msgid "Suchergebnisse"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1145
+#: ../flodjishare/flodjishare.php:1232
 msgid "Archive"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1147
+#: ../flodjishare/flodjishare.php:1234
 msgid "Beiträge ausschließen"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1150
+#: ../flodjishare/flodjishare.php:1237
 msgid ""
 "Trage hier die IDs der Beiträge / Custom Post Types ein, in denen keine "
 "Share Buttons angezeigt und keine Meta Tags genereiert  werden sollen. "
 "(Mehrere durch Komma getrennt.)"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1153
+#: ../flodjishare/flodjishare.php:1240
 msgid "Seiten ausschließen"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1156
+#: ../flodjishare/flodjishare.php:1243
 msgid ""
 "Trage hier die IDs der Seiten ein, in denen keine Share Buttons angezeigt "
 "und keine Meta Tags genereiert  werden sollen. (Mehrere durch Komma "
 "getrennt.)"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1159
+#: ../flodjishare/flodjishare.php:1246
 msgid "Kategorien ausschließen"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1162
+#: ../flodjishare/flodjishare.php:1249
 msgid ""
 "Trage hier die IDs der Kategorien ein, in deren &Uuml;bersicht keine Share "
 "Buttons angezeigt und keine Meta Tags genereiert werden sollen. (Mehrere "
 "durch Komma getrennt.)"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1165
+#: ../flodjishare/flodjishare.php:1252
 msgid "flodjiShare Buttons"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1168
+#: ../flodjishare/flodjishare.php:1255
 msgid "Facebook Share"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1176
-msgid "VZ-Netzwerke"
-msgstr ""
-
-#: ../flodjishare/flodjishare.php:1186
+#: ../flodjishare/flodjishare.php:1271
 msgid "Stumbleupon"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1190
+#: ../flodjishare/flodjishare.php:1275
 msgid "Tumblr"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1195
+#: ../flodjishare/flodjishare.php:1284
 msgid "Eigener Button 1"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1198
+#: ../flodjishare/flodjishare.php:1287
 msgid "Eigener Button 1 anzeigen"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1199
+#: ../flodjishare/flodjishare.php:1288
 msgid "Zeigt den Button Eigener Button 1 an."
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1201 ../flodjishare/flodjishare.php:1210
-#: ../flodjishare/flodjishare.php:1219
+#: ../flodjishare/flodjishare.php:1290 ../flodjishare/flodjishare.php:1299
+#: ../flodjishare/flodjishare.php:1308
 msgid ""
 "Trage den HTML oder JS Code für Deinen eigenen Button nach dem obigen "
 "Beispiel ein ({link} wird später durch den Link zur jeweiligen Seite "
 "ersetzt)."
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1204
+#: ../flodjishare/flodjishare.php:1293
 msgid "Eigener Button 2"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1207
+#: ../flodjishare/flodjishare.php:1296
 msgid "Eigener Button 2 anzeigen"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1208
+#: ../flodjishare/flodjishare.php:1297
 msgid "Zeigt den Button Eigener Button 2 an."
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1213
+#: ../flodjishare/flodjishare.php:1302
 msgid "Eigener Button 3"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1216
+#: ../flodjishare/flodjishare.php:1305
 msgid "Eigener Button 3 anzeigen"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1217
+#: ../flodjishare/flodjishare.php:1306
 msgid "Zeigt den Button Eigener Button 3 an."
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1223
+#: ../flodjishare/flodjishare.php:1312
 msgid ""
 "Wenn Deine eigenen Buttons auch im Metro Design dargestellt werden sollen, "
 "dann erkläre ich Dir in der <a target=\"_blank\" href=\"http://flodji.de/"
@@ -304,331 +309,356 @@ msgid ""
 "funktioniert."
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1225
+#: ../flodjishare/flodjishare.php:1314
 msgid "Position"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1227
+#: ../flodjishare/flodjishare.php:1316
 msgid "Über dem Beitrag"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1228
+#: ../flodjishare/flodjishare.php:1317
 msgid "Unter dem Beitrag"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1229
+#: ../flodjishare/flodjishare.php:1318
 msgid "Beides"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1230
+#: ../flodjishare/flodjishare.php:1319
 msgid "Nur bei Shortcode [flodjishare]"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1234
+#: ../flodjishare/flodjishare.php:1323
 msgid "Design"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1236
+#: ../flodjishare/flodjishare.php:1325
 msgid "Metro Design aktivieren"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1237
-msgid "Klickzähler aktivieren (nur Metro Design)"
+#: ../flodjishare/flodjishare.php:1326
+msgid ""
+"Klickzähler aktivieren (nur Metro Design Klicks über die Sharebar werden "
+"gezählt aber dort nicht angezeigt.)"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1242
+#: ../flodjishare/flodjishare.php:1331
 msgid ""
 "Dieser Text steht später über den Share Buttons (z.B. Diesen Beitrag "
 "teilen...)."
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1245
+#: ../flodjishare/flodjishare.php:1334
 msgid "Extras"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1247
+#: ../flodjishare/flodjishare.php:1338
+msgid "Mobile Sharebar"
+msgstr ""
+
+#: ../flodjishare/flodjishare.php:1339
+msgid ""
+"Aktiviert die mobile Sharebar (mit Facebook, Twitter, Google Plus und "
+"Whatsapp)."
+msgstr ""
+
+#: ../flodjishare/flodjishare.php:1342
 msgid "Opengraph Support"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1248
+#: ../flodjishare/flodjishare.php:1343
 msgid ""
 "Diese Tags werden z.B. von Facebook zum Teilen von Beiträgen ausgelesen."
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1251
+#: ../flodjishare/flodjishare.php:1346
 msgid "Rich Snippets Support"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1252
+#: ../flodjishare/flodjishare.php:1347
 msgid ""
 "Diese Tags werden von Suchmaschinen zum Indexieren und z.B. von Google Plus "
 "zum Teilen von Beitr&auml;gen ausgelesen."
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1255
+#: ../flodjishare/flodjishare.php:1350
 msgid "Twitter Card Support"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1256
+#: ../flodjishare/flodjishare.php:1351
 msgid "Diese Tags werden von Twitter zum Teilen von Beiträgen ausgelesen."
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1259
+#: ../flodjishare/flodjishare.php:1354
 msgid "Metaboxen aktivieren"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1260
+#: ../flodjishare/flodjishare.php:1355
 msgid ""
 "Im Editor wird eine Metabox zum Anpassen der Opengraph, Rich Snippets und "
 "Twitter Cards Meta Tags angezeigt."
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1263
+#: ../flodjishare/flodjishare.php:1358
 msgid "Meta Description Tag aktivieren"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1264
+#: ../flodjishare/flodjishare.php:1359
 msgid "Aktiviert das Meta Description Tag."
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1267
+#: ../flodjishare/flodjishare.php:1362
 msgid "News Keyword Tag aktivieren"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1268
+#: ../flodjishare/flodjishare.php:1363
 msgid "Aktiviert das News Keyword Tag für Google News."
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1271
+#: ../flodjishare/flodjishare.php:1366
 msgid "Meta Keywords Tag aktivieren"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1272
+#: ../flodjishare/flodjishare.php:1367
 msgid "Aktiviert das Meta Keywords Tag."
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1275
+#: ../flodjishare/flodjishare.php:1370
 msgid "Datenschutzhinweis anzeigen"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1276
+#: ../flodjishare/flodjishare.php:1371
 msgid ""
 "Zeigt einen kleinen Hoverlink mit Datenschutzhinweisen unter den Share "
 "Buttons an. Der Hinweistext muss weiter unten noch eingegeben werden."
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1279
+#: ../flodjishare/flodjishare.php:1374
 msgid "Google Authorship Markup"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1280
+#: ../flodjishare/flodjishare.php:1375
 msgid ""
 "Fügt das Google Authorship Markup Tag für die Anzeige von Autorenfotos in "
 "den Suchergebnissen in den Quellcode ein."
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1284
+#: ../flodjishare/flodjishare.php:1379
 msgid "Startseite Beschreibung"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1287
+#: ../flodjishare/flodjishare.php:1382
 msgid "Trage hier den Text für deie Meta Description der Startseite ein."
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1290
+#: ../flodjishare/flodjishare.php:1385
 msgid "Startseite Keywords"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1293
+#: ../flodjishare/flodjishare.php:1388
 msgid ""
 "Trage hier die Keywords für Deine Startseite ein (Bitte alle Wörter klein "
 "schreiben und durch Kommas trennen.)"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1296
+#: ../flodjishare/flodjishare.php:1391
 msgid "Google Plus Page ID"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1299
+#: ../flodjishare/flodjishare.php:1394
 msgid "Trage hier die ID Deiner Google Plus Seite ein."
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1302
+#: ../flodjishare/flodjishare.php:1397
 msgid "Google Plus User ID"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1305
+#: ../flodjishare/flodjishare.php:1400
 msgid "Trage hier die ID Deines pers&ouml;nlichen Google Plus Accounts ein."
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1308
+#: ../flodjishare/flodjishare.php:1403
 msgid "Flattr ID"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1311
+#: ../flodjishare/flodjishare.php:1406
 msgid ""
 "Trage hier Deine Flattr ID ein. Diese wird für den Flattr Button benötigt."
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1317
+#: ../flodjishare/flodjishare.php:1412
 msgid ""
 "Trage hier Deinen Twitter Usernamen ein. Dieser wird dann in den Twitter "
 "Cards (wenn aktiviert)<br />und am Ende der Tweets erscheinen, z.B. (via "
 "@Dein Twitter Name)."
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1320
+#: ../flodjishare/flodjishare.php:1415
 msgid "Twitter Seite"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1323
+#: ../flodjishare/flodjishare.php:1418
 msgid ""
 "Trage hier den Twitter Usernamen Deiner Worspress Seite ein. Falls nicht "
 "vorhanden, trage einfach Deinen Twitter Usernamen ein."
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1326
+#: ../flodjishare/flodjishare.php:1421
 msgid "Ersatzbild"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1329
+#: ../flodjishare/flodjishare.php:1424
 msgid ""
 "Trage hier die URL zu einem Ersatzbild ein. Dieses wird beim Teilen "
 "verwendet, wenn im Artikel kein Bild vorhanden ist."
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1332
+#: ../flodjishare/flodjishare.php:1427
 msgid "Facebook AppId"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1335
+#: ../flodjishare/flodjishare.php:1430
 msgid "Trage hier Deine Facebook AppId ein."
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1338
+#: ../flodjishare/flodjishare.php:1433
 msgid "Facebook Admin"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1341
+#: ../flodjishare/flodjishare.php:1436
 msgid "Trage hier Deinen Facebook Usernamen ein."
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1344
+#: ../flodjishare/flodjishare.php:1439
 msgid "Datenschutzhinweistext"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1347
+#: ../flodjishare/flodjishare.php:1442
 msgid "Trage hier den Datenschutzhinweistext ein."
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1350
+#: ../flodjishare/flodjishare.php:1445
 msgid "Supportlink"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1353
+#: ../flodjishare/flodjishare.php:1448
 msgid "Supportlink deaktivieren"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1358
+#: ../flodjishare/flodjishare.php:1453
 msgid "Speichern"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1361
+#: ../flodjishare/flodjishare.php:1456
 msgid "Bei Problemen oder Fragen kannst Du gern das"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1361
+#: ../flodjishare/flodjishare.php:1456
 msgid "Support Forum"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1361
+#: ../flodjishare/flodjishare.php:1456
 msgid "besuchen"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1362
+#: ../flodjishare/flodjishare.php:1457
 msgid "Die Buttons stammen von dieser"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1362 ../flodjishare/flodjishare.php:1462
+#: ../flodjishare/flodjishare.php:1457 ../flodjishare/flodjishare.php:1583
 msgid "Seite"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1362
+#: ../flodjishare/flodjishare.php:1457
 msgid "Das Menü-Icon habe ich"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1362
+#: ../flodjishare/flodjishare.php:1457
 msgid "hier"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1362
+#: ../flodjishare/flodjishare.php:1457
 msgid "gefunden"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1362
+#: ../flodjishare/flodjishare.php:1457
 msgid "Das Metro Design habe ich ausschließlich mit CSS Anweisungen erstellt"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1366
+#: ../flodjishare/flodjishare.php:1461
 msgid "flodji.de Feed"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1374 ../flodjishare/flodjishare.php:1395
-#: ../flodjishare/flodjishare.php:1475 ../flodjishare/flodjishare.php:1496
+#: ../flodjishare/flodjishare.php:1469 ../flodjishare/flodjishare.php:1490
+#: ../flodjishare/flodjishare.php:1597 ../flodjishare/flodjishare.php:1618
 msgid "Keine Einträge"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1387 ../flodjishare/flodjishare.php:1488
+#: ../flodjishare/flodjishare.php:1482 ../flodjishare/flodjishare.php:1610
 msgid "found-footage.de Feed"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1408
+#: ../flodjishare/flodjishare.php:1499 ../flodjishare/flodjishare.php:1627
+msgid "Newsletter"
+msgstr ""
+
+#: ../flodjishare/flodjishare.php:1500 ../flodjishare/flodjishare.php:1512
+#: ../flodjishare/flodjishare.php:1628 ../flodjishare/flodjishare.php:1640
+msgid "Linkpartner werden"
+msgstr ""
+
+#: ../flodjishare/flodjishare.php:1505
 msgid "Weitere Links"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1410 ../flodjishare/flodjishare.php:1511
+#: ../flodjishare/flodjishare.php:1507 ../flodjishare/flodjishare.php:1635
 msgid "Weitere Plugins / Themes"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1411 ../flodjishare/flodjishare.php:1512
+#: ../flodjishare/flodjishare.php:1508 ../flodjishare/flodjishare.php:1636
 msgid "Gewinnspiele"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1412 ../flodjishare/flodjishare.php:1513
+#: ../flodjishare/flodjishare.php:1509 ../flodjishare/flodjishare.php:1637
 msgid "FAQs"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1413 ../flodjishare/flodjishare.php:1514
+#: ../flodjishare/flodjishare.php:1510 ../flodjishare/flodjishare.php:1638
 msgid "Kontakt"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1414 ../flodjishare/flodjishare.php:1515
+#: ../flodjishare/flodjishare.php:1511 ../flodjishare/flodjishare.php:1639
 msgid "Forum"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1415 ../flodjishare/flodjishare.php:1516
+#: ../flodjishare/flodjishare.php:1513 ../flodjishare/flodjishare.php:1641
 msgid "flodji.de Android App"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1416 ../flodjishare/flodjishare.php:1517
+#: ../flodjishare/flodjishare.php:1514 ../flodjishare/flodjishare.php:1642
 msgid "Impressum"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1443
+#: ../flodjishare/flodjishare.php:1554
 msgid "flodjiShare Klickzähler"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1464
+#: ../flodjishare/flodjishare.php:1566
+msgid "Nur Einträge mit diesem Netzwerk anzeigen."
+msgstr ""
+
+#: ../flodjishare/flodjishare.php:1586
 msgid "Hinweis"
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1464
+#: ../flodjishare/flodjishare.php:1586
 msgid ""
 "Der Klickzähler zeigt die Anzahl der Klicks auf die Share Buttons an. Diese "
 "Zahl muss nicht zwingend mit der tatsächlichen Anzahl von Shares "
 "übereinstimmen."
 msgstr ""
 
-#: ../flodjishare/flodjishare.php:1576
+#: ../flodjishare/flodjishare.php:1702
 msgid "Letzte"
 msgstr ""
