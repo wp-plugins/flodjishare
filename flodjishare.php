@@ -3,7 +3,7 @@
 Plugin Name: flodjiShare
 Plugin URI: http://flodji.de/downloads/flodjishare-fuer-wordpress/
 Description: Mit flodjiShare wird Webseitenbetreibern eine einfache L&ouml;sung angeboten die Social Sharing und Bookmark Buttons der gro&szlig;en Netzwerke in die eigene Seite einzubinden.
-Version: 3.5
+Version: 3.6
 Author: flodji
 Author URI: http://flodji.de
 License: GPL2
@@ -1582,6 +1582,7 @@ $wieviel_seiten = ceil($menge / $eintraege_pro_seite);
 $ausgabe .= '<br /><div align="center">';
 $ausgabe .= '<strong>' . __('Seite', 'flodjishare') . ':</strong>';
 $ausgabe .= blaetterfunktion($seite,$wieviel_seiten,'admin.php?page=klick-counter&sort='.$sort.'&feld='.$feldfilter,3);
+$ausgabe .= '<p style="text-align:left;">' . __('Nach diesen Netzwerken filtern:', 'flodjishare') . '<br /><a href="admin.php?page=klick-counter&feld=Facebook">' . __('Facebook', 'flodjishare' ). '</a> | <a href="admin.php?page=klick-counter&feld=Twitter">' . __('Twitter', 'flodjishare' ). '</a> | <a href="admin.php?page=klick-counter&feld=Google Plus">' . __('Google Plus', 'flodjishare' ). '</a> | <a href="admin.php?page=klick-counter&feld=Digg">' . __('Digg', 'flodjishare' ). '</a>   | <a href="admin.php?page=klick-counter&feld=Delicious">' . __('Delicious', 'flodjishare' ). '</a> | <a href="admin.php?page=klick-counter&feld=Xing">' . __('Xing', 'flodjishare' ). '</a> | <a href="admin.php?page=klick-counter&feld=LinkedIn">' . __('LinkedIn', 'flodjishare' ). '</a> | <a href="admin.php?page=klick-counter&feld=Pinterest">' . __('Pinterest', 'flodjishare' ). '</a> | <a href="admin.php?page=klick-counter&feld=StumbleUpon">' . __('StumbleUpon', 'flodjishare' ). '</a> | <a href="admin.php?page=klick-counter&feld=Flattr">' . __('Flattr', 'flodjishare' ). '</a> | <a href="admin.php?page=klick-counter&feld=Tumblr">' . __('Tumblr', 'flodjishare' ). '</a> | <a href="admin.php?page=klick-counter&feld=Pocket">' . __('Pocket', 'flodjishare' ). '</a> | <a href="admin.php?page=klick-counter&feld=Feedly">' . __('Feedly', 'flodjishare' ). '</a> | <a href="admin.php?page=klick-counter&feld=Whatsapp">' . __('Whatsapp', 'flodjishare' ). '</a></p>';
 $ausgabe .= '</div><br /><p><small><a href="admin.php?page=klick-counter&sort=&seite=&feld=">Filter zurücksetzen</a></small></p>';
 $ausgabe .= '<br /><p><span style="font-weight: bold;">' . __('Hinweis', 'flodjishare') . ':</span><br />' . __('Der Klickzähler zeigt die Anzahl der Klicks auf die Share Buttons an. Diese Zahl muss nicht zwingend mit der tatsächlichen Anzahl von Shares übereinstimmen.', 'flodjishare') . '</p></div>';
 $ausgabe .= '<div style="margin-left:50px;border-left:thin solid #ccc;border-right:thin solid #ccc;border-bottom:thin solid #ccc;padding:3px;width:200px;float:left;box-shadow: 0 1px 1px #999;">

@@ -2,9 +2,9 @@
 Contributors: flodji
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=K9U25CKQNA5GL
 Tags: Share,Social,Facebook,Twitter,Xing,Delicious,Flattr,StumbleUpon,Digg,Google,Rich Snippets,Whatsapp,iOS,Android,Opengraph,Twitter Cards,Share Button,Google Authorship Markup,rel Author,Multi-Author,Klicktracker,Klick Counter,Metabox,Meta Box,Custom Post Types
-Requires at least: 3.3
+Requires at least: 3.8
 Tested up to: 4.0
-Stable tag: 3.5
+Stable tag: 3.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -20,7 +20,6 @@ Let Visitors share your Posts, Pages and Custom Post Types on these social netwo
  
 Facebook
 Twitter
-StudiVZ, MeinVZ, SchülerVZ
 Digg
 Delicious
 Google Plus
@@ -110,6 +109,10 @@ Weitere Informationen gibt es auf <a target="_blank" href="http://flodji.de/flod
 2. CSS-Design Buttons im Einsatz
 
 == Changelog ==
+
+Version 3.6:
+
+* Klick Counter: Weitere Filter f&uuml;r den Klickz&auml;hler.
 
 Version 3.5:
 
@@ -227,6 +230,10 @@ Version 1.4:
 * Neues Buttonset
 
 == Upgrade notice ==
+
+Version 3.6:
+
+* Klick Counter: Weitere Filter f&uuml;r den Klickz&auml;hler.
 
 Version 3.5:
 
