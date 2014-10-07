@@ -3,7 +3,7 @@
 Plugin Name: flodjiShare
 Plugin URI: http://flodji.de/downloads/flodjishare-fuer-wordpress/
 Description: Mit flodjiShare wird Webseitenbetreibern eine einfache L&ouml;sung angeboten die Social Sharing und Bookmark Buttons der gro&szlig;en Netzwerke in die eigene Seite einzubinden.
-Version: 3.6
+Version: 3.7
 Author: flodji
 Author URI: http://flodji.de
 License: GPL2
@@ -204,7 +204,7 @@ global $wpdb, $post;
 		if ($option['active_buttons']['facebook']==true) {
 		if ($option['metro']==true){
 		if ($option['counter']==true){
-		$title = strip_tags(get_the_title());
+		$title = htmlspecialchars_decode(htmlspecialchars(strip_tags(get_the_title()), ENT_SUBSTITUTE, 'UTF-8'));
 		$network= __('Facebook', 'flodjishare');
 		$klicks = $wpdb->get_var("SELECT klicks FROM flodjiShareLinks WHERE title='$title' AND network='$network'");
 		if($klicks == ''){
@@ -223,7 +223,7 @@ global $wpdb, $post;
 		$flattrurl = 'https://flattr.com/submit/auto?user_id='.stripslashes($option['flattr_id']).'&url='.urlencode(get_permalink()).'&title='.urlencode(strip_tags(get_the_title())).'&description='.urlencode(descExcerpt());
 		if ($option['metro']==true){
 		if ($option['counter']==true){
-		$title = strip_tags(get_the_title());
+		$title = htmlspecialchars_decode(htmlspecialchars(strip_tags(get_the_title()), ENT_SUBSTITUTE, 'UTF-8'));
 		$network= __('Flattr', 'flodjishare');
 		$klicks = $wpdb->get_var("SELECT klicks FROM flodjiShareLinks WHERE title='$title' AND network='$network'");
 		if($klicks == ''){
@@ -239,7 +239,7 @@ global $wpdb, $post;
 		}
 
 		if ($option['active_buttons']['twitter']==true) {
-		$title = strip_tags(get_the_title());
+		$title = htmlspecialchars_decode(htmlspecialchars(strip_tags(get_the_title()), ENT_SUBSTITUTE, 'UTF-8'));
 		$tw_link = 'https://twitter.com/share?url='.urlencode(get_permalink()).'&via='.stripslashes($option['twitter_text']).'&text='.urlencode(html_entity_decode(strip_tags($title)));
 		if ($option['metro']==true){
 		if ($option['counter']==true){		
@@ -262,7 +262,7 @@ global $wpdb, $post;
 		$digg_link = 'http://digg.com/submit?url='.get_permalink().'&amp;title='.strip_tags(get_the_title());
 		if ($option['metro']==true) {
 		if ($option['counter']==true){
-		$title = strip_tags(get_the_title());
+		$title = htmlspecialchars_decode(htmlspecialchars(strip_tags(get_the_title()), ENT_SUBSTITUTE, 'UTF-8'));
 		$network= __('Digg', 'flodjishare');
 		$klicks = $wpdb->get_var("SELECT klicks FROM flodjiShareLinks WHERE title='$title' AND network='$network'");
 		if($klicks == ''){
@@ -282,7 +282,7 @@ global $wpdb, $post;
 		$del_link =	'http://www.delicious.com/post?url='.urlencode(get_permalink()).'&notes='.urlencode(descExcerpt()).'&title='.urlencode(strip_tags(get_the_title()));
 		if ($option['metro']==true) {
 		if ($option['counter']==true){
-		$title = strip_tags(get_the_title());
+		$title = htmlspecialchars_decode(htmlspecialchars(strip_tags(get_the_title()), ENT_SUBSTITUTE, 'UTF-8'));
 		$network= __('Delicious', 'flodjishare');
 		$klicks = $wpdb->get_var("SELECT klicks FROM flodjiShareLinks WHERE title='$title' AND network='$network'");
 		if($klicks == ''){
@@ -300,7 +300,7 @@ global $wpdb, $post;
 		if ($option['active_buttons']['gplus']==true) {
 		if ($option['metro']==true) {
 		if ($option['counter']==true){
-		$title = strip_tags(get_the_title());
+		$title = htmlspecialchars_decode(htmlspecialchars(strip_tags(get_the_title()), ENT_SUBSTITUTE, 'UTF-8'));
 		$network= __('Google Plus', 'flodjishare');
 		$klicks = $wpdb->get_var("SELECT klicks FROM flodjiShareLinks WHERE title='$title' AND network='$network'");
 		if($klicks == ''){
@@ -319,7 +319,7 @@ global $wpdb, $post;
 		$xing_link = 'http://www.xing.com/app/user?op=share;url='.get_permalink();
 		if ($option['metro']==true) {
 		if ($option['counter']==true){
-		$title = strip_tags(get_the_title());
+		$title = htmlspecialchars_decode(htmlspecialchars(strip_tags(get_the_title()), ENT_SUBSTITUTE, 'UTF-8'));
 		$network= __('Xing', 'flodjishare');
 		$klicks = $wpdb->get_var("SELECT klicks FROM flodjiShareLinks WHERE title='$title' AND network='$network'");
 		if($klicks == ''){
@@ -338,7 +338,7 @@ global $wpdb, $post;
 		$linkedin_link = 'http://www.linkedin.com/shareArticle?mini=true&url='.urlencode(get_permalink()).'&title='.urlencode(strip_tags(get_the_title())).'&ro=false&summary='.urlencode(descExcerpt());
 		if ($option['metro']==true) {
 		if ($option['counter']==true){
-		$title = strip_tags(get_the_title());
+		$title = htmlspecialchars_decode(htmlspecialchars(strip_tags(get_the_title()), ENT_SUBSTITUTE, 'UTF-8'));
 		$network= __('LinkedIn', 'flodjishare');
 		$klicks = $wpdb->get_var("SELECT klicks FROM flodjiShareLinks WHERE title='$title' AND network='$network'");
 		if($klicks == ''){
@@ -357,7 +357,7 @@ global $wpdb, $post;
 		$pin_link = "http://pinterest.com/pin/create/button/?url=" . urlencode(get_permalink()) . "&media=" . urlencode(flodjiShareFirstImage()) . "&description=" . urlencode(descExcerpt());
 		if ($option['metro']==true) {
 		if ($option['counter']==true){
-		$title = strip_tags(get_the_title());
+		$title = htmlspecialchars_decode(htmlspecialchars(strip_tags(get_the_title()), ENT_SUBSTITUTE, 'UTF-8'));
 		$network= __('Pinterest', 'flodjishare');
 		$klicks = $wpdb->get_var("SELECT klicks FROM flodjiShareLinks WHERE title='$title' AND network='$network'");
 		if($klicks == ''){
@@ -376,7 +376,7 @@ global $wpdb, $post;
 		$stumble_link = "http://www.stumbleupon.com/submit?url=" . urlencode(get_permalink()) . "&title=" . urlencode(strip_tags(get_the_title()));
 		if ($option['metro']==true) {
 		if ($option['counter']==true){
-		$title = strip_tags(get_the_title());
+		$title = htmlspecialchars_decode(htmlspecialchars(strip_tags(get_the_title()), ENT_SUBSTITUTE, 'UTF-8'));
 		$network= __('StumbleUpon', 'flodjishare');
 		$klicks = $wpdb->get_var("SELECT klicks FROM flodjiShareLinks WHERE title='$title' AND network='$network'");
 		if($klicks == ''){
@@ -395,7 +395,7 @@ global $wpdb, $post;
 		$tumblr_link = 'http://www.tumblr.com/share/link?url='.urlencode(get_permalink()).'&name='.urlencode(strip_tags(get_the_title())).'&description='.urlencode(descExcerpt());
 		if ($option['metro']==true) {
 		if ($option['counter']==true){
-		$title = strip_tags(get_the_title());
+		$title = htmlspecialchars_decode(htmlspecialchars(strip_tags(get_the_title()), ENT_SUBSTITUTE, 'UTF-8'));
 		$network= __('Tumblr.', 'flodjishare');
 		$klicks = $wpdb->get_var("SELECT klicks FROM flodjiShareLinks WHERE title='$title' AND network='$network'");
 		if($klicks == ''){
@@ -416,7 +416,7 @@ global $wpdb, $post;
 		$wa_link = 'whatsapp://send?text='.strip_tags(get_the_title()).' - '.urlencode(get_permalink());
 		if ($option['metro']==true) {
 		if ($option['counter']==true){
-		$title = strip_tags(get_the_title());
+		$title = htmlspecialchars_decode(htmlspecialchars(strip_tags(get_the_title()), ENT_SUBSTITUTE, 'UTF-8'));
 		$network= __('Whatsapp', 'flodjishare');
 		$klicks = $wpdb->get_var("SELECT klicks FROM flodjiShareLinks WHERE title='$title' AND network='$network'");
 		if($klicks == ''){
@@ -436,7 +436,7 @@ global $wpdb, $post;
 		$po_link = 'https://getpocket.com/save?title=' . rawurlencode( get_the_title() ) . '&url=' . rawurlencode( get_the_permalink() );
 		if ($option['metro']==true) {
 		if ($option['counter']==true){
-		$title = strip_tags(get_the_title());
+		$title = htmlspecialchars_decode(htmlspecialchars(strip_tags(get_the_title()), ENT_SUBSTITUTE, 'UTF-8'));
 		$network= __('Pocket', 'flodjishare');
 		$klicks = $wpdb->get_var("SELECT klicks FROM flodjiShareLinks WHERE title='$title' AND network='$network'");
 		if($klicks == ''){
@@ -453,14 +453,12 @@ global $wpdb, $post;
 		
 		if ($option['active_buttons']['feedly']==true) {
 		$fe_link = 'http://cloud.feedly.com/#subscription' . rawurlencode( '/feed/' . get_feed_link( 'rss2' ) );
-		if ($option['metro']==true) {
+		if ($option['metro']==true){
 		if ($option['counter']==true){
-		$title = strip_tags(get_the_title());
+		$title = htmlspecialchars_decode(htmlspecialchars(strip_tags(get_the_title()), ENT_SUBSTITUTE, 'UTF-8'));
 		$network= __('Feedly', 'flodjishare');
 		$klicks = $wpdb->get_var("SELECT klicks FROM flodjiShareLinks WHERE title='$title' AND network='$network'");
-		if($klicks == ''){
-		$klicks = '0';
-		}
+		if($klicks == ''){ $klicks = '0'; }
 		$outputa .= '<div class="fsleft"><a class="fsbase fsfe" href="/wp-content/plugins/flodjishare/klick.php?n='.$network.'&title='.urlencode($title).'&fsurl='.urlencode($fe_link).'" target="_blank" rel="nofollow"><strong>' . __('Feedly', 'flodjishare') . '</strong></a><span class="fscounter"><strong>'.short_number($klicks).'</strong></span></div>';
 		} else {
 		$outputa .= '<div class="fsleft"><a class="fsbase fsfe" href="'.$fe_link.'" target="_blank" rel="nofollow"><strong>' . __('Feedly', 'flodjishare') . '</strong></a></div>';
@@ -477,7 +475,7 @@ global $wpdb, $post;
 		$outputa .= '<style type="text/css">
 		body.single {padding-bottom: 64px ! important;}
 		</style>';
-		$title = strip_tags(get_the_title());		
+		$title = htmlspecialchars_decode(htmlspecialchars(strip_tags(get_the_title()), ENT_SUBSTITUTE, 'UTF-8'));		
 
 		$outputa .= '<div class="fsbar">';
 		
