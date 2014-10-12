@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: Share,Social,Facebook,Twitter,Xing,Delicious,Flattr,StumbleUpon,Digg,Google,Rich Snippets,Whatsapp,iOS,Android,Opengraph,Twitter Cards,Share Button,Google Authorship Markup,rel Author,Multi-Author,Klicktracker,Klick Counter,Metabox,Meta Box,Custom Post Types
 Requires at least: 3.8
 Tested up to: 4.0
-Stable tag: 3.7
+Stable tag: 3.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -41,7 +41,8 @@ Twitter Cards Support
 Google Authorship Markup
 Click Counter
 Fast Loading
-Image or CSS Layout
+Image, CSS or FLat Layout
+Mobile Sharebar for Android and iOS Devices
 Position: Below Content, Above Content, Both or shortcode
 Show in: Posts, Archives, Pages, Custom-Post-Types, Search Results
 Metabox for individual Snippet Layouts 
@@ -83,7 +84,7 @@ Features:
 * Bis zu drei eigene Share Buttons
 * Klickz&auml;hler
 * Schnelle Ladezeit
-* Image oder CSS Layout
+* Button, CSS oder Flat Layout
 * Sharebar f&uuml;r Android und iOS Ger&auml;te
 * Position: Unten, Oben, Beides oder individuell per Shortcode
 * Anzeige auf: Beitrag, Blog-Ansicht, Seiten, Custom-Post-Types, Archive, Suchergenisse
@@ -107,8 +108,15 @@ Weitere Informationen gibt es auf <a target="_blank" href="http://flodji.de/flod
 
 1. Standard-Buttons im Einsatz
 2. CSS-Design Buttons im Einsatz
+3. Das neue Flat Design
 
 == Changelog ==
+
+Version 3.8:
+
+* Neues Design: Flat Design
+* Neue Funktion: Gro&szlig;e Buttons aktivieren (Button Design)
+* Neue Funktion: Buttons zentrieren (Alle Designs)
 
 Version 3.7:
 
@@ -234,6 +242,12 @@ Version 1.4:
 * Neues Buttonset
 
 == Upgrade notice ==
+
+Version 3.8:
+
+* Neues Design: Flat Design
+* Neue Funktion: Gro&szlig;e Buttons aktivieren (Button Design)
+* Neue Funktion: Buttons zentrieren (Alle Designs)
 
 Version 3.7:
 

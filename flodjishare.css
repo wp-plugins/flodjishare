@@ -5,6 +5,15 @@ padding-top:2px;
 .fsleft{
 float:left;
 }
+.fscenter{
+float:none;
+display:inline-block;
+}
+.fsbtncenter{
+padding-left:3px;
+margin:1px;
+display:inline-block;
+}
 .fsbtnfloat{
 float:left;
 padding-left:3px;
@@ -23,6 +32,17 @@ text-align: center;
 text-decoration:none;
 min-width:20px;
 }
+.fscounterflat{
+background-color: #000;
+color: #fff;
+display: inline-block;
+font-size: 1.5em;
+padding: 20px 0px;
+text-align: center;
+text-decoration:none;
+width:45px;
+margin-right:3px;
+}
 .fsbase{
 margin:3px;
 box-shadow: 0 1px 1px #999;
@@ -32,9 +52,20 @@ display: inline-block;
 font-size: 14px;
 padding: 5px 15px;
 text-align: center;
-min-width: 120px;
+min-width: 121px;
 text-decoration:none;
 line-height:1,5;
+}
+.fsflat{
+color: #fff;
+display: inline-block;
+font-size: 1.5em;
+padding: 20px 20px;
+text-align: center;
+min-width: 140px;
+text-decoration:none;
+line-height:1,5;
+margin-top:2px;
 }
 a.fsbase{
 text-decoration:none ! important;
@@ -49,6 +80,22 @@ text-decoration:none ! important;
 color: #fff ! important;
 }
 a.fsbase:visited{
+text-decoration:none ! important;
+color: #fff ! important;
+}
+a.fsflat{
+text-decoration:none ! important;
+color: #fff ! important;
+}
+a.fsflat:hover{
+text-decoration:none ! important;
+color: #fff ! important;
+}
+a.fsflat:link{
+text-decoration:none ! important;
+color: #fff ! important;
+}
+a.fsflat:visited{
 text-decoration:none ! important;
 color: #fff ! important;
 }
