@@ -3,7 +3,7 @@
 Plugin Name: flodjiShare
 Plugin URI: http://flodji.de/downloads/flodjishare-fuer-wordpress/
 Description: Mit flodjiShare wird Webseitenbetreibern eine einfache L&ouml;sung angeboten die Social Sharing und Bookmark Buttons der gro&szlig;en Netzwerke in die eigene Seite einzubinden.
-Version: 3.9
+Version: 3.9.1
 Author: flodji
 Author URI: http://flodji.de
 License: GPL2
@@ -81,6 +81,17 @@ $good = array('%25','%23','%26','%3D','%28', '%29', '%2B', '%C4','%DC','%D6','%E
 $slug = str_replace( $bad, $good, $slug );
 $slug = trim($slug);
 return $slug;
+}
+
+function flodjiShareNormTitle( $string ){
+$string = str_replace("ä", "ae", $string);
+$string = str_replace("ü", "ue", $string);
+$string = str_replace("ö", "oe", $string);
+$string = str_replace("Ä", "Ae", $string);
+$string = str_replace("Ü", "Ue", $string);
+$string = str_replace("Ö", "Oe", $string);
+$string = str_replace("ß", "ss", $string);
+return $string;
 }
 
 function descExcerpt(){
@@ -209,7 +220,7 @@ global $wpdb, $post;
 		if($option['design']=='flat'){$fsbase = 'fsflat'; $fscounter = 'fscounterflat';}
 		if (($option['design']=='metro') or ($option['design']=='flat')){
 		if ($option['counter']==true){
-		$title = htmlspecialchars_decode(htmlspecialchars(strip_tags(get_the_title()), ENT_SUBSTITUTE, 'UTF-8'));
+		$title = strip_tags(flodjiShareNormTitle(get_the_title()));
 		$network= __('Facebook', 'flodjishare');
 		$klicks = $wpdb->get_var("SELECT klicks FROM flodjiShareLinks WHERE title='$title' AND network='$network'");
 		if($klicks == ''){
@@ -230,10 +241,10 @@ global $wpdb, $post;
 		if ($option['align']==true){ $div_class = 'fscenter'; $div_classb = 'fsbtncenter'; } else { $div_class = 'fsleft'; $div_classb = 'fsbtnfloat'; }
 		if($option['design']=='metro'){$fsbase = 'fsbase'; $fscounter = 'fscounter';}
 		if($option['design']=='flat'){$fsbase = 'fsflat'; $fscounter = 'fscounterflat';}
-		$flattrurl = 'https://flattr.com/submit/auto?user_id='.stripslashes($option['flattr_id']).'&url='.urlencode(get_permalink()).'&title='.urlencode(strip_tags(get_the_title())).'&description='.urlencode(descExcerpt());
+		$title = strip_tags(flodjiShareNormTitle(get_the_title()));
+		$flattrurl = 'https://flattr.com/submit/auto?user_id='.stripslashes($option['flattr_id']).'&url='.urlencode(get_permalink()).'&title='.urlencode($title).'&description='.urlencode(descExcerpt());
 		if (($option['design']=='metro') or ($option['design']=='flat')){
 		if ($option['counter']==true){
-		$title = htmlspecialchars_decode(htmlspecialchars(strip_tags(get_the_title()), ENT_SUBSTITUTE, 'UTF-8'));
 		$network= __('Flattr', 'flodjishare');
 		$klicks = $wpdb->get_var("SELECT klicks FROM flodjiShareLinks WHERE title='$title' AND network='$network'");
 		if($klicks == ''){
@@ -254,8 +265,8 @@ global $wpdb, $post;
 		if ($option['align']==true){ $div_class = 'fscenter'; $div_classb = 'fsbtncenter'; } else { $div_class = 'fsleft'; $div_classb = 'fsbtnfloat'; }
 		if($option['design']=='metro'){$fsbase = 'fsbase'; $fscounter = 'fscounter';}
 		if($option['design']=='flat'){$fsbase = 'fsflat'; $fscounter = 'fscounterflat';}
-		$title = htmlspecialchars_decode(htmlspecialchars(strip_tags(get_the_title()), ENT_SUBSTITUTE, 'UTF-8'));
-		$tw_link = 'https://twitter.com/share?url='.urlencode(get_permalink()).'&via='.stripslashes($option['twitter_text']).'&text='.urlencode(html_entity_decode(strip_tags($title)));
+		$title = strip_tags(flodjiShareNormTitle(get_the_title()));
+		$tw_link = 'https://twitter.com/share?url='.urlencode(get_permalink()).'&via='.stripslashes($option['twitter_text']).'&text='.$title;
 		if (($option['design']=='metro') or ($option['design']=='flat')){
 		if ($option['counter']==true){		
 		$network= __('Twitter', 'flodjishare');
@@ -263,7 +274,7 @@ global $wpdb, $post;
 		if($klicks == ''){
 		$klicks = '0';
 		}
-		$outputa .= '<div class="'.$div_class.'"><a class="'.$fsbase.' fstw" href="/wp-content/plugins/flodjishare/klick.php?n='.$network.'&title='.$title.'&fsurl='.urlencode($tw_link).'" onclick="return popup(this.href);" rel="nofollow"><strong>' . __('Twitter', 'flodjishare') . '</strong></a><span class="'.$fscounter.'"><strong>'.short_number($klicks).'</strong></span></div>';
+		$outputa .= '<div class="'.$div_class.'"><a class="'.$fsbase.' fstw" href="/wp-content/plugins/flodjishare/klick.php?n='.$network.'&title='.urlencode($title).'&fsurl='.urlencode($tw_link).'" onclick="return popup(this.href);" rel="nofollow"><strong>' . __('Twitter', 'flodjishare') . '</strong></a><span class="'.$fscounter.'"><strong>'.short_number($klicks).'</strong></span></div>';
 		} else {
 		$outputa .= '<div class="'.$div_class.'"><a class="'.$fsbase.' fstw" href="'.$tw_link.'" onclick="return popup(this.href);" rel="nofollow"><strong>' . __('Twitter', 'flodjishare') . '</strong></a></div>';
 		}
@@ -279,10 +290,10 @@ global $wpdb, $post;
 		if ($option['align']==true){ $div_class = 'fscenter'; $div_classb = 'fsbtncenter'; } else { $div_class = 'fsleft'; $div_classb = 'fsbtnfloat'; }
 		if($option['design']=='metro'){$fsbase = 'fsbase'; $fscounter = 'fscounter';}
 		if($option['design']=='flat'){$fsbase = 'fsflat'; $fscounter = 'fscounterflat';}
-		$digg_link = 'http://digg.com/submit?url='.get_permalink().'&amp;title='.strip_tags(get_the_title());
+		$digg_link = 'http://digg.com/submit?url='.get_permalink().'&amp;title='.strip_tags(flodjiShareNormTitle(get_the_title()));
 		if (($option['design']=='metro') or ($option['design']=='flat')){
 		if ($option['counter']==true){
-		$title = htmlspecialchars_decode(htmlspecialchars(strip_tags(get_the_title()), ENT_SUBSTITUTE, 'UTF-8'));
+		$title = strip_tags(flodjiShareNormTitle(get_the_title()));
 		$network= __('Digg', 'flodjishare');
 		$klicks = $wpdb->get_var("SELECT klicks FROM flodjiShareLinks WHERE title='$title' AND network='$network'");
 		if($klicks == ''){
@@ -307,7 +318,7 @@ global $wpdb, $post;
 		$del_link =	'http://www.delicious.com/post?url='.urlencode(get_permalink()).'&notes='.urlencode(descExcerpt()).'&title='.urlencode(strip_tags(get_the_title()));
 		if (($option['design']=='metro') or ($option['design']=='flat')){
 		if ($option['counter']==true){
-		$title = htmlspecialchars_decode(htmlspecialchars(strip_tags(get_the_title()), ENT_SUBSTITUTE, 'UTF-8'));
+		$title = strip_tags(flodjiShareNormTitle(get_the_title()));
 		$network= __('Delicious', 'flodjishare');
 		$klicks = $wpdb->get_var("SELECT klicks FROM flodjiShareLinks WHERE title='$title' AND network='$network'");
 		if($klicks == ''){
@@ -330,7 +341,7 @@ global $wpdb, $post;
 		if($option['design']=='flat'){$fsbase = 'fsflat'; $fscounter = 'fscounterflat';}
 		if (($option['design']=='metro') or ($option['design']=='flat')){
 		if ($option['counter']==true){
-		$title = htmlspecialchars_decode(htmlspecialchars(strip_tags(get_the_title()), ENT_SUBSTITUTE, 'UTF-8'));
+		$title = strip_tags(flodjiShareNormTitle(get_the_title()));
 		$network= __('Google Plus', 'flodjishare');
 		$klicks = $wpdb->get_var("SELECT klicks FROM flodjiShareLinks WHERE title='$title' AND network='$network'");
 		if($klicks == ''){
@@ -354,7 +365,7 @@ global $wpdb, $post;
 		$xing_link = 'http://www.xing.com/app/user?op=share;url='.get_permalink();
 		if (($option['design']=='metro') or ($option['design']=='flat')){
 		if ($option['counter']==true){
-		$title = htmlspecialchars_decode(htmlspecialchars(strip_tags(get_the_title()), ENT_SUBSTITUTE, 'UTF-8'));
+		$title = strip_tags(flodjiShareNormTitle(get_the_title()));
 		$network= __('Xing', 'flodjishare');
 		$klicks = $wpdb->get_var("SELECT klicks FROM flodjiShareLinks WHERE title='$title' AND network='$network'");
 		if($klicks == ''){
@@ -378,7 +389,7 @@ global $wpdb, $post;
 		$linkedin_link = 'http://www.linkedin.com/shareArticle?mini=true&url='.urlencode(get_permalink()).'&title='.urlencode(strip_tags(get_the_title())).'&ro=false&summary='.urlencode(descExcerpt());
 		if (($option['design']=='metro') or ($option['design']=='flat')){
 		if ($option['counter']==true){
-		$title = htmlspecialchars_decode(htmlspecialchars(strip_tags(get_the_title()), ENT_SUBSTITUTE, 'UTF-8'));
+		$title = strip_tags(flodjiShareNormTitle(get_the_title()));
 		$network= __('LinkedIn', 'flodjishare');
 		$klicks = $wpdb->get_var("SELECT klicks FROM flodjiShareLinks WHERE title='$title' AND network='$network'");
 		if($klicks == ''){
@@ -402,7 +413,7 @@ global $wpdb, $post;
 		$pin_link = "http://pinterest.com/pin/create/button/?url=" . urlencode(get_permalink()) . "&media=" . urlencode(flodjiShareFirstImage()) . "&description=" . urlencode(descExcerpt());
 		if (($option['design']=='metro') or ($option['design']=='flat')){
 		if ($option['counter']==true){
-		$title = htmlspecialchars_decode(htmlspecialchars(strip_tags(get_the_title()), ENT_SUBSTITUTE, 'UTF-8'));
+		$title = strip_tags(flodjiShareNormTitle(get_the_title()));
 		$network= __('Pinterest', 'flodjishare');
 		$klicks = $wpdb->get_var("SELECT klicks FROM flodjiShareLinks WHERE title='$title' AND network='$network'");
 		if($klicks == ''){
@@ -426,7 +437,7 @@ global $wpdb, $post;
 		$stumble_link = "http://www.stumbleupon.com/submit?url=" . urlencode(get_permalink()) . "&title=" . urlencode(strip_tags(get_the_title()));
 		if (($option['design']=='metro') or ($option['design']=='flat')){
 		if ($option['counter']==true){
-		$title = htmlspecialchars_decode(htmlspecialchars(strip_tags(get_the_title()), ENT_SUBSTITUTE, 'UTF-8'));
+		$title = strip_tags(flodjiShareNormTitle(get_the_title()));
 		$network= __('StumbleUpon', 'flodjishare');
 		$klicks = $wpdb->get_var("SELECT klicks FROM flodjiShareLinks WHERE title='$title' AND network='$network'");
 		if($klicks == ''){
@@ -450,7 +461,7 @@ global $wpdb, $post;
 		$tumblr_link = 'http://www.tumblr.com/share/link?url='.urlencode(get_permalink()).'&name='.urlencode(strip_tags(get_the_title())).'&description='.urlencode(descExcerpt());
 		if (($option['design']=='metro') or ($option['design']=='flat')){
 		if ($option['counter']==true){
-		$title = htmlspecialchars_decode(htmlspecialchars(strip_tags(get_the_title()), ENT_SUBSTITUTE, 'UTF-8'));
+		$title = strip_tags(flodjiShareNormTitle(get_the_title()));
 		$network= __('Tumblr.', 'flodjishare');
 		$klicks = $wpdb->get_var("SELECT klicks FROM flodjiShareLinks WHERE title='$title' AND network='$network'");
 		if($klicks == ''){
@@ -476,7 +487,7 @@ global $wpdb, $post;
 		$wa_link = 'whatsapp://send?text='.strip_tags(get_the_title()).' - '.urlencode(get_permalink());
 		if (($option['design']=='metro') or ($option['design']=='flat')){
 		if ($option['counter']==true){
-		$title = htmlspecialchars_decode(htmlspecialchars(strip_tags(get_the_title()), ENT_SUBSTITUTE, 'UTF-8'));
+		$title = strip_tags(flodjiShareNormTitle(get_the_title()));
 		$network= __('Whatsapp', 'flodjishare');
 		$klicks = $wpdb->get_var("SELECT klicks FROM flodjiShareLinks WHERE title='$title' AND network='$network'");
 		if($klicks == ''){
@@ -501,7 +512,7 @@ global $wpdb, $post;
 		$po_link = 'https://getpocket.com/save?title=' . rawurlencode( get_the_title() ) . '&url=' . rawurlencode( get_the_permalink() );
 		if (($option['design']=='metro') or ($option['design']=='flat')){
 		if ($option['counter']==true){
-		$title = htmlspecialchars_decode(htmlspecialchars(strip_tags(get_the_title()), ENT_SUBSTITUTE, 'UTF-8'));
+		$title = strip_tags(flodjiShareNormTitle(get_the_title()));
 		$network= __('Pocket', 'flodjishare');
 		$klicks = $wpdb->get_var("SELECT klicks FROM flodjiShareLinks WHERE title='$title' AND network='$network'");
 		if($klicks == ''){
@@ -525,7 +536,7 @@ global $wpdb, $post;
 		$fe_link = 'http://cloud.feedly.com/#subscription' . rawurlencode( '/feed/' . get_feed_link( 'rss2' ) );
 		if (($option['design']=='metro') or ($option['design']=='flat')){
 		if ($option['counter']==true){
-		$title = htmlspecialchars_decode(htmlspecialchars(strip_tags(get_the_title()), ENT_SUBSTITUTE, 'UTF-8'));
+		$title = strip_tags(flodjiShareNormTitle(get_the_title()));
 		$network= __('Feedly', 'flodjishare');
 		$klicks = $wpdb->get_var("SELECT klicks FROM flodjiShareLinks WHERE title='$title' AND network='$network'");
 		if($klicks == ''){ $klicks = '0'; }
@@ -547,7 +558,7 @@ global $wpdb, $post;
 		$outputa .= '<style type="text/css">
 		body.single {padding-bottom: 64px ! important;}
 		</style>';
-		$title = htmlspecialchars_decode(htmlspecialchars(strip_tags(get_the_title()), ENT_SUBSTITUTE, 'UTF-8'));		
+		$title = strip_tags(flodjiShareNormTitle(get_the_title()));		
 
 		$outputa .= '<div class="fsbar">';
 		
