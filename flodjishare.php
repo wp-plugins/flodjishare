@@ -194,7 +194,7 @@ global $wpdb, $post;
 		$outputa = '';
 		if ($option['align']==true){ $align = 'align="center" '; } else { $align = ''; }
 		$outputa .= '<div class="fsmain" '.$align.'>';
-		if ($option['big']==true){ $h3 = '3.0em'; } else { $h3 = '2.0em'; }
+		if ($option['big']==true){ $h3 = '3.0rem'; } else { $h3 = '2.0rem'; }
 		$outputa .= '<p style="font-size:'.$h3.';font-weight:700;">'.stripslashes($option['intro_text']).'</p>';
 		$outputa .= '<script type="text/javascript">
 		function popup (url) {
