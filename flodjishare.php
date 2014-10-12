@@ -268,7 +268,7 @@ global $wpdb, $post;
 		$title = strip_tags(flodjiShareNormTitle(get_the_title()));
 		$tw_link = 'https://twitter.com/share?url='.urlencode(get_permalink()).'&via='.stripslashes($option['twitter_text']).'&text='.$title;
 		if (($option['design']=='metro') or ($option['design']=='flat')){
-		if ($option['counter']==true){		
+		if ($option['counter']==true){
 		$network= __('Twitter', 'flodjishare');
 		$klicks = $wpdb->get_var("SELECT klicks FROM flodjiShareLinks WHERE title='$title' AND network='$network'");
 		if($klicks == ''){
