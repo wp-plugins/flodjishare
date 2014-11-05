@@ -409,8 +409,12 @@ if ( !is_resource( $db ) ) {
 if ( !mysql_select_db( DB_NAME, $db ) ) {
     handleSqlError();
 }
+require_once($_SERVER['DOCUMENT_ROOT'].'/wp-load.php');
+$option_string = get_option('flodjishare');
+$option = json_decode($option_string, true);
+if($option['active_buttons']['prfx']==true){$dbprfx = $wpdb->prefix.'flodjiShareLinks';} elseif($option['dbprfx'] != ''){ $dbprfx = stripslashes($option['dbprfx']).'flodjiShareLinks'; } else { $dbprfx = 'flodjiShareLinks'; }
 $safe_url = "'" . mysql_real_escape_string( $url ) . "'";
-$querya			= "CREATE TABLE IF NOT EXISTS flodjiShareLinks (`id` int(255) NOT NULL auto_increment,
+$querya			= "CREATE TABLE IF NOT EXISTS $dbprfx (`id` int(255) NOT NULL auto_increment,
 									`klicks` varchar(100) NOT NULL,
 									`title` varchar(255) NOT NULL,
 									`network` varchar(200) NOT NULL,
@@ -422,10 +426,10 @@ if($title == ''){
 $title = $_GET['t'];
 }
 $network = $_GET['n'];
-$query = "UPDATE flodjiShareLinks SET klicks=klicks+1 WHERE title='$title' AND network='$network'"; 
+$query = "UPDATE $dbprfx SET klicks=klicks+1 WHERE title='$title' AND network='$network'"; 
 $result = mysql_query( $query, $db );
 if ( mysql_affected_rows( $db ) == 0 ) {
-    $query = "INSERT INTO flodjiShareLinks (title, network, klicks) VALUES ('$title', '$network', 1)";
+    $query = "INSERT INTO $dbprfx (title, network, klicks) VALUES ('$title', '$network', 1)";
     mysql_query( $query, $db );
 }
 }

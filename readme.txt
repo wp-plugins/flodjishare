@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: Share,Social,Facebook,Twitter,Xing,Delicious,Flattr,StumbleUpon,Digg,Google,Rich Snippets,Whatsapp,iOS,Android,Opengraph,Twitter Cards,Share Button,Google Authorship Markup,rel Author,Multi-Author,Klicktracker,Klick Counter,Metabox,Meta Box,Custom Post Types
 Requires at least: 3.8
 Tested up to: 4.0
-Stable tag: 3.9.1
+Stable tag: 3.9.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -111,6 +111,12 @@ Weitere Informationen gibt es auf <a target="_blank" href="http://flodji.de/flod
 3. Das neue Flat Design
 
 == Changelog ==
+
+Version 3.9.2:
+
+* Neue Funktion: Die &Uuml;berschrift der Share Buttons (z.B. Diesen Beitrag teilen) kann nun in der Gr&ouml;&szlig;e angepasst werden.
+* Neue Funktion: Found-Footage.de Feed Widget eingebaut.
+* Neue Funktion: Datenbank Pr&auml;fix kann nun ge&auml;ndert werden.
 
 Version 3.9.1:
 
@@ -254,6 +260,12 @@ Version 1.4:
 * Neues Buttonset
 
 == Upgrade notice ==
+
+Version 3.9.2:
+
+* Neue Funktion: Die &Uuml;berschrift der Share Buttons (z.B. Diesen Beitrag teilen) kann nun in der Gr&ouml;&szlig;e angepasst werden.
+* Neue Funktion: Found-Footage.de Feed Widget eingebaut.
+* Neue Funktion: Datenbank Pr&auml;fix kann nun ge&auml;ndert werden.
 
 Version 3.9.1:
 
