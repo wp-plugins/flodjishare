@@ -4,6 +4,7 @@ header('Expires: 0');
 header('Pragma: no-cache');
 header('Cache-Control: private, no-store, no-cache, must-revalidate, max-age=0');
 header('Cache-Control: post-check=0, pre-check=0', false);
+header('Content-Type: text/html; charset=utf-8');
 
 define( 'ABSPATH', $_SERVER["DOCUMENT_ROOT"] . '/' ); 
 require ( ABSPATH . 'wp-config.php' );
@@ -426,6 +427,7 @@ if($title == ''){
 $title = $_GET['t'];
 }
 $network = $_GET['n'];
+$title = flodjiShareNormTitle($title);
 $query = "UPDATE $dbprfx SET klicks=klicks+1 WHERE title='$title' AND network='$network'"; 
 $result = mysql_query( $query, $db );
 if ( mysql_affected_rows( $db ) == 0 ) {

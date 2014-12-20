@@ -175,3 +175,21 @@ margin-top:-64px;
 .fsbar a{
 margin:5px;
 }
+a.flatmix{
+float: left;
+margin-top:2px;
+margin-right:3px;
+}
+
+.fsspanflatmix{
+float: left;
+color: #fff;
+display: inline-block;
+font-size: 15px;
+padding: 4px;
+height:32px;
+text-align: center;
+min-width: 50px;
+text-decoration: none;
+line-height: 1,5;
+}

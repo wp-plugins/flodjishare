@@ -3,12 +3,12 @@ Contributors: flodji
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=K9U25CKQNA5GL
 Tags: Share,Social,Facebook,Twitter,Xing,Delicious,Flattr,StumbleUpon,Digg,Google,Rich Snippets,Whatsapp,iOS,Android,Opengraph,Twitter Cards,Share Button,Google Authorship Markup,rel Author,Multi-Author,Klicktracker,Klick Counter,Metabox,Meta Box,Custom Post Types
 Requires at least: 3.8
-Tested up to: 4.0
-Stable tag: 3.9.2
+Tested up to: 4.1
+Stable tag: 3.9.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Mit flodjiShare wird Webseitenbetreibern eine einfache und elegante Lösung angeboten Social Sharing Buttons in die eigene Seite einzubinden.
+Just install flodjiShare to enable Social Sharing and SEO-Features on your Wordpress site. This Plugin is also compatible to Multi-Author Blogs.
 
 == Description ==
 
@@ -41,7 +41,7 @@ Twitter Cards Support
 Google Authorship Markup
 Click Counter
 Fast Loading
-Image, CSS or FLat Layout
+Image, CSS or Flat Layout
 Mobile Sharebar for Android and iOS Devices
 Position: Below Content, Above Content, Both or shortcode
 Show in: Posts, Archives, Pages, Custom-Post-Types, Search Results
@@ -111,6 +111,13 @@ Weitere Informationen gibt es auf <a target="_blank" href="http://flodji.de/flod
 3. Das neue Flat Design
 
 == Changelog ==
+
+Version 3.9.3:
+
+* Fehler behoben: Problem mit Umlauten im Klickz&auml;hler behoben. Umlaute werden nun f&uuml;r den Z&auml;hlvorgang umgewandelt.
+* Fehler behoben: Problem f&uuml;r Fehlermeldung: Warning: stripslashes() expects parameter 1 to be string, array given .... behoben.
+* Code Optimierungen: Jeder Share Button wird jetzt &uuml;ber eine eigene Funktion aufgerufen.
+* Button Mix: Bei aktiviertem Flat Design kann nun ein Mix aus Bild und CSS Button aktiviert werden (nur bei aktiviertem Counter)
 
 Version 3.9.2:
 
@@ -260,6 +267,13 @@ Version 1.4:
 * Neues Buttonset
 
 == Upgrade notice ==
+
+Version 3.9.3:
+
+* Fehler behoben: Problem mit Umlauten im Klickz&auml;hler behoben. Umlaute werden nun f&uuml;r den Z&auml;hlvorgang umgewandelt.
+* Fehler behoben: Problem f&uuml;r Fehlermeldung: Warning: stripslashes() expects parameter 1 to be string, array given .... behoben.
+* Code Optimierungen: Jeder Share Button wird jetzt &uuml;ber eine eigene Funktion aufgerufen.
+* Button Mix: Bei aktiviertem Flat Design kann nun ein Mix aus Bild und CSS Button aktiviert werden (nur bei aktiviertem Counter)
 
 Version 3.9.2:
 
