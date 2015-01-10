@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: Share,Social,Facebook,Twitter,Xing,Delicious,Flattr,StumbleUpon,Digg,Google,Rich Snippets,Whatsapp,iOS,Android,Opengraph,Twitter Cards,Share Button,Google Authorship Markup,rel Author,Multi-Author,Klicktracker,Klick Counter,Metabox,Meta Box,Custom Post Types
 Requires at least: 3.8
 Tested up to: 4.1
-Stable tag: 3.9.3
+Stable tag: 3.9.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -39,6 +39,7 @@ Opengraph Support
 Rich Snippets Support
 Twitter Cards Support
 Google Authorship Markup
+Wordpress SEO Compatibility
 Click Counter
 Fast Loading
 Image, CSS or Flat Layout
@@ -79,6 +80,7 @@ Features:
 * Rich Snippets Support
 * Twitter Cards Support
 * Google Authorship Markup
+* Kompatibel mit Wordpress SEO
 * Meta Keywords Tag
 * News Keywords Tag f&uuml;r Google News
 * Bis zu drei eigene Share Buttons
@@ -111,6 +113,16 @@ Weitere Informationen gibt es auf <a target="_blank" href="http://flodji.de/flod
 3. Das neue Flat Design
 
 == Changelog ==
+
+Version 3.9.5:
+
+* Fehler behoben: Bei aktiviertem Wordpress SEO Plugin wurde die falsche Description in die Metatags eingef&uuml;gt.
+
+Version 3.9.4:
+
+* Fehler behoben: flattr und Digg Button fehlten im Flatmix Design
+* Fehler behoben: Bei manchen Themes trat im Flatmix Design ein unsch&ouml;ner Abstand zwischen Logo und Counter auf
+* Fehler behoben: Buttons im Flatmix Design konnten nicht zentriert werden
 
 Version 3.9.3:
 
@@ -267,6 +279,16 @@ Version 1.4:
 * Neues Buttonset
 
 == Upgrade notice ==
+
+Version 3.9.5:
+
+* Fehler behoben: Bei aktiviertem Wordpress SEO Plugin wurde die falsche Description in die Metatags eingef&uuml;gt.
+
+Version 3.9.4:
+
+* Fehler behoben: flattr und Digg Button fehlten im Flatmix Design
+* Fehler behoben: Bei manchen Themes trat im Flatmix Design ein unsch&ouml;ner Abstand zwischen Logo und Counter auf
+* Fehler behoben: Buttons im Flatmix Design konnten nicht zentriert werden
 
 Version 3.9.3:
 

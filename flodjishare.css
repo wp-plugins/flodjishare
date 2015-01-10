@@ -2,6 +2,9 @@
 width:100%;
 padding-top:2px;
 }
+div.fsmain img{
+margin: 0 ! important;
+}
 .fsleft{
 float:left;
 }
