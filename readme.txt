@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: Share,Social,Facebook,Twitter,Xing,Delicious,Flattr,StumbleUpon,Digg,Google,Rich Snippets,Whatsapp,iOS,Android,Opengraph,Twitter Cards,Share Button,Google Authorship Markup,rel Author,Multi-Author,Klicktracker,Klick Counter,Metabox,Meta Box,Custom Post Types
 Requires at least: 3.8
 Tested up to: 4.1
-Stable tag: 3.9.5
+Stable tag: 3.9.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -41,6 +41,7 @@ Twitter Cards Support
 Google Authorship Markup
 Wordpress SEO Compatibility
 Click Counter
+Post Statistics
 Fast Loading
 Image, CSS or Flat Layout
 Mobile Sharebar for Android and iOS Devices
@@ -85,6 +86,7 @@ Features:
 * News Keywords Tag f&uuml;r Google News
 * Bis zu drei eigene Share Buttons
 * Klickz&auml;hler
+* Beitrags Statistiken unter den Share Buttons
 * Schnelle Ladezeit
 * Button, CSS oder Flat Layout
 * Sharebar f&uuml;r Android und iOS Ger&auml;te
@@ -113,6 +115,15 @@ Weitere Informationen gibt es auf <a target="_blank" href="http://flodji.de/flod
 3. Das neue Flat Design
 
 == Changelog ==
+
+Version 3.9.7:
+
+* Code optimiert: site_url anstatt home_url verwendet um Fehler bei WP Installationen in Unterordnern zu vermeiden.
+* Neue Funktion: Beitrags Statistiken unter den Share Buttons. Hier werden alle Shares zusammengerechnet und die Anzahl der Seitenaufrufe angezeigt.
+
+Version 3.9.6:
+
+* Fehler behoben: Problem mit Sonderzeichen beim Teilen &uuml;ber Whatsapp behoben.
 
 Version 3.9.5:
 
@@ -279,6 +290,15 @@ Version 1.4:
 * Neues Buttonset
 
 == Upgrade notice ==
+
+Version 3.9.7:
+
+* Code optimiert: site_url anstatt home_url verwendet um Fehler bei WP Installationen in Unterordnern zu vermeiden.
+* Neue Funktion: Beitrags Statistiken unter den Share Buttons. Hier werden alle Shares zusammengerechnet und die Anzahl der Seitenaufrufe angezeigt.
+
+Version 3.9.6:
+
+* Fehler behoben: Problem mit Sonderzeichen beim Teilen &uuml;ber Whatsapp behoben.
 
 Version 3.9.5:
 

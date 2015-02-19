@@ -1,16 +1,19 @@
 .fsmain{
 width:100%;
 padding-top:2px;
+margin-bottom: 10px ! important;
 }
 div.fsmain img{
 margin: 0 ! important;
 }
 .fsleft{
 float:left;
+margin-bottom: 10px ! important;
 }
 .fscenter{
 float:none;
 display:inline-block;
+margin-bottom: 10px ! important;
 }
 .fsbtncenter{
 padding-left:3px;
@@ -151,16 +154,19 @@ background-color: #00bc04;
 display: block;
 text-align: left;
 margin:3px;
-cursor:help
+cursor:help;
+margin-bottom: 10px ! important;
 }
 .fssl{
 display: block;
 margin:3px;
 text-align: left;
 font-size:0.8em;
+margin-bottom: 10px ! important;
 }
 .fsclear{
 clear: both;
+margin-bottom: 10px ! important;
 }
 .fsbar{
 position:fixed;
@@ -195,4 +201,35 @@ text-align: center;
 min-width: 50px;
 text-decoration: none;
 line-height: 1,5;
+}
+.fsstat{
+float:left;
+font-weight:bold;
+font-size:40px;
+text-align:center;
+line-height:44px;
+}
+.fsviewcount{
+font-weight:bold;
+font-size:28px;
+text-align:center;
+line-height:32px;
+color:#ca2020;
+}
+.fsaufrufe{
+text-align:center;
+line-height:12px;
+text-transform:uppercase;
+}
+.fsdivdivider{
+float:left;
+margin-left:15px;
+font-weight:bold;
+font-size:40px;
+text-align:center;
+line-height:44px;
+}
+.fsflma{
+float:left;
+margin-left:15px;
 }
