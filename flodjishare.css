@@ -5,6 +5,7 @@ margin-bottom: 10px ! important;
 }
 div.fsmain img{
 margin: 0 ! important;
+border:0;
 }
 .fsleft{
 float:left;
@@ -19,6 +20,9 @@ margin-bottom: 10px ! important;
 padding-left:3px;
 margin:1px;
 display:inline-block;
+}
+.fsbtncenter img{
+max-width: 100%;
 }
 .fsbtnfloat{
 float:left;
@@ -184,10 +188,22 @@ margin-top:-64px;
 .fsbar a{
 margin:5px;
 }
+.fsbar img{
+max-width: 100%;
+padding: 0 ! important;
+border: 0 ! important;
+opacity: 1.0 ! important;
+}
 a.flatmix{
 float: left;
 margin-top:2px;
 margin-right:3px;
+}
+a.flatmix img{
+float:left;
+padding: 0 ! important;
+border: 0 ! important;
+opacity: 1.0 ! important;
 }
 
 .fsspanflatmix{
@@ -196,7 +212,6 @@ color: #fff;
 display: inline-block;
 font-size: 15px;
 padding: 4px;
-height:32px;
 text-align: center;
 min-width: 50px;
 text-decoration: none;

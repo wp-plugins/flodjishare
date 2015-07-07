@@ -1,10 +1,10 @@
 === flodjiShare ===
 Contributors: flodji
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=K9U25CKQNA5GL
-Tags: Share,Social,Facebook,Twitter,Xing,Delicious,Flattr,StumbleUpon,Digg,Google,Rich Snippets,Whatsapp,iOS,Android,Opengraph,Twitter Cards,Share Button,Google Authorship Markup,rel Author,Multi-Author,Klicktracker,Klick Counter,Metabox,Meta Box,Custom Post Types
-Requires at least: 3.8
-Tested up to: 4.1
-Stable tag: 3.9.7
+Tags: Share,Social,Facebook,Twitter,Xing,Delicious,Flattr,StumbleUpon,Digg,Google,Rich Snippets,Whatsapp,iOS,Android,Opengraph,Twitter Cards,Share Button,Google Authorship Markup,rel Author,Multi-Author,Klicktracker,Klick Counter,Hit Counter,Metabox,Meta Box,Custom Post Types
+Requires at least: 4.0
+Tested up to: 4.2
+Stable tag: 4.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -41,6 +41,7 @@ Twitter Cards Support
 Google Authorship Markup
 Wordpress SEO Compatibility
 Click Counter
+Post / Page Hit Counter
 Post Statistics
 Fast Loading
 Image, CSS or Flat Layout
@@ -86,6 +87,7 @@ Features:
 * News Keywords Tag f&uuml;r Google News
 * Bis zu drei eigene Share Buttons
 * Klickz&auml;hler
+* Seitenaufrufe z&auml;hlen
 * Beitrags Statistiken unter den Share Buttons
 * Schnelle Ladezeit
 * Button, CSS oder Flat Layout
@@ -115,6 +117,24 @@ Weitere Informationen gibt es auf <a target="_blank" href="http://flodji.de/flod
 3. Das neue Flat Design
 
 == Changelog ==
+
+Version 4.0:
+
+* Code optimiert: CSS Anweisungen f&uuml;r die mobile Share Bar angepasst, so dass keine Rahmen mehr um die Share Buttons erscheinen k&ouml;nnen.
+
+Version 3.9.9:
+
+* Code optimiert: CSS Anweisungen angepasst, so dass keine Rahmen mehr um die Buttons im Flatmix entstehen k&ouml;nnen.
+* Neue Option: Gr&ouml;&szlig;e der Counterbox im Flatmix Design kann nun ge&auml;ndert werden.
+* Backend: Links im Backend aufger&auml;umt.
+* Bilder: found-footage.de Logo aktualisiert.
+* Neue Funktion: Der Speichern Button in den flodjiShare Einstellungen befindet sich nun sowohl &uuml;ber als auch unter den Einstellungen.
+
+Version 3.9.8:
+
+* Code optimiert: Bessere Kompatibilit&auml;t zu Wordpress Installationen in Unterordnern.
+* Neue Funktion: Seitenaufrufe werden auf Wunsch nun auch in der Beitrags- / Seiten&uuml;bersicht angezeigt.
+* Code optimiert: Inline CSS Strukturen in css Datei ausgelagert.
 
 Version 3.9.7:
 
@@ -290,6 +310,24 @@ Version 1.4:
 * Neues Buttonset
 
 == Upgrade notice ==
+
+Version 4.0:
+
+* Code optimiert: CSS Anweisungen f&uuml;r die mobile Share Bar angepasst, so dass keine Rahmen mehr um die Share Buttons erscheinen k&ouml;nnen.
+
+Version 3.9.9:
+
+* Code optimiert: CSS Anweisungen angepasst, so dass keine Rahmen mehr um die Buttons im Flatmix entstehen k&ouml;nnen.
+* Neue Option: Gr&ouml;&szlig;e der Counterbox im Flatmix Design kann nun ge&auml;ndert werden.
+* Backend: Links im Backend aufger&auml;umt.
+* Bilder: found-footage.de Logo aktualisiert.
+* Neue Funktion: Der Speichern Button in den flodjiShare Einstellungen befindet sich nun sowohl &uuml;ber als auch unter den Einstellungen.
+
+Version 3.9.8:
+
+* Code optimiert: Bessere Kompatibilit&auml;t zu Wordpress Installationen in Unterordnern.
+* Neue Funktion: Seitenaufrufe werden auf Wunsch nun auch in der Beitrags- / Seiten&uuml;bersicht angezeigt.
+* Code optimiert: Inline CSS Strukturen in css Datei ausgelagert.
 
 Version 3.9.7:
 
